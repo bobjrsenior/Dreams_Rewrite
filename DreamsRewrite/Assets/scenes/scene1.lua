@@ -4,13 +4,14 @@ Scene = {
             PositionX = 75,
             PositionY = 75,
             IsStatic = false,
-            IsCollidable = true,
+            IsCollidable = 1,
             Tag = "TestTag",
-            Sprite = "sprites/RedSquare.png",
-            SpriteWidth = 32,
-            SpriteHeight = 32,
+            SpritePath = "sprites/RedSquare.png",
             SpriteStartX = 0,
-            SpriteStartY = 0
+            SpriteStartY = 0,
+            SpriteWidth = 32,
+            SpriteHeight = 32
+
         }
     }
 }

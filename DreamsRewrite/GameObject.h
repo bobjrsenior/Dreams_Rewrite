@@ -26,7 +26,7 @@ public:
 	GameObject() {}
 
 	~GameObject() {
-		delete image;
+		
 	}
 
 	irr::core::vector2df getPosition() {
@@ -45,6 +45,14 @@ public:
 
 	void setObjectScript(std::string filepath) {
 		objectScript = filepath;
+	}
+
+	void setIsStatic(bool value) {
+		isStatic = value;
+	}
+
+	void setIsCollidable(bool value) {
+		canCollide = value;
 	}
 
 	std::string getObjectScript() {

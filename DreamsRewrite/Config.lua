@@ -1,8 +1,8 @@
 Config = {
     Title = "Test Game",
-    Fullscreen = 1,
-    ScreenWidth = 514,
-    ScreenHeight = 386,
+    Fullscreen = 0,
+    ScreenWidth = 1024,
+    ScreenHeight = 768,
     Scenes = {
        "scenes/scene1.lua",
     },

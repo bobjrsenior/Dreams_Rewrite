@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="IrrItems.cpp" />
     <ClCompile Include="LuaState.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Scenes.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="EventReciever.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Image.h" />
+    <ClInclude Include="IrrItems.h" />
     <ClInclude Include="LuaState.h" />
     <ClInclude Include="Scenes.h" />
     <ClInclude Include="sol.hpp" />

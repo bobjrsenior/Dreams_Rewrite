@@ -24,6 +24,9 @@
     <ClCompile Include="LuaState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IrrItems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sol.hpp">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LuaState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IrrItems.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
