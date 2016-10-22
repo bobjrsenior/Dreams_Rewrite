@@ -3,6 +3,7 @@
 #include "EventReciever.h"
 #include <vector>
 #include "GameObject.h"
+#include <iostream>
 
 using namespace irr;
 
@@ -130,14 +131,16 @@ int main()
 				lua.set_function("setPosition", &setLuaPosition);
 
 
-				//lua.script_file(obj.getObjectScript());
-				//sol::protected_function updateFunction = lua["update"];
-				//updateFunction();
 				obj.getUpdateFunction()();
 
 				obj.setPosition(getPosition());
 				gameObjects[i] = obj;
 				drawGameObject(driver, &obj);
+			}
+
+			if (gameObjects[0].isColliding(gameObjects[1])) {
+				core::vector2df collDIr = gameObjects[0].collisionDirectionNormalized(gameObjects[1]);
+				std::cout << "(" << collDIr.X << ", " << collDIr.Y << ")" << std::endl;
 			}
 
 			//driver->draw2DImage(images, core::position2d<s32>((s32) position.X, (s32) position.Y),
