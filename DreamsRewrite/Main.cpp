@@ -4,6 +4,7 @@
 #include <vector>
 #include "GameObject.h"
 #include <iostream>
+#include "Config.h"
 
 using namespace irr;
 
@@ -14,6 +15,8 @@ using namespace irr;
 core::vector2df position;
 sol::state lua;
 EventReceiver eventReciever;
+
+Config config;
 
 sol::table getLuaPosition() {
 	return lua.create_table_with("X", position.X, "Y", position.Y);

@@ -5,6 +5,8 @@
 
 class GameObject {
 public:
+	bool isStatic = false;
+	bool canCollide = true;
 
 private:
 	irr::core::vector2df position;

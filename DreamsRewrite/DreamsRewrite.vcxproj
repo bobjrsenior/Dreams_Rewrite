@@ -157,8 +157,11 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CollisionHandler.h" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="EventReciever.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Scenes.h" />
     <ClInclude Include="sol.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
