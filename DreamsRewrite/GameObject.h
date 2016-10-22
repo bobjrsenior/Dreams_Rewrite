@@ -1,7 +1,12 @@
 #pragma once
 #include <irrlicht.h>
 #include <string>
+
+#ifndef LUA_SOL
 #include "sol.hpp"
+#define LUA_SOL 1
+#endif // !LUA_SOL
+
 
 class GameObject {
 public:
@@ -19,6 +24,10 @@ private:
 
 public:
 	GameObject() {}
+
+	~GameObject() {
+		delete image;
+	}
 
 	irr::core::vector2df getPosition() {
 		return position;

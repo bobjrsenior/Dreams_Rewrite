@@ -1,8 +1,6 @@
 #include <irrlicht.h>
-#include "sol.hpp"
 #include "EventReciever.h"
 #include <vector>
-#include "GameObject.h"
 #include <iostream>
 #include "Config.h"
 
@@ -13,10 +11,9 @@ using namespace irr;
 #endif
 
 core::vector2df position;
-sol::state lua;
 EventReceiver eventReciever;
-
 Config config;
+
 
 sol::table getLuaPosition() {
 	return lua.create_table_with("X", position.X, "Y", position.Y);
@@ -59,10 +56,69 @@ int main()
 {
 	std::vector<GameObject> gameObjects;
 	lua.open_libraries(sol::lib::base);
+	{
+		lua.set_function("isKeyDown", &isKeyDown);
 
-	lua.set_function("isKeyDown", &isKeyDown);
+		lua.script_file("keycodeLuaTable.lua");
 
-	lua.script_file("keycodeLuaTable.lua");
+		lua.script_file("Config.lua");
+
+		std::string title;
+		bool fullscreen;
+		irr::s32 screenWidth;
+		irr::s32 screenHeight;
+		std::string assetFolder;
+
+		title = lua["Config"]["Title"].get_or<std::string>("Made with Dreams Of Magnus Irrlicht Lua Frontend");
+		sol::optional<int> fullscreenOpt = lua["Config"]["Fullscreen"];
+		if (fullscreenOpt == sol::nullopt) {
+			fullscreen = false;
+		}
+		else {
+			fullscreen = (fullscreenOpt.value() != 0);
+		}
+		sol::optional<irr::s32> screenWidthOpt = (irr::s32) lua["Config"]["ScreenWidth"];
+		if (screenWidthOpt == sol::nullopt) {
+			screenWidth = 512;
+		}
+		else {
+			screenWidth = screenWidthOpt.value();
+		}
+		sol::optional<irr::s32> screenHeightOpt = (irr::s32) lua["Config"]["ScreenHeight"];
+		if (screenHeightOpt == sol::nullopt) {
+			screenHeight = 384;
+		}
+		else {
+			screenHeight = screenHeightOpt.value();
+		}
+		assetFolder = lua["Config"]["AssetFolder"].get_or<std::string>("assets/");
+		sol::optional<sol::table> scenesTableOpt = lua["Config"]["Scenes"];
+		if (scenesTableOpt == sol::nullopt) {
+			printf("Error Loading config file");
+			return 0;			
+		}
+		else {
+			sol::table scenesTable = scenesTableOpt.value();
+			if (scenesTable.size() == 0) {
+				printf("Not enough scenes\n");
+				return 0;
+			}
+			config = Config(title, fullscreen, screenWidth, screenHeight, assetFolder);
+			for (int i = 1; i <= scenesTable.size(); ++i) {
+				Scene scene = Scene(config.assetsFolder, scenesTable[i], "Temp");
+				
+				config.scenes.push_back(scene);
+			}
+
+		}
+
+
+	}
+	
+	Scene firstScene = config.scenes[0];
+
+	loadScene(&firstScene);
+	
 
 	GameObject obj1 = GameObject();
 	GameObject obj2 = GameObject();

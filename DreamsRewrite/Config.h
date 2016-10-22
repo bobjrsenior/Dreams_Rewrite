@@ -2,7 +2,6 @@
 #include <string>
 #include "Scenes.h"
 #include <irrlicht.h>
-#include "sol.hpp"
 
 class Config {
 public:
@@ -10,7 +9,7 @@ public:
 	bool fullscreen;
 	irr::s32 screenWidth;
 	irr::s32 screenHeight;
-	std::vector<std::string> scenes;
+	std::vector<Scene> scenes;
 	std::string assetsFolder;
 
 private:

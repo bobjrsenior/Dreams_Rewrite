@@ -20,8 +20,8 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 // This file was generated with a script.
-// Generated 2016-10-11 10:53:03.759428 UTC
-// This header was generated with sol v2.14.10 (revision 866a297)
+// Generated 2016-10-15 22:53:00.289259 UTC
+// This header was generated with sol v2.14.10 (revision 8f7433f)
 // https://github.com/ThePhD/sol2
 
 #ifndef SOL_SINGLE_INCLUDE_HPP
@@ -41,7 +41,7 @@ namespace sol {
 		struct direct_error_tag {};
 		const auto direct_error = direct_error_tag{};
 	} // detail
-	
+
 	class error : public std::runtime_error {
 	private:
 		// Because VC++ is a fuccboi
@@ -63,17 +63,17 @@ namespace sol {
 
 } // sol
 
-// end of sol/error.hpp
+  // end of sol/error.hpp
 
-// beginning of sol/table.hpp
+  // beginning of sol/table.hpp
 
-// beginning of sol/table_core.hpp
+  // beginning of sol/table_core.hpp
 
-// beginning of sol/proxy.hpp
+  // beginning of sol/proxy.hpp
 
-// beginning of sol/traits.hpp
+  // beginning of sol/traits.hpp
 
-// beginning of sol/tuple.hpp
+  // beginning of sol/tuple.hpp
 
 #include <tuple>
 #include <cstddef>
@@ -130,9 +130,9 @@ namespace sol {
 	} // meta
 } // sol
 
-// end of sol/tuple.hpp
+  // end of sol/tuple.hpp
 
-// beginning of sol/bind_traits.hpp
+  // beginning of sol/bind_traits.hpp
 
 namespace sol {
 	namespace meta {
@@ -350,7 +350,7 @@ namespace sol {
 	} // meta
 } // sol
 
-// end of sol/bind_traits.hpp
+  // end of sol/bind_traits.hpp
 
 #include <type_traits>
 #include <memory>
@@ -612,14 +612,14 @@ namespace sol {
 			};
 
 			template <typename T, typename U = T, typename = decltype(std::declval<T&>() < std::declval<U&>())>
-			std::true_type supports_op_less_test(const T&);
-			std::false_type supports_op_less_test(...);
-			template <typename T, typename U = T, typename = decltype(std::declval<T&>() == std::declval<U&>())>
-			std::true_type supports_op_equal_test(const T&);
-			std::false_type supports_op_equal_test(...);
-			template <typename T, typename U = T, typename = decltype(std::declval<T&>() <= std::declval<U&>())>
-			std::true_type supports_op_less_equal_test(const T&);
-			std::false_type supports_op_less_equal_test(...);
+				std::true_type supports_op_less_test(const T&);
+				std::false_type supports_op_less_test(...);
+				template <typename T, typename U = T, typename = decltype(std::declval<T&>() == std::declval<U&>())>
+				std::true_type supports_op_equal_test(const T&);
+				std::false_type supports_op_equal_test(...);
+				template <typename T, typename U = T, typename = decltype(std::declval<T&>() <= std::declval<U&>())>
+				std::true_type supports_op_less_equal_test(const T&);
+				std::false_type supports_op_less_equal_test(...);
 
 		} // meta_detail
 
@@ -750,13 +750,13 @@ namespace sol {
 	} // detail
 } // sol
 
-// end of sol/traits.hpp
+  // end of sol/traits.hpp
 
-// beginning of sol/object.hpp
+  // beginning of sol/object.hpp
 
-// beginning of sol/optional.hpp
+  // beginning of sol/optional.hpp
 
-// beginning of sol/in_place.hpp
+  // beginning of sol/in_place.hpp
 
 namespace sol {
 
@@ -783,12 +783,12 @@ namespace sol {
 
 } // sol
 
-// end of sol/in_place.hpp
+  // end of sol/in_place.hpp
 
 #if defined(SOL_USE_BOOST)
 #include <boost/optional.hpp>
 #else
-// beginning of Optional/optional.hpp
+  // beginning of Optional/optional.hpp
 
 # ifndef ___SOL_OPTIONAL_HPP___
 # define ___SOL_OPTIONAL_HPP___
@@ -882,87 +882,87 @@ namespace sol {
 #   define OPTIONAL_MUTABLE_CONSTEXPR constexpr
 # endif
 
-namespace sol{
+namespace sol {
 
 # if defined TR2_OPTIONAL_GCC_4_8_AND_HIGHER___
-    // leave it: it is already there
+	// leave it: it is already there
 # elif defined TR2_OPTIONAL_CLANG_3_4_2_AND_HIGHER_
-    // leave it: it is already there
+	// leave it: it is already there
 # elif defined TR2_OPTIONAL_MSVC_2015_AND_HIGHER___
-    // leave it: it is already there
+	// leave it: it is already there
 # elif defined TR2_OPTIONAL_DISABLE_EMULATION_OF_TYPE_TRAITS
-    // leave it: the user doesn't want it
+	// leave it: the user doesn't want it
 # else
 	template <typename T>
 	using is_trivially_destructible = ::std::has_trivial_destructor<T>;
 # endif
 
 # if (defined TR2_OPTIONAL_GCC_4_7_AND_HIGHER___)
-    // leave it; our metafunctions are already defined.
+	// leave it; our metafunctions are already defined.
 # elif defined TR2_OPTIONAL_CLANG_3_4_2_AND_HIGHER_
-    // leave it; our metafunctions are already defined.
+	// leave it; our metafunctions are already defined.
 # elif defined TR2_OPTIONAL_MSVC_2015_AND_HIGHER___
-    // leave it: it is already there
+	// leave it: it is already there
 # elif defined TR2_OPTIONAL_DISABLE_EMULATION_OF_TYPE_TRAITS
-    // leave it: the user doesn't want it
+	// leave it: the user doesn't want it
 # else
 
-template <class T>
-struct is_nothrow_move_constructible
-{
-  constexpr static bool value = ::std::is_nothrow_constructible<T, T&&>::value;
-};
+	template <class T>
+	struct is_nothrow_move_constructible
+	{
+		constexpr static bool value = ::std::is_nothrow_constructible<T, T&&>::value;
+	};
 
-template <class T, class U>
-struct is_assignable
-{
-  template <class X, class Y>
-  constexpr static bool has_assign(...) { return false; }
+	template <class T, class U>
+	struct is_assignable
+	{
+		template <class X, class Y>
+		constexpr static bool has_assign(...) { return false; }
 
-  template <class X, class Y, size_t S = sizeof((::std::declval<X>() = ::std::declval<Y>(), true)) >
-  // the comma operator is necessary for the cases where operator= returns void
-  constexpr static bool has_assign(bool) { return true; }
+		template <class X, class Y, size_t S = sizeof((::std::declval<X>() = ::std::declval<Y>(), true)) >
+		// the comma operator is necessary for the cases where operator= returns void
+		constexpr static bool has_assign(bool) { return true; }
 
-  constexpr static bool value = has_assign<T, U>(true);
-};
+		constexpr static bool value = has_assign<T, U>(true);
+	};
 
-template <class T>
-struct is_nothrow_move_assignable
-{
-  template <class X, bool has_any_move_assign>
-  struct has_nothrow_move_assign {
-    constexpr static bool value = false;
-  };
+	template <class T>
+	struct is_nothrow_move_assignable
+	{
+		template <class X, bool has_any_move_assign>
+		struct has_nothrow_move_assign {
+			constexpr static bool value = false;
+		};
 
-  template <class X>
-  struct has_nothrow_move_assign<X, true> {
-    constexpr static bool value = noexcept( ::std::declval<X&>() = ::std::declval<X&&>() );
-  };
+		template <class X>
+		struct has_nothrow_move_assign<X, true> {
+			constexpr static bool value = noexcept(::std::declval<X&>() = ::std::declval<X&&>());
+		};
 
-  constexpr static bool value = has_nothrow_move_assign<T, is_assignable<T&, T&&>::value>::value;
-};
+		constexpr static bool value = has_nothrow_move_assign<T, is_assignable<T&, T&&>::value>::value;
+	};
 
 # endif
 
-template <class T> class optional;
+	template <class T> class optional;
 
-template <class T> class optional<T&>;
+	template <class T> class optional<T&>;
 
-template <class T> inline constexpr T&& constexpr_forward(typename ::std::remove_reference<T>::type& t) noexcept
-{
-  return static_cast<T&&>(t);
-}
+	template <class T> inline constexpr T&& constexpr_forward(typename ::std::remove_reference<T>::type& t) noexcept
+	{
+		return static_cast<T&&>(t);
+	}
 
-template <class T> inline constexpr T&& constexpr_forward(typename ::std::remove_reference<T>::type&& t) noexcept
-{
-    static_assert(!::std::is_lvalue_reference<T>::value, "!!");
-    return static_cast<T&&>(t);
-}
+	template <class T> inline constexpr T&& constexpr_forward(typename ::std::remove_reference<T>::type&& t) noexcept
+	{
+		static_assert(!::std::is_lvalue_reference<T>::value, "!!");
+		return static_cast<T&&>(t);
+	}
 
-template <class T> inline constexpr typename ::std::remove_reference<T>::type&& constexpr_move(T&& t) noexcept
-{
-    return static_cast<typename ::std::remove_reference<T>::type&&>(t);
-}
+	template <class T> inline constexpr typename ::std::remove_reference<T>::type&& constexpr_move(T&& t) noexcept
+	{
+		return static_cast<typename ::std::remove_reference<T>::type&&>(t);
+	}
 
 #if defined NDEBUG
 # define TR2_OPTIONAL_ASSERTED_EXPRESSION(CHECK, EXPR) (EXPR)
@@ -970,828 +970,828 @@ template <class T> inline constexpr typename ::std::remove_reference<T>::type&& 
 # define TR2_OPTIONAL_ASSERTED_EXPRESSION(CHECK, EXPR) ((CHECK) ? (EXPR) : ([]{assert(!#CHECK);}(), (EXPR)))
 #endif
 
-namespace detail_
-{
+	namespace detail_
+	{
 
-template <typename T>
-struct has_overloaded_addressof
-{
-  template <class X>
-  constexpr static bool has_overload(...) { return false; }
-  
-  template <class X, size_t S = sizeof(::std::declval<X&>().operator&()) >
-  constexpr static bool has_overload(bool) { return true; }
+		template <typename T>
+		struct has_overloaded_addressof
+		{
+			template <class X>
+			constexpr static bool has_overload(...) { return false; }
 
-  constexpr static bool value = has_overload<T>(true);
-};
+			template <class X, size_t S = sizeof(::std::declval<X&>().operator&()) >
+			constexpr static bool has_overload(bool) { return true; }
 
-template <typename T, TR2_OPTIONAL_REQUIRES(!has_overloaded_addressof<T>)>
-constexpr T* static_addressof(T& ref)
-{
-  return &ref;
-}
+			constexpr static bool value = has_overload<T>(true);
+		};
 
-template <typename T, TR2_OPTIONAL_REQUIRES(has_overloaded_addressof<T>)>
-T* static_addressof(T& ref)
-{
-  return ::std::addressof(ref);
-}
+		template <typename T, TR2_OPTIONAL_REQUIRES(!has_overloaded_addressof<T>)>
+		constexpr T* static_addressof(T& ref)
+		{
+			return &ref;
+		}
 
-template <class U>
-constexpr U convert(U v) { return v; }
+		template <typename T, TR2_OPTIONAL_REQUIRES(has_overloaded_addressof<T>)>
+		T* static_addressof(T& ref)
+		{
+			return ::std::addressof(ref);
+		}
 
-} // namespace detail_
+		template <class U>
+		constexpr U convert(U v) { return v; }
 
-constexpr struct trivial_init_t {} trivial_init{};
+	} // namespace detail_
 
-struct nullopt_t
-{
-  struct init{};
-  constexpr explicit nullopt_t(init){}
-};
-constexpr nullopt_t nullopt{nullopt_t::init()};
+	constexpr struct trivial_init_t {} trivial_init{};
 
-class bad_optional_access : public ::std::logic_error {
-public:
-  explicit bad_optional_access(const ::std::string& what_arg) : ::std::logic_error{what_arg} {}
-  explicit bad_optional_access(const char* what_arg) : ::std::logic_error{what_arg} {}
-};
+	struct nullopt_t
+	{
+		struct init {};
+		constexpr explicit nullopt_t(init) {}
+	};
+	constexpr nullopt_t nullopt{ nullopt_t::init() };
 
-template <class T>
-struct optional_base
-{
-    bool init_;
-	char storage_[sizeof(T)];
+	class bad_optional_access : public ::std::logic_error {
+	public:
+		explicit bad_optional_access(const ::std::string& what_arg) : ::std::logic_error{ what_arg } {}
+		explicit bad_optional_access(const char* what_arg) : ::std::logic_error{ what_arg } {}
+	};
 
-    constexpr optional_base() noexcept : init_(false), storage_() {};
+	template <class T>
+	struct optional_base
+	{
+		bool init_;
+		char storage_[sizeof(T)];
 
-    explicit optional_base(const T& v) : init_(true), storage_() {
-		new (&storage())T(v);
-	}
+		constexpr optional_base() noexcept : init_(false), storage_() {};
 
-    explicit optional_base(T&& v) : init_(true), storage_() {
-		new (&storage())T(constexpr_move(v));
-	}
+		explicit optional_base(const T& v) : init_(true), storage_() {
+			new (&storage())T(v);
+		}
 
-    template <class... Args> explicit optional_base(in_place_t, Args&&... args)
-    : init_(true), storage_() {
-		new (&storage())T(constexpr_forward<Args>(args)...);
-	}
+		explicit optional_base(T&& v) : init_(true), storage_() {
+			new (&storage())T(constexpr_move(v));
+		}
 
-    template <class U, class... Args, TR2_OPTIONAL_REQUIRES(::std::is_constructible<T, ::std::initializer_list<U>>)>
-    explicit optional_base(in_place_t, ::std::initializer_list<U> il, Args&&... args)
-    : init_(true), storage_() {
-		new (&storage())T(il, constexpr_forward<Args>(args)...);
-	}
+		template <class... Args> explicit optional_base(in_place_t, Args&&... args)
+			: init_(true), storage_() {
+			new (&storage())T(constexpr_forward<Args>(args)...);
+		}
+
+		template <class U, class... Args, TR2_OPTIONAL_REQUIRES(::std::is_constructible<T, ::std::initializer_list<U>>)>
+		explicit optional_base(in_place_t, ::std::initializer_list<U> il, Args&&... args)
+			: init_(true), storage_() {
+			new (&storage())T(il, constexpr_forward<Args>(args)...);
+		}
 #if defined __GNUC__ 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif
-	T& storage() {
-		return *reinterpret_cast<T*>(&storage_[0]);
-	}
+		T& storage() {
+			return *reinterpret_cast<T*>(&storage_[0]);
+		}
 
-	constexpr const T& storage() const {
-		return *reinterpret_cast<T const*>(&storage_[0]);
-	}
+		constexpr const T& storage() const {
+			return *reinterpret_cast<T const*>(&storage_[0]);
+		}
 #if defined __GNUC__
 #pragma GCC diagnostic pop
 #endif
 
-	~optional_base() { if (init_) { storage().T::~T(); } }
-};
+		~optional_base() { if (init_) { storage().T::~T(); } }
+	};
 
 #if defined __GNUC__ && !defined TR2_OPTIONAL_GCC_5_0_AND_HIGHER___
-template <typename T>
-using constexpr_optional_base = optional_base<T>;
+	template <typename T>
+	using constexpr_optional_base = optional_base<T>;
 #else
-template <class T>
-struct constexpr_optional_base
-{
-	bool init_;
-	char storage_[sizeof(T)];
-	constexpr constexpr_optional_base() noexcept : init_(false), storage_() {}
+	template <class T>
+	struct constexpr_optional_base
+	{
+		bool init_;
+		char storage_[sizeof(T)];
+		constexpr constexpr_optional_base() noexcept : init_(false), storage_() {}
 
-	explicit constexpr constexpr_optional_base(const T& v) : init_(true), storage_() {
-		new (&storage())T(v);
-	}
+		explicit constexpr constexpr_optional_base(const T& v) : init_(true), storage_() {
+			new (&storage())T(v);
+		}
 
-	explicit constexpr constexpr_optional_base(T&& v) : init_(true), storage_() {
-		new (&storage())T(constexpr_move(v));
-	}
+		explicit constexpr constexpr_optional_base(T&& v) : init_(true), storage_() {
+			new (&storage())T(constexpr_move(v));
+		}
 
-    template <class... Args> explicit constexpr constexpr_optional_base(in_place_t, Args&&... args)
-		: init_(true), storage_() {
-		new (&storage())T(constexpr_forward<Args>(args)...);
-	}
+		template <class... Args> explicit constexpr constexpr_optional_base(in_place_t, Args&&... args)
+			: init_(true), storage_() {
+			new (&storage())T(constexpr_forward<Args>(args)...);
+		}
 
-    template <class U, class... Args, TR2_OPTIONAL_REQUIRES(::std::is_constructible<T, ::std::initializer_list<U>>)>
-	OPTIONAL_CONSTEXPR_INIT_LIST explicit constexpr_optional_base(in_place_t, ::std::initializer_list<U> il, Args&&... args)
-		: init_(true), storage_() {
-		new (&storage())T(il, constexpr_forward<Args>(args)...);
-	}
+		template <class U, class... Args, TR2_OPTIONAL_REQUIRES(::std::is_constructible<T, ::std::initializer_list<U>>)>
+		OPTIONAL_CONSTEXPR_INIT_LIST explicit constexpr_optional_base(in_place_t, ::std::initializer_list<U> il, Args&&... args)
+			: init_(true), storage_() {
+			new (&storage())T(il, constexpr_forward<Args>(args)...);
+		}
 
 #if defined __GNUC__ 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif
-	T& storage() {
-		return (*reinterpret_cast<T*>(&storage_[0]));
-	}
+		T& storage() {
+			return (*reinterpret_cast<T*>(&storage_[0]));
+		}
 
-	constexpr const T& storage() const {
-		return (*reinterpret_cast<T const*>(&storage_[0]));
-	}
+		constexpr const T& storage() const {
+			return (*reinterpret_cast<T const*>(&storage_[0]));
+		}
 #if defined __GNUC__
 #pragma GCC diagnostic pop
 #endif
 
-    ~constexpr_optional_base() = default;
-};
+		~constexpr_optional_base() = default;
+	};
 #endif
 
-template <class T>
-using OptionalBase = typename ::std::conditional<
-	::std::is_trivially_destructible<T>::value,
-    constexpr_optional_base<typename ::std::remove_const<T>::type>,
-    optional_base<typename ::std::remove_const<T>::type>
->::type;
+	template <class T>
+	using OptionalBase = typename ::std::conditional<
+		::std::is_trivially_destructible<T>::value,
+		constexpr_optional_base<typename ::std::remove_const<T>::type>,
+		optional_base<typename ::std::remove_const<T>::type>
+	>::type;
 
-template <class T>
-class optional : private OptionalBase<T>
-{
-  static_assert( !::std::is_same<typename ::std::decay<T>::type, nullopt_t>::value, "bad T" );
-  static_assert( !::std::is_same<typename ::std::decay<T>::type, in_place_t>::value, "bad T" );
-  
-  constexpr bool initialized() const noexcept { return OptionalBase<T>::init_; }
-  typename ::std::remove_const<T>::type* dataptr() {  return ::std::addressof(OptionalBase<T>::storage()); }
-  constexpr const T* dataptr() const { return detail_::static_addressof(OptionalBase<T>::storage()); }
-  
+	template <class T>
+	class optional : private OptionalBase<T>
+	{
+		static_assert(!::std::is_same<typename ::std::decay<T>::type, nullopt_t>::value, "bad T");
+		static_assert(!::std::is_same<typename ::std::decay<T>::type, in_place_t>::value, "bad T");
+
+		constexpr bool initialized() const noexcept { return OptionalBase<T>::init_; }
+		typename ::std::remove_const<T>::type* dataptr() { return ::std::addressof(OptionalBase<T>::storage()); }
+		constexpr const T* dataptr() const { return detail_::static_addressof(OptionalBase<T>::storage()); }
+
 # if OPTIONAL_HAS_THIS_RVALUE_REFS == 1
-  constexpr const T& contained_val() const& { return OptionalBase<T>::storage(); }
+		constexpr const T& contained_val() const& { return OptionalBase<T>::storage(); }
 #   if OPTIONAL_HAS_MOVE_ACCESSORS == 1
-  OPTIONAL_MUTABLE_CONSTEXPR T&& contained_val() && { return ::std::move(OptionalBase<T>::storage()); }
-  OPTIONAL_MUTABLE_CONSTEXPR T& contained_val() & { return OptionalBase<T>::storage(); }
+		OPTIONAL_MUTABLE_CONSTEXPR T&& contained_val() && { return ::std::move(OptionalBase<T>::storage()); }
+		OPTIONAL_MUTABLE_CONSTEXPR T& contained_val() & { return OptionalBase<T>::storage(); }
 #   else
-  T& contained_val() & { return OptionalBase<T>::storage(); }
-  T&& contained_val() && { return ::std::move(OptionalBase<T>::storage()); }
+		T& contained_val() & { return OptionalBase<T>::storage(); }
+		T&& contained_val() && { return ::std::move(OptionalBase<T>::storage()); }
 #   endif
 # else
-  constexpr const T& contained_val() const { return OptionalBase<T>::storage(); }
-  T& contained_val() { return OptionalBase<T>::storage(); }
+		constexpr const T& contained_val() const { return OptionalBase<T>::storage(); }
+		T& contained_val() { return OptionalBase<T>::storage(); }
 # endif
 
-  void clear() noexcept {
-    if (initialized()) dataptr()->T::~T();
-    OptionalBase<T>::init_ = false;
-  }
-  
-  template <class... Args>
-  void initialize(Args&&... args) noexcept(noexcept(T(::std::forward<Args>(args)...)))
-  {
-    assert(!OptionalBase<T>::init_);
-    ::new (static_cast<void*>(dataptr())) T(::std::forward<Args>(args)...);
-    OptionalBase<T>::init_ = true;
-  }
+		void clear() noexcept {
+			if (initialized()) dataptr()->T::~T();
+			OptionalBase<T>::init_ = false;
+		}
 
-  template <class U, class... Args>
-  void initialize(::std::initializer_list<U> il, Args&&... args) noexcept(noexcept(T(il, ::std::forward<Args>(args)...)))
-  {
-    assert(!OptionalBase<T>::init_);
-    ::new (static_cast<void*>(dataptr())) T(il, ::std::forward<Args>(args)...);
-    OptionalBase<T>::init_ = true;
-  }
+		template <class... Args>
+		void initialize(Args&&... args) noexcept(noexcept(T(::std::forward<Args>(args)...)))
+		{
+			assert(!OptionalBase<T>::init_);
+			::new (static_cast<void*>(dataptr())) T(::std::forward<Args>(args)...);
+			OptionalBase<T>::init_ = true;
+		}
 
-public:
-  typedef T value_type;
+		template <class U, class... Args>
+		void initialize(::std::initializer_list<U> il, Args&&... args) noexcept(noexcept(T(il, ::std::forward<Args>(args)...)))
+		{
+			assert(!OptionalBase<T>::init_);
+			::new (static_cast<void*>(dataptr())) T(il, ::std::forward<Args>(args)...);
+			OptionalBase<T>::init_ = true;
+		}
 
-  // 20.5.5.1, constructors
-  constexpr optional() noexcept : OptionalBase<T>()  {};
-  constexpr optional(nullopt_t) noexcept : OptionalBase<T>() {};
+	public:
+		typedef T value_type;
 
-  optional(const optional& rhs)
-  : OptionalBase<T>()
-  {
-    if (rhs.initialized()) {
-        ::new (static_cast<void*>(dataptr())) T(*rhs);
-        OptionalBase<T>::init_ = true;
-    }
-  }
+		// 20.5.5.1, constructors
+		constexpr optional() noexcept : OptionalBase<T>() {};
+		constexpr optional(nullopt_t) noexcept : OptionalBase<T>() {};
 
-  optional(const optional<T&>& rhs) : optional() 
-  {
-    if (rhs) {
-      ::new (static_cast<void*>(dataptr())) T(*rhs);
-      OptionalBase<T>::init_ = true;
-    }
-  }
+		optional(const optional& rhs)
+			: OptionalBase<T>()
+		{
+			if (rhs.initialized()) {
+				::new (static_cast<void*>(dataptr())) T(*rhs);
+				OptionalBase<T>::init_ = true;
+			}
+		}
 
-  optional(optional&& rhs) noexcept(::std::is_nothrow_move_constructible<T>::value)
-  : OptionalBase<T>()
-  {
-    if (rhs.initialized()) {
-        ::new (static_cast<void*>(dataptr())) T(::std::move(*rhs));
-        OptionalBase<T>::init_ = true;
-    }
-  }
+		optional(const optional<T&>& rhs) : optional()
+		{
+			if (rhs) {
+				::new (static_cast<void*>(dataptr())) T(*rhs);
+				OptionalBase<T>::init_ = true;
+			}
+		}
 
-  constexpr optional(const T& v) : OptionalBase<T>(v) {}
+		optional(optional&& rhs) noexcept(::std::is_nothrow_move_constructible<T>::value)
+			: OptionalBase<T>()
+		{
+			if (rhs.initialized()) {
+				::new (static_cast<void*>(dataptr())) T(::std::move(*rhs));
+				OptionalBase<T>::init_ = true;
+			}
+		}
 
-  constexpr optional(T&& v) : OptionalBase<T>(constexpr_move(v)) {}
+		constexpr optional(const T& v) : OptionalBase<T>(v) {}
 
-  template <class... Args>
-  explicit constexpr optional(in_place_t, Args&&... args)
-  : OptionalBase<T>(in_place, constexpr_forward<Args>(args)...) {}
+		constexpr optional(T&& v) : OptionalBase<T>(constexpr_move(v)) {}
 
-  template <class U, class... Args, TR2_OPTIONAL_REQUIRES(::std::is_constructible<T, ::std::initializer_list<U>>)>
-  OPTIONAL_CONSTEXPR_INIT_LIST explicit optional(in_place_t, ::std::initializer_list<U> il, Args&&... args)
-  : OptionalBase<T>(in_place, il, constexpr_forward<Args>(args)...) {}
+		template <class... Args>
+		explicit constexpr optional(in_place_t, Args&&... args)
+			: OptionalBase<T>(in_place, constexpr_forward<Args>(args)...) {}
 
-  // 20.5.4.2, Destructor
-  ~optional() = default;
+		template <class U, class... Args, TR2_OPTIONAL_REQUIRES(::std::is_constructible<T, ::std::initializer_list<U>>)>
+		OPTIONAL_CONSTEXPR_INIT_LIST explicit optional(in_place_t, ::std::initializer_list<U> il, Args&&... args)
+			: OptionalBase<T>(in_place, il, constexpr_forward<Args>(args)...) {}
 
-  // 20.5.4.3, assignment
-  optional& operator=(nullopt_t) noexcept
-  {
-    clear();
-    return *this;
-  }
-  
-  optional& operator=(const optional& rhs)
-  {
-    if      (initialized() == true  && rhs.initialized() == false) clear();
-    else if (initialized() == false && rhs.initialized() == true)  initialize(*rhs);
-    else if (initialized() == true  && rhs.initialized() == true)  contained_val() = *rhs;
-    return *this;
-  }
-  
-  optional& operator=(optional&& rhs)
-  noexcept(::std::is_nothrow_move_assignable<T>::value && ::std::is_nothrow_move_constructible<T>::value)
-  {
-    if      (initialized() == true  && rhs.initialized() == false) clear();
-    else if (initialized() == false && rhs.initialized() == true)  initialize(::std::move(*rhs));
-    else if (initialized() == true  && rhs.initialized() == true)  contained_val() = ::std::move(*rhs);
-    return *this;
-  }
+		// 20.5.4.2, Destructor
+		~optional() = default;
 
-  template <class U>
-  auto operator=(U&& v)
-  -> typename ::std::enable_if
-  <
-	  ::std::is_same<typename ::std::decay<U>::type, T>::value,
-    optional&
-  >::type
-  {
-    if (initialized()) { contained_val() = ::std::forward<U>(v); }
-    else               { initialize(::std::forward<U>(v));  }
-    return *this;
-  }
-  
-  template <class... Args>
-  void emplace(Args&&... args)
-  {
-    clear();
-    initialize(::std::forward<Args>(args)...);
-  }
-  
-  template <class U, class... Args>
-  void emplace(::std::initializer_list<U> il, Args&&... args)
-  {
-    clear();
-    initialize<U, Args...>(il, ::std::forward<Args>(args)...);
-  }
-  
-  // 20.5.4.4, Swap
-  void swap(optional<T>& rhs) noexcept(::std::is_nothrow_move_constructible<T>::value && noexcept(swap(::std::declval<T&>(), ::std::declval<T&>())))
-  {
-    if      (initialized() == true  && rhs.initialized() == false) { rhs.initialize(::std::move(**this)); clear(); }
-    else if (initialized() == false && rhs.initialized() == true)  { initialize(::std::move(*rhs)); rhs.clear(); }
-    else if (initialized() == true  && rhs.initialized() == true)  { using ::std::swap; swap(**this, *rhs); }
-  }
+		// 20.5.4.3, assignment
+		optional& operator=(nullopt_t) noexcept
+		{
+			clear();
+			return *this;
+		}
 
-  // 20.5.4.5, Observers
-  
-  explicit constexpr operator bool() const noexcept { return initialized(); }
-  
-  constexpr T const* operator ->() const {
-    return TR2_OPTIONAL_ASSERTED_EXPRESSION(initialized(), dataptr());
-  }
-  
+		optional& operator=(const optional& rhs)
+		{
+			if (initialized() == true && rhs.initialized() == false) clear();
+			else if (initialized() == false && rhs.initialized() == true)  initialize(*rhs);
+			else if (initialized() == true && rhs.initialized() == true)  contained_val() = *rhs;
+			return *this;
+		}
+
+		optional& operator=(optional&& rhs)
+			noexcept(::std::is_nothrow_move_assignable<T>::value && ::std::is_nothrow_move_constructible<T>::value)
+		{
+			if (initialized() == true && rhs.initialized() == false) clear();
+			else if (initialized() == false && rhs.initialized() == true)  initialize(::std::move(*rhs));
+			else if (initialized() == true && rhs.initialized() == true)  contained_val() = ::std::move(*rhs);
+			return *this;
+		}
+
+		template <class U>
+		auto operator=(U&& v)
+			-> typename ::std::enable_if
+			<
+			::std::is_same<typename ::std::decay<U>::type, T>::value,
+			optional&
+			>::type
+		{
+			if (initialized()) { contained_val() = ::std::forward<U>(v); }
+			else { initialize(::std::forward<U>(v)); }
+			return *this;
+		}
+
+		template <class... Args>
+		void emplace(Args&&... args)
+		{
+			clear();
+			initialize(::std::forward<Args>(args)...);
+		}
+
+		template <class U, class... Args>
+		void emplace(::std::initializer_list<U> il, Args&&... args)
+		{
+			clear();
+			initialize<U, Args...>(il, ::std::forward<Args>(args)...);
+		}
+
+		// 20.5.4.4, Swap
+		void swap(optional<T>& rhs) noexcept(::std::is_nothrow_move_constructible<T>::value && noexcept(swap(::std::declval<T&>(), ::std::declval<T&>())))
+		{
+			if (initialized() == true && rhs.initialized() == false) { rhs.initialize(::std::move(**this)); clear(); }
+			else if (initialized() == false && rhs.initialized() == true) { initialize(::std::move(*rhs)); rhs.clear(); }
+			else if (initialized() == true && rhs.initialized() == true) { using ::std::swap; swap(**this, *rhs); }
+		}
+
+		// 20.5.4.5, Observers
+
+		explicit constexpr operator bool() const noexcept { return initialized(); }
+
+		constexpr T const* operator ->() const {
+			return TR2_OPTIONAL_ASSERTED_EXPRESSION(initialized(), dataptr());
+		}
+
 # if OPTIONAL_HAS_MOVE_ACCESSORS == 1
 
-  OPTIONAL_MUTABLE_CONSTEXPR T* operator ->() {
-    assert (initialized());
-    return dataptr();
-  }
-  
-  constexpr T const& operator *() const& {
-    return TR2_OPTIONAL_ASSERTED_EXPRESSION(initialized(), contained_val());
-  }
-  
-  OPTIONAL_MUTABLE_CONSTEXPR T& operator *() & {
-    assert (initialized());
-    return contained_val();
-  }
-  
-  OPTIONAL_MUTABLE_CONSTEXPR T&& operator *() && {
-    assert (initialized());
-    return constexpr_move(contained_val());
-  }
+		OPTIONAL_MUTABLE_CONSTEXPR T* operator ->() {
+			assert(initialized());
+			return dataptr();
+		}
 
-  constexpr T const& value() const& {
-    return initialized() ? contained_val() : (throw bad_optional_access("bad optional access"), contained_val());
-  }
-  
-  OPTIONAL_MUTABLE_CONSTEXPR T& value() & {
-    return initialized() ? contained_val() : (throw bad_optional_access("bad optional access"), contained_val());
-  }
-  
-  OPTIONAL_MUTABLE_CONSTEXPR T&& value() && {
-    if (!initialized()) throw bad_optional_access("bad optional access");
-	return ::std::move(contained_val());
-  }
-  
+		constexpr T const& operator *() const& {
+			return TR2_OPTIONAL_ASSERTED_EXPRESSION(initialized(), contained_val());
+		}
+
+		OPTIONAL_MUTABLE_CONSTEXPR T& operator *() & {
+			assert(initialized());
+			return contained_val();
+		}
+
+		OPTIONAL_MUTABLE_CONSTEXPR T&& operator *() && {
+			assert(initialized());
+			return constexpr_move(contained_val());
+		}
+
+		constexpr T const& value() const& {
+			return initialized() ? contained_val() : (throw bad_optional_access("bad optional access"), contained_val());
+		}
+
+		OPTIONAL_MUTABLE_CONSTEXPR T& value() & {
+			return initialized() ? contained_val() : (throw bad_optional_access("bad optional access"), contained_val());
+		}
+
+		OPTIONAL_MUTABLE_CONSTEXPR T&& value() && {
+			if (!initialized()) throw bad_optional_access("bad optional access");
+			return ::std::move(contained_val());
+		}
+
 # else
 
-  T* operator ->() {
-    assert (initialized());
-    return dataptr();
-  }
-  
-  constexpr T const& operator *() const {
-    return TR2_OPTIONAL_ASSERTED_EXPRESSION(initialized(), contained_val());
-  }
-  
-  T& operator *() {
-    assert (initialized());
-    return contained_val();
-  }
-  
-  constexpr T const& value() const {
-    return initialized() ? contained_val() : (throw bad_optional_access("bad optional access"), contained_val());
-  }
-  
-  T& value() {
-    return initialized() ? contained_val() : (throw bad_optional_access("bad optional access"), contained_val());
-  }
-  
+		T* operator ->() {
+			assert(initialized());
+			return dataptr();
+		}
+
+		constexpr T const& operator *() const {
+			return TR2_OPTIONAL_ASSERTED_EXPRESSION(initialized(), contained_val());
+		}
+
+		T& operator *() {
+			assert(initialized());
+			return contained_val();
+		}
+
+		constexpr T const& value() const {
+			return initialized() ? contained_val() : (throw bad_optional_access("bad optional access"), contained_val());
+		}
+
+		T& value() {
+			return initialized() ? contained_val() : (throw bad_optional_access("bad optional access"), contained_val());
+		}
+
 # endif
-  
+
 # if OPTIONAL_HAS_THIS_RVALUE_REFS == 1
 
-  template <class V>
-  constexpr T value_or(V&& v) const&
-  {
-    return *this ? **this : detail_::convert<T>(constexpr_forward<V>(v));
-  }
-  
+		template <class V>
+		constexpr T value_or(V&& v) const&
+		{
+			return *this ? **this : detail_::convert<T>(constexpr_forward<V>(v));
+		}
+
 #   if OPTIONAL_HAS_MOVE_ACCESSORS == 1
 
-  template <class V>
-  OPTIONAL_MUTABLE_CONSTEXPR T value_or(V&& v) &&
-  {
-    return *this ? constexpr_move(const_cast<optional<T>&>(*this).contained_val()) : detail_::convert<T>(constexpr_forward<V>(v));
-  }
+		template <class V>
+		OPTIONAL_MUTABLE_CONSTEXPR T value_or(V&& v) &&
+		{
+			return *this ? constexpr_move(const_cast<optional<T>&>(*this).contained_val()) : detail_::convert<T>(constexpr_forward<V>(v));
+		}
 
 #   else
- 
-  template <class V>
-  T value_or(V&& v) &&
-  {
-    return *this ? constexpr_move(const_cast<optional<T>&>(*this).contained_val()) : detail_::convert<T>(constexpr_forward<V>(v));
-  }
-  
+
+		template <class V>
+		T value_or(V&& v) &&
+		{
+			return *this ? constexpr_move(const_cast<optional<T>&>(*this).contained_val()) : detail_::convert<T>(constexpr_forward<V>(v));
+		}
+
 #   endif
-  
+
 # else
-  
-  template <class V>
-  constexpr T value_or(V&& v) const
-  {
-    return *this ? **this : detail_::convert<T>(constexpr_forward<V>(v));
-  }
+
+		template <class V>
+		constexpr T value_or(V&& v) const
+		{
+			return *this ? **this : detail_::convert<T>(constexpr_forward<V>(v));
+		}
 
 # endif
 
-};
+	};
 
-template <class T>
-class optional<T&>
-{
-  static_assert( !::std::is_same<T, nullopt_t>::value, "bad T" );
-  static_assert( !::std::is_same<T, in_place_t>::value, "bad T" );
-  T* ref;
-  
-public:
+	template <class T>
+	class optional<T&>
+	{
+		static_assert(!::std::is_same<T, nullopt_t>::value, "bad T");
+		static_assert(!::std::is_same<T, in_place_t>::value, "bad T");
+		T* ref;
 
-  // 20.5.5.1, construction/destruction
-  constexpr optional() noexcept : ref(nullptr) {}
-  
-  constexpr optional(nullopt_t) noexcept : ref(nullptr) {}
-   
-  constexpr optional(T& v) noexcept : ref(detail_::static_addressof(v)) {}
-  
-  optional(T&&) = delete;
-  
-  constexpr optional(const optional& rhs) noexcept : ref(rhs.ref) {}
-  
-  explicit constexpr optional(in_place_t, T& v) noexcept : ref(detail_::static_addressof(v)) {}
-  
-  explicit optional(in_place_t, T&&) = delete;
-  
-  ~optional() = default;
-  
-  // 20.5.5.2, mutation
-  optional& operator=(nullopt_t) noexcept {
-    ref = nullptr;
-    return *this;
-  }
-  
-  // optional& operator=(const optional& rhs) noexcept {
-    // ref = rhs.ref;
-    // return *this;
-  // }
-  
-  // optional& operator=(optional&& rhs) noexcept {
-    // ref = rhs.ref;
-    // return *this;
-  // }
-  
-  template <typename U>
-  auto operator=(U&& rhs) noexcept
-  -> typename ::std::enable_if
-  <
-	  ::std::is_same<typename ::std::decay<U>::type, optional<T&>>::value,
-    optional&
-  >::type
-  {
-    ref = rhs.ref;
-    return *this;
-  }
-  
-  template <typename U>
-  auto operator=(U&& rhs) noexcept
-  -> typename ::std::enable_if
-  <
-    !::std::is_same<typename ::std::decay<U>::type, optional<T&>>::value,
-    optional&
-  >::type
-  = delete;
-  
-  void emplace(T& v) noexcept {
-    ref = detail_::static_addressof(v);
-  }
-  
-  void emplace(T&&) = delete;
-  
-  void swap(optional<T&>& rhs) noexcept
-  {
-    ::std::swap(ref, rhs.ref);
-  }
-    
-  // 20.5.5.3, observers
-  constexpr T* operator->() const {
-    return TR2_OPTIONAL_ASSERTED_EXPRESSION(ref, ref);
-  }
-  
-  constexpr T& operator*() const {
-    return TR2_OPTIONAL_ASSERTED_EXPRESSION(ref, *ref);
-  }
-  
-  constexpr T& value() const {
-    return ref ? *ref : (throw bad_optional_access("bad optional access"), *ref);
-  }
-  
-  explicit constexpr operator bool() const noexcept {
-    return ref != nullptr;
-  }
-  
-  template <typename V>
-  constexpr T& value_or(V&& v) const
-  {
-    return *this ? **this : detail_::convert<T&>(constexpr_forward<V>(v));
-  }
-};
+	public:
 
-template <class T>
-class optional<T&&>
-{
-  static_assert( sizeof(T) == 0, "optional rvalue references disallowed" );
-};
+		// 20.5.5.1, construction/destruction
+		constexpr optional() noexcept : ref(nullptr) {}
 
-template <class T> constexpr bool operator==(const optional<T>& x, const optional<T>& y)
-{
-  return bool(x) != bool(y) ? false : bool(x) == false ? true : *x == *y;
-}
+		constexpr optional(nullopt_t) noexcept : ref(nullptr) {}
 
-template <class T> constexpr bool operator!=(const optional<T>& x, const optional<T>& y)
-{
-  return !(x == y);
-}
+		constexpr optional(T& v) noexcept : ref(detail_::static_addressof(v)) {}
 
-template <class T> constexpr bool operator<(const optional<T>& x, const optional<T>& y)
-{
-  return (!y) ? false : (!x) ? true : *x < *y;
-}
+		optional(T&&) = delete;
 
-template <class T> constexpr bool operator>(const optional<T>& x, const optional<T>& y)
-{
-  return (y < x);
-}
+		constexpr optional(const optional& rhs) noexcept : ref(rhs.ref) {}
 
-template <class T> constexpr bool operator<=(const optional<T>& x, const optional<T>& y)
-{
-  return !(y < x);
-}
+		explicit constexpr optional(in_place_t, T& v) noexcept : ref(detail_::static_addressof(v)) {}
 
-template <class T> constexpr bool operator>=(const optional<T>& x, const optional<T>& y)
-{
-  return !(x < y);
-}
+		explicit optional(in_place_t, T&&) = delete;
 
-template <class T> constexpr bool operator==(const optional<T>& x, nullopt_t) noexcept
-{
-  return (!x);
-}
+		~optional() = default;
 
-template <class T> constexpr bool operator==(nullopt_t, const optional<T>& x) noexcept
-{
-  return (!x);
-}
+		// 20.5.5.2, mutation
+		optional& operator=(nullopt_t) noexcept {
+			ref = nullptr;
+			return *this;
+		}
 
-template <class T> constexpr bool operator!=(const optional<T>& x, nullopt_t) noexcept
-{
-  return bool(x);
-}
+		// optional& operator=(const optional& rhs) noexcept {
+		// ref = rhs.ref;
+		// return *this;
+		// }
 
-template <class T> constexpr bool operator!=(nullopt_t, const optional<T>& x) noexcept
-{
-  return bool(x);
-}
+		// optional& operator=(optional&& rhs) noexcept {
+		// ref = rhs.ref;
+		// return *this;
+		// }
 
-template <class T> constexpr bool operator<(const optional<T>&, nullopt_t) noexcept
-{
-  return false;
-}
+		template <typename U>
+		auto operator=(U&& rhs) noexcept
+			-> typename ::std::enable_if
+			<
+			::std::is_same<typename ::std::decay<U>::type, optional<T&>>::value,
+			optional&
+			>::type
+		{
+			ref = rhs.ref;
+			return *this;
+		}
 
-template <class T> constexpr bool operator<(nullopt_t, const optional<T>& x) noexcept
-{
-  return bool(x);
-}
+		template <typename U>
+		auto operator=(U&& rhs) noexcept
+			-> typename ::std::enable_if
+			<
+			!::std::is_same<typename ::std::decay<U>::type, optional<T&>>::value,
+			optional&
+			>::type
+			= delete;
 
-template <class T> constexpr bool operator<=(const optional<T>& x, nullopt_t) noexcept
-{
-  return (!x);
-}
+		void emplace(T& v) noexcept {
+			ref = detail_::static_addressof(v);
+		}
 
-template <class T> constexpr bool operator<=(nullopt_t, const optional<T>&) noexcept
-{
-  return true;
-}
+		void emplace(T&&) = delete;
 
-template <class T> constexpr bool operator>(const optional<T>& x, nullopt_t) noexcept
-{
-  return bool(x);
-}
+		void swap(optional<T&>& rhs) noexcept
+		{
+			::std::swap(ref, rhs.ref);
+		}
 
-template <class T> constexpr bool operator>(nullopt_t, const optional<T>&) noexcept
-{
-  return false;
-}
+		// 20.5.5.3, observers
+		constexpr T* operator->() const {
+			return TR2_OPTIONAL_ASSERTED_EXPRESSION(ref, ref);
+		}
 
-template <class T> constexpr bool operator>=(const optional<T>&, nullopt_t) noexcept
-{
-  return true;
-}
+		constexpr T& operator*() const {
+			return TR2_OPTIONAL_ASSERTED_EXPRESSION(ref, *ref);
+		}
 
-template <class T> constexpr bool operator>=(nullopt_t, const optional<T>& x) noexcept
-{
-  return (!x);
-}
+		constexpr T& value() const {
+			return ref ? *ref : (throw bad_optional_access("bad optional access"), *ref);
+		}
 
-template <class T> constexpr bool operator==(const optional<T>& x, const T& v)
-{
-  return bool(x) ? *x == v : false;
-}
+		explicit constexpr operator bool() const noexcept {
+			return ref != nullptr;
+		}
 
-template <class T> constexpr bool operator==(const T& v, const optional<T>& x)
-{
-  return bool(x) ? v == *x : false;
-}
+		template <typename V>
+		constexpr T& value_or(V&& v) const
+		{
+			return *this ? **this : detail_::convert<T&>(constexpr_forward<V>(v));
+		}
+	};
 
-template <class T> constexpr bool operator!=(const optional<T>& x, const T& v)
-{
-  return bool(x) ? *x != v : true;
-}
+	template <class T>
+	class optional<T&&>
+	{
+		static_assert(sizeof(T) == 0, "optional rvalue references disallowed");
+	};
 
-template <class T> constexpr bool operator!=(const T& v, const optional<T>& x)
-{
-  return bool(x) ? v != *x : true;
-}
+	template <class T> constexpr bool operator==(const optional<T>& x, const optional<T>& y)
+	{
+		return bool(x) != bool(y) ? false : bool(x) == false ? true : *x == *y;
+	}
 
-template <class T> constexpr bool operator<(const optional<T>& x, const T& v)
-{
-  return bool(x) ? *x < v : true;
-}
+	template <class T> constexpr bool operator!=(const optional<T>& x, const optional<T>& y)
+	{
+		return !(x == y);
+	}
 
-template <class T> constexpr bool operator>(const T& v, const optional<T>& x)
-{
-  return bool(x) ? v > *x : true;
-}
+	template <class T> constexpr bool operator<(const optional<T>& x, const optional<T>& y)
+	{
+		return (!y) ? false : (!x) ? true : *x < *y;
+	}
 
-template <class T> constexpr bool operator>(const optional<T>& x, const T& v)
-{
-  return bool(x) ? *x > v : false;
-}
+	template <class T> constexpr bool operator>(const optional<T>& x, const optional<T>& y)
+	{
+		return (y < x);
+	}
 
-template <class T> constexpr bool operator<(const T& v, const optional<T>& x)
-{
-  return bool(x) ? v < *x : false;
-}
+	template <class T> constexpr bool operator<=(const optional<T>& x, const optional<T>& y)
+	{
+		return !(y < x);
+	}
 
-template <class T> constexpr bool operator>=(const optional<T>& x, const T& v)
-{
-  return bool(x) ? *x >= v : false;
-}
+	template <class T> constexpr bool operator>=(const optional<T>& x, const optional<T>& y)
+	{
+		return !(x < y);
+	}
 
-template <class T> constexpr bool operator<=(const T& v, const optional<T>& x)
-{
-  return bool(x) ? v <= *x : false;
-}
+	template <class T> constexpr bool operator==(const optional<T>& x, nullopt_t) noexcept
+	{
+		return (!x);
+	}
 
-template <class T> constexpr bool operator<=(const optional<T>& x, const T& v)
-{
-  return bool(x) ? *x <= v : true;
-}
+	template <class T> constexpr bool operator==(nullopt_t, const optional<T>& x) noexcept
+	{
+		return (!x);
+	}
 
-template <class T> constexpr bool operator>=(const T& v, const optional<T>& x)
-{
-  return bool(x) ? v >= *x : true;
-}
+	template <class T> constexpr bool operator!=(const optional<T>& x, nullopt_t) noexcept
+	{
+		return bool(x);
+	}
 
-template <class T> constexpr bool operator==(const optional<T&>& x, const T& v)
-{
-  return bool(x) ? *x == v : false;
-}
+	template <class T> constexpr bool operator!=(nullopt_t, const optional<T>& x) noexcept
+	{
+		return bool(x);
+	}
 
-template <class T> constexpr bool operator==(const T& v, const optional<T&>& x)
-{
-  return bool(x) ? v == *x : false;
-}
+	template <class T> constexpr bool operator<(const optional<T>&, nullopt_t) noexcept
+	{
+		return false;
+	}
 
-template <class T> constexpr bool operator!=(const optional<T&>& x, const T& v)
-{
-  return bool(x) ? *x != v : true;
-}
+	template <class T> constexpr bool operator<(nullopt_t, const optional<T>& x) noexcept
+	{
+		return bool(x);
+	}
 
-template <class T> constexpr bool operator!=(const T& v, const optional<T&>& x)
-{
-  return bool(x) ? v != *x : true;
-}
+	template <class T> constexpr bool operator<=(const optional<T>& x, nullopt_t) noexcept
+	{
+		return (!x);
+	}
 
-template <class T> constexpr bool operator<(const optional<T&>& x, const T& v)
-{
-  return bool(x) ? *x < v : true;
-}
+	template <class T> constexpr bool operator<=(nullopt_t, const optional<T>&) noexcept
+	{
+		return true;
+	}
 
-template <class T> constexpr bool operator>(const T& v, const optional<T&>& x)
-{
-  return bool(x) ? v > *x : true;
-}
+	template <class T> constexpr bool operator>(const optional<T>& x, nullopt_t) noexcept
+	{
+		return bool(x);
+	}
 
-template <class T> constexpr bool operator>(const optional<T&>& x, const T& v)
-{
-  return bool(x) ? *x > v : false;
-}
+	template <class T> constexpr bool operator>(nullopt_t, const optional<T>&) noexcept
+	{
+		return false;
+	}
 
-template <class T> constexpr bool operator<(const T& v, const optional<T&>& x)
-{
-  return bool(x) ? v < *x : false;
-}
+	template <class T> constexpr bool operator>=(const optional<T>&, nullopt_t) noexcept
+	{
+		return true;
+	}
 
-template <class T> constexpr bool operator>=(const optional<T&>& x, const T& v)
-{
-  return bool(x) ? *x >= v : false;
-}
+	template <class T> constexpr bool operator>=(nullopt_t, const optional<T>& x) noexcept
+	{
+		return (!x);
+	}
 
-template <class T> constexpr bool operator<=(const T& v, const optional<T&>& x)
-{
-  return bool(x) ? v <= *x : false;
-}
+	template <class T> constexpr bool operator==(const optional<T>& x, const T& v)
+	{
+		return bool(x) ? *x == v : false;
+	}
 
-template <class T> constexpr bool operator<=(const optional<T&>& x, const T& v)
-{
-  return bool(x) ? *x <= v : true;
-}
+	template <class T> constexpr bool operator==(const T& v, const optional<T>& x)
+	{
+		return bool(x) ? v == *x : false;
+	}
 
-template <class T> constexpr bool operator>=(const T& v, const optional<T&>& x)
-{
-  return bool(x) ? v >= *x : true;
-}
+	template <class T> constexpr bool operator!=(const optional<T>& x, const T& v)
+	{
+		return bool(x) ? *x != v : true;
+	}
 
-template <class T> constexpr bool operator==(const optional<const T&>& x, const T& v)
-{
-  return bool(x) ? *x == v : false;
-}
+	template <class T> constexpr bool operator!=(const T& v, const optional<T>& x)
+	{
+		return bool(x) ? v != *x : true;
+	}
 
-template <class T> constexpr bool operator==(const T& v, const optional<const T&>& x)
-{
-  return bool(x) ? v == *x : false;
-}
+	template <class T> constexpr bool operator<(const optional<T>& x, const T& v)
+	{
+		return bool(x) ? *x < v : true;
+	}
 
-template <class T> constexpr bool operator!=(const optional<const T&>& x, const T& v)
-{
-  return bool(x) ? *x != v : true;
-}
+	template <class T> constexpr bool operator>(const T& v, const optional<T>& x)
+	{
+		return bool(x) ? v > *x : true;
+	}
 
-template <class T> constexpr bool operator!=(const T& v, const optional<const T&>& x)
-{
-  return bool(x) ? v != *x : true;
-}
+	template <class T> constexpr bool operator>(const optional<T>& x, const T& v)
+	{
+		return bool(x) ? *x > v : false;
+	}
 
-template <class T> constexpr bool operator<(const optional<const T&>& x, const T& v)
-{
-  return bool(x) ? *x < v : true;
-}
+	template <class T> constexpr bool operator<(const T& v, const optional<T>& x)
+	{
+		return bool(x) ? v < *x : false;
+	}
 
-template <class T> constexpr bool operator>(const T& v, const optional<const T&>& x)
-{
-  return bool(x) ? v > *x : true;
-}
+	template <class T> constexpr bool operator>=(const optional<T>& x, const T& v)
+	{
+		return bool(x) ? *x >= v : false;
+	}
 
-template <class T> constexpr bool operator>(const optional<const T&>& x, const T& v)
-{
-  return bool(x) ? *x > v : false;
-}
+	template <class T> constexpr bool operator<=(const T& v, const optional<T>& x)
+	{
+		return bool(x) ? v <= *x : false;
+	}
 
-template <class T> constexpr bool operator<(const T& v, const optional<const T&>& x)
-{
-  return bool(x) ? v < *x : false;
-}
+	template <class T> constexpr bool operator<=(const optional<T>& x, const T& v)
+	{
+		return bool(x) ? *x <= v : true;
+	}
 
-template <class T> constexpr bool operator>=(const optional<const T&>& x, const T& v)
-{
-  return bool(x) ? *x >= v : false;
-}
+	template <class T> constexpr bool operator>=(const T& v, const optional<T>& x)
+	{
+		return bool(x) ? v >= *x : true;
+	}
 
-template <class T> constexpr bool operator<=(const T& v, const optional<const T&>& x)
-{
-  return bool(x) ? v <= *x : false;
-}
+	template <class T> constexpr bool operator==(const optional<T&>& x, const T& v)
+	{
+		return bool(x) ? *x == v : false;
+	}
 
-template <class T> constexpr bool operator<=(const optional<const T&>& x, const T& v)
-{
-  return bool(x) ? *x <= v : true;
-}
+	template <class T> constexpr bool operator==(const T& v, const optional<T&>& x)
+	{
+		return bool(x) ? v == *x : false;
+	}
 
-template <class T> constexpr bool operator>=(const T& v, const optional<const T&>& x)
-{
-  return bool(x) ? v >= *x : true;
-}
+	template <class T> constexpr bool operator!=(const optional<T&>& x, const T& v)
+	{
+		return bool(x) ? *x != v : true;
+	}
 
-template <class T>
-void swap(optional<T>& x, optional<T>& y) noexcept(noexcept(x.swap(y)))
-{
-  x.swap(y);
-}
+	template <class T> constexpr bool operator!=(const T& v, const optional<T&>& x)
+	{
+		return bool(x) ? v != *x : true;
+	}
 
-template <class T>
-constexpr optional<typename ::std::decay<T>::type> make_optional(T&& v)
-{
-  return optional<typename ::std::decay<T>::type>(constexpr_forward<T>(v));
-}
+	template <class T> constexpr bool operator<(const optional<T&>& x, const T& v)
+	{
+		return bool(x) ? *x < v : true;
+	}
 
-template <class X>
-constexpr optional<X&> make_optional(::std::reference_wrapper<X> v)
-{
-  return optional<X&>(v.get());
-}
+	template <class T> constexpr bool operator>(const T& v, const optional<T&>& x)
+	{
+		return bool(x) ? v > *x : true;
+	}
+
+	template <class T> constexpr bool operator>(const optional<T&>& x, const T& v)
+	{
+		return bool(x) ? *x > v : false;
+	}
+
+	template <class T> constexpr bool operator<(const T& v, const optional<T&>& x)
+	{
+		return bool(x) ? v < *x : false;
+	}
+
+	template <class T> constexpr bool operator>=(const optional<T&>& x, const T& v)
+	{
+		return bool(x) ? *x >= v : false;
+	}
+
+	template <class T> constexpr bool operator<=(const T& v, const optional<T&>& x)
+	{
+		return bool(x) ? v <= *x : false;
+	}
+
+	template <class T> constexpr bool operator<=(const optional<T&>& x, const T& v)
+	{
+		return bool(x) ? *x <= v : true;
+	}
+
+	template <class T> constexpr bool operator>=(const T& v, const optional<T&>& x)
+	{
+		return bool(x) ? v >= *x : true;
+	}
+
+	template <class T> constexpr bool operator==(const optional<const T&>& x, const T& v)
+	{
+		return bool(x) ? *x == v : false;
+	}
+
+	template <class T> constexpr bool operator==(const T& v, const optional<const T&>& x)
+	{
+		return bool(x) ? v == *x : false;
+	}
+
+	template <class T> constexpr bool operator!=(const optional<const T&>& x, const T& v)
+	{
+		return bool(x) ? *x != v : true;
+	}
+
+	template <class T> constexpr bool operator!=(const T& v, const optional<const T&>& x)
+	{
+		return bool(x) ? v != *x : true;
+	}
+
+	template <class T> constexpr bool operator<(const optional<const T&>& x, const T& v)
+	{
+		return bool(x) ? *x < v : true;
+	}
+
+	template <class T> constexpr bool operator>(const T& v, const optional<const T&>& x)
+	{
+		return bool(x) ? v > *x : true;
+	}
+
+	template <class T> constexpr bool operator>(const optional<const T&>& x, const T& v)
+	{
+		return bool(x) ? *x > v : false;
+	}
+
+	template <class T> constexpr bool operator<(const T& v, const optional<const T&>& x)
+	{
+		return bool(x) ? v < *x : false;
+	}
+
+	template <class T> constexpr bool operator>=(const optional<const T&>& x, const T& v)
+	{
+		return bool(x) ? *x >= v : false;
+	}
+
+	template <class T> constexpr bool operator<=(const T& v, const optional<const T&>& x)
+	{
+		return bool(x) ? v <= *x : false;
+	}
+
+	template <class T> constexpr bool operator<=(const optional<const T&>& x, const T& v)
+	{
+		return bool(x) ? *x <= v : true;
+	}
+
+	template <class T> constexpr bool operator>=(const T& v, const optional<const T&>& x)
+	{
+		return bool(x) ? v >= *x : true;
+	}
+
+	template <class T>
+	void swap(optional<T>& x, optional<T>& y) noexcept(noexcept(x.swap(y)))
+	{
+		x.swap(y);
+	}
+
+	template <class T>
+	constexpr optional<typename ::std::decay<T>::type> make_optional(T&& v)
+	{
+		return optional<typename ::std::decay<T>::type>(constexpr_forward<T>(v));
+	}
+
+	template <class X>
+	constexpr optional<X&> make_optional(::std::reference_wrapper<X> v)
+	{
+		return optional<X&>(v.get());
+	}
 
 } // namespace 
 
 namespace std
 {
-  template <typename T>
-  struct hash<sol::optional<T>>
-  {
-    typedef typename hash<T>::result_type result_type;
-    typedef sol::optional<T> argument_type;
-    
-    constexpr result_type operator()(argument_type const& arg) const {
-      return arg ? ::std::hash<T>{}(*arg) : result_type{};
-    }
-  };
-  
-  template <typename T>
-  struct hash<sol::optional<T&>>
-  {
-    typedef typename hash<T>::result_type result_type;
-    typedef sol::optional<T&> argument_type;
-    
-    constexpr result_type operator()(argument_type const& arg) const {
-      return arg ? ::std::hash<T>{}(*arg) : result_type{};
-    }
-  };
+	template <typename T>
+	struct hash<sol::optional<T>>
+	{
+		typedef typename hash<T>::result_type result_type;
+		typedef sol::optional<T> argument_type;
+
+		constexpr result_type operator()(argument_type const& arg) const {
+			return arg ? ::std::hash<T>{}(*arg) : result_type{};
+		}
+	};
+
+	template <typename T>
+	struct hash<sol::optional<T&>>
+	{
+		typedef typename hash<T>::result_type result_type;
+		typedef sol::optional<T&> argument_type;
+
+		constexpr result_type operator()(argument_type const& arg) const {
+			return arg ? ::std::hash<T>{}(*arg) : result_type{};
+		}
+	};
 }
 
 # undef TR2_OPTIONAL_REQUIRES
@@ -1813,15 +1813,15 @@ namespace sol {
 
 } // sol
 
-// end of sol/optional.hpp
+  // end of sol/optional.hpp
 
-// beginning of sol/reference.hpp
+  // beginning of sol/reference.hpp
 
-// beginning of sol/types.hpp
+  // beginning of sol/types.hpp
 
-// beginning of sol/compatibility.hpp
+  // beginning of sol/compatibility.hpp
 
-// beginning of sol/compatibility/version.hpp
+  // beginning of sol/compatibility/version.hpp
 
 #include <lua.hpp>
 
@@ -1910,26 +1910,26 @@ namespace sol {
 #endif // Turn on Safety for all
 #endif // Safe Usertypes
 
-// end of sol/compatibility/version.hpp
+  // end of sol/compatibility/version.hpp
 
 #ifndef SOL_NO_COMPAT
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-// beginning of sol/compatibility/5.1.0.h
+	// beginning of sol/compatibility/5.1.0.h
 
 #ifndef SOL_5_1_0_H
 #define SOL_5_1_0_H
 
 #if SOL_LUA_VERSION == 501
-/* Lua 5.1 */
+	/* Lua 5.1 */
 
 #include <stddef.h>
 #include <string.h>
 #include <stdio.h>
 
-/* LuaJIT doesn't define these unofficial macros ... */
+	/* LuaJIT doesn't define these unofficial macros ... */
 #if !defined(LUAI_INT32)
 #include <limits.h>
 #if INT_MAX-20 < 32760
@@ -1943,16 +1943,16 @@ extern "C" {
 #endif
 #endif
 
-/* LuaJIT does not have the updated error codes for thread status/function returns */
+	/* LuaJIT does not have the updated error codes for thread status/function returns */
 #ifndef LUA_ERRGCMM
 #define LUA_ERRGCMM (LUA_ERRERR + 1)
 #endif // LUA_ERRGCMM
 
-/* LuaJIT does not support continuation contexts / return error codes? */
+	/* LuaJIT does not support continuation contexts / return error codes? */
 #ifndef LUA_KCONTEXT
 #define LUA_KCONTEXT std::ptrdiff_t
-typedef LUA_KCONTEXT lua_KContext;
-typedef int(*lua_KFunction) (lua_State *L, int status, lua_KContext ctx);
+	typedef LUA_KCONTEXT lua_KContext;
+	typedef int(*lua_KFunction) (lua_State *L, int status, lua_KContext ctx);
 #endif // LUA_KCONTEXT
 
 #define LUA_OPADD 0
@@ -1966,55 +1966,55 @@ typedef int(*lua_KFunction) (lua_State *L, int status, lua_KContext ctx);
 #define LUA_OPLT 1
 #define LUA_OPLE 2
 
-typedef LUAI_UINT32 lua_Unsigned;
+	typedef LUAI_UINT32 lua_Unsigned;
 
-typedef struct luaL_Buffer_52 {
-    luaL_Buffer b; /* make incorrect code crash! */
-    char *ptr;
-    size_t nelems;
-    size_t capacity;
-    lua_State *L2;
-} luaL_Buffer_52;
+	typedef struct luaL_Buffer_52 {
+		luaL_Buffer b; /* make incorrect code crash! */
+		char *ptr;
+		size_t nelems;
+		size_t capacity;
+		lua_State *L2;
+	} luaL_Buffer_52;
 #define luaL_Buffer luaL_Buffer_52
 
 #define lua_tounsigned(L, i) lua_tounsignedx(L, i, NULL)
 
 #define lua_rawlen(L, i) lua_objlen(L, i)
 
-inline void lua_callk(lua_State *L, int nargs, int nresults, lua_KContext, lua_KFunction) {
-    // should probably warn the user of Lua 5.1 that continuation isn't supported...
-    lua_call(L, nargs, nresults);
-}
-inline int lua_pcallk(lua_State *L, int nargs, int nresults, int errfunc, lua_KContext, lua_KFunction) {
-    // should probably warn the user of Lua 5.1 that continuation isn't supported...
-    return lua_pcall(L, nargs, nresults, errfunc);
-}
-void lua_arith(lua_State *L, int op);
-int lua_compare(lua_State *L, int idx1, int idx2, int op);
-void lua_pushunsigned(lua_State *L, lua_Unsigned n);
-lua_Unsigned luaL_checkunsigned(lua_State *L, int i);
-lua_Unsigned lua_tounsignedx(lua_State *L, int i, int *isnum);
-lua_Unsigned luaL_optunsigned(lua_State *L, int i, lua_Unsigned def);
-lua_Integer lua_tointegerx(lua_State *L, int i, int *isnum);
-void lua_len(lua_State *L, int i);
-int luaL_len(lua_State *L, int i);
-const char *luaL_tolstring(lua_State *L, int idx, size_t *len);
-void luaL_requiref(lua_State *L, char const* modname, lua_CFunction openf, int glb);
+	inline void lua_callk(lua_State *L, int nargs, int nresults, lua_KContext, lua_KFunction) {
+		// should probably warn the user of Lua 5.1 that continuation isn't supported...
+		lua_call(L, nargs, nresults);
+	}
+	inline int lua_pcallk(lua_State *L, int nargs, int nresults, int errfunc, lua_KContext, lua_KFunction) {
+		// should probably warn the user of Lua 5.1 that continuation isn't supported...
+		return lua_pcall(L, nargs, nresults, errfunc);
+	}
+	void lua_arith(lua_State *L, int op);
+	int lua_compare(lua_State *L, int idx1, int idx2, int op);
+	void lua_pushunsigned(lua_State *L, lua_Unsigned n);
+	lua_Unsigned luaL_checkunsigned(lua_State *L, int i);
+	lua_Unsigned lua_tounsignedx(lua_State *L, int i, int *isnum);
+	lua_Unsigned luaL_optunsigned(lua_State *L, int i, lua_Unsigned def);
+	lua_Integer lua_tointegerx(lua_State *L, int i, int *isnum);
+	void lua_len(lua_State *L, int i);
+	int luaL_len(lua_State *L, int i);
+	const char *luaL_tolstring(lua_State *L, int idx, size_t *len);
+	void luaL_requiref(lua_State *L, char const* modname, lua_CFunction openf, int glb);
 
 #define luaL_buffinit luaL_buffinit_52
-void luaL_buffinit(lua_State *L, luaL_Buffer_52 *B);
+	void luaL_buffinit(lua_State *L, luaL_Buffer_52 *B);
 
 #define luaL_prepbuffsize luaL_prepbuffsize_52
-char *luaL_prepbuffsize(luaL_Buffer_52 *B, size_t s);
+	char *luaL_prepbuffsize(luaL_Buffer_52 *B, size_t s);
 
 #define luaL_addlstring luaL_addlstring_52
-void luaL_addlstring(luaL_Buffer_52 *B, const char *s, size_t l);
+	void luaL_addlstring(luaL_Buffer_52 *B, const char *s, size_t l);
 
 #define luaL_addvalue luaL_addvalue_52
-void luaL_addvalue(luaL_Buffer_52 *B);
+	void luaL_addvalue(luaL_Buffer_52 *B);
 
 #define luaL_pushresult luaL_pushresult_52
-void luaL_pushresult(luaL_Buffer_52 *B);
+	void luaL_pushresult(luaL_Buffer_52 *B);
 
 #undef luaL_buffinitsize
 #define luaL_buffinitsize(L, B, s) \
@@ -2041,28 +2041,28 @@ void luaL_pushresult(luaL_Buffer_52 *B);
 #define luaL_pushresultsize(B, s) \
   (luaL_addsize(B, s), luaL_pushresult(B))
 
-typedef struct kepler_lua_compat_get_string_view {
-	const char *s;
-	size_t size;
-} kepler_lua_compat_get_string_view;
+	typedef struct kepler_lua_compat_get_string_view {
+		const char *s;
+		size_t size;
+	} kepler_lua_compat_get_string_view;
 
-inline const char* kepler_lua_compat_get_string(lua_State* L, void* ud, size_t* size) {
-    kepler_lua_compat_get_string_view* ls = (kepler_lua_compat_get_string_view*) ud;
-    (void)L;
-    if (ls->size == 0) return NULL;
-    *size = ls->size;
-    ls->size = 0;
-    return ls->s;
-}
+	inline const char* kepler_lua_compat_get_string(lua_State* L, void* ud, size_t* size) {
+		kepler_lua_compat_get_string_view* ls = (kepler_lua_compat_get_string_view*)ud;
+		(void)L;
+		if (ls->size == 0) return NULL;
+		*size = ls->size;
+		ls->size = 0;
+		return ls->s;
+	}
 
 #if !defined(SOL_LUAJIT) || ((SOL_LUAJIT_VERSION - 020100) <= 0)
 
-inline int luaL_loadbufferx(lua_State* L, const char* buff, size_t size, const char* name, const char*) {
-    kepler_lua_compat_get_string_view ls;
-    ls.s = buff;
-    ls.size = size;
-    return lua_load(L, kepler_lua_compat_get_string, &ls, name/*, mode*/);
-}
+	inline int luaL_loadbufferx(lua_State* L, const char* buff, size_t size, const char* name, const char*) {
+		kepler_lua_compat_get_string_view ls;
+		ls.s = buff;
+		ls.size = size;
+		return lua_load(L, kepler_lua_compat_get_string, &ls, name/*, mode*/);
+	}
 
 #endif // LuaJIT 2.1.x beta and beyond
 
@@ -2070,13 +2070,13 @@ inline int luaL_loadbufferx(lua_State* L, const char* buff, size_t size, const c
 
 #endif // SOL_5_1_0_H// end of sol/compatibility/5.1.0.h
 
-// beginning of sol/compatibility/5.0.0.h
+	// beginning of sol/compatibility/5.0.0.h
 
 #ifndef SOL_5_0_0_H
 #define SOL_5_0_0_H
 
 #if SOL_LUA_VERSION < 501
-/* Lua 5.0 */
+	/* Lua 5.0 */
 
 #define LUA_QL(x) "'" x "'"
 #define LUA_QS LUA_QL("%s")
@@ -2093,9 +2093,9 @@ inline int luaL_loadbufferx(lua_State* L, const char* buff, size_t size, const c
 #endif // Lua 5.0
 
 #endif // SOL_5_0_0_H
-// end of sol/compatibility/5.0.0.h
+	// end of sol/compatibility/5.0.0.h
 
-// beginning of sol/compatibility/5.x.x.h
+	// beginning of sol/compatibility/5.x.x.h
 
 #ifndef SOL_5_X_X_H
 #define SOL_5_X_X_H
@@ -2112,31 +2112,56 @@ inline int luaL_loadbufferx(lua_State* L, const char* buff, size_t size, const c
 #define luaL_newlib(L, l) \
   (lua_newtable((L)),luaL_setfuncs((L), (l), 0))
 
-void luaL_checkversion(lua_State *L);
+	void luaL_checkversion(lua_State *L);
 
-int lua_absindex(lua_State *L, int i);
-void lua_copy(lua_State *L, int from, int to);
-void lua_rawgetp(lua_State *L, int i, const void *p);
-void lua_rawsetp(lua_State *L, int i, const void *p);
-void *luaL_testudata(lua_State *L, int i, const char *tname);
-lua_Number lua_tonumberx(lua_State *L, int i, int *isnum);
-void lua_getuservalue(lua_State *L, int i);
-void lua_setuservalue(lua_State *L, int i);
-void luaL_setfuncs(lua_State *L, const luaL_Reg *l, int nup);
-void luaL_setmetatable(lua_State *L, const char *tname);
-int luaL_getsubtable(lua_State *L, int i, const char *name);
-void luaL_traceback(lua_State *L, lua_State *L1, const char *msg, int level);
-int luaL_fileresult(lua_State *L, int stat, const char *fname);
+	int lua_absindex(lua_State *L, int i);
+	void lua_copy(lua_State *L, int from, int to);
+	void lua_rawgetp(lua_State *L, int i, const void *p);
+	void lua_rawsetp(lua_State *L, int i, const void *p);
+	void *luaL_testudata(lua_State *L, int i, const char *tname);
+	lua_Number lua_tonumberx(lua_State *L, int i, int *isnum);
+	void lua_getuservalue(lua_State *L, int i);
+	void lua_setuservalue(lua_State *L, int i);
+	void luaL_setfuncs(lua_State *L, const luaL_Reg *l, int nup);
+	void luaL_setmetatable(lua_State *L, const char *tname);
+	int luaL_getsubtable(lua_State *L, int i, const char *name);
+	void luaL_traceback(lua_State *L, lua_State *L1, const char *msg, int level);
+	int luaL_fileresult(lua_State *L, int stat, const char *fname);
 
 #endif // Lua 5.1 and below
 
 #endif // SOL_5_X_X_H
-// end of sol/compatibility/5.x.x.h
+	// end of sol/compatibility/5.x.x.h
 
-// beginning of sol/compatibility/5.x.x.inl
+	// beginning of sol/compatibility/5.x.x.inl
 
 #ifndef SOL_5_X_X_INL
 #define SOL_5_X_X_INL
+
+	// beginning of sol/compatibility/5.2.0.h
+
+#ifndef SOL_5_2_0_H
+#define SOL_5_2_0_H
+
+#if SOL_LUA_VERSION < 503
+
+	inline int lua_isinteger(lua_State* L, int idx) {
+		if (lua_type(L, idx) != LUA_TNUMBER)
+			return 0;
+		// This is a very slipshod way to do the testing
+		// but lua_totingerx doesn't play ball nicely
+		// on older versions...
+		lua_Number n = lua_tonumber(L, idx);
+		lua_Integer i = lua_tointeger(L, idx);
+		if (i != n)
+			return 0;
+		// it's DEFINITELY an integer
+		return 1;
+	}
+
+#endif // SOL_LUA_VERSION == 502
+#endif // SOL_5_2_0_H
+	// end of sol/compatibility/5.2.0.h
 
 #if !defined(LUA_VERSION_NUM) || LUA_VERSION_NUM == 501
 
@@ -2144,306 +2169,306 @@ int luaL_fileresult(lua_State *L, int stat, const char *fname);
 
 #define PACKAGE_KEY "_sol.package"
 
-inline int lua_absindex(lua_State *L, int i) {
-    if (i < 0 && i > LUA_REGISTRYINDEX)
-        i += lua_gettop(L) + 1;
-    return i;
-}
+	inline int lua_absindex(lua_State *L, int i) {
+		if (i < 0 && i > LUA_REGISTRYINDEX)
+			i += lua_gettop(L) + 1;
+		return i;
+	}
 
-inline void lua_copy(lua_State *L, int from, int to) {
-    int abs_to = lua_absindex(L, to);
-    luaL_checkstack(L, 1, "not enough stack slots");
-    lua_pushvalue(L, from);
-    lua_replace(L, abs_to);
-}
+	inline void lua_copy(lua_State *L, int from, int to) {
+		int abs_to = lua_absindex(L, to);
+		luaL_checkstack(L, 1, "not enough stack slots");
+		lua_pushvalue(L, from);
+		lua_replace(L, abs_to);
+	}
 
-inline void lua_rawgetp(lua_State *L, int i, const void *p) {
-    int abs_i = lua_absindex(L, i);
-    lua_pushlightuserdata(L, (void*)p);
-    lua_rawget(L, abs_i);
-}
+	inline void lua_rawgetp(lua_State *L, int i, const void *p) {
+		int abs_i = lua_absindex(L, i);
+		lua_pushlightuserdata(L, (void*)p);
+		lua_rawget(L, abs_i);
+	}
 
-inline void lua_rawsetp(lua_State *L, int i, const void *p) {
-    int abs_i = lua_absindex(L, i);
-    luaL_checkstack(L, 1, "not enough stack slots");
-    lua_pushlightuserdata(L, (void*)p);
-    lua_insert(L, -2);
-    lua_rawset(L, abs_i);
-}
+	inline void lua_rawsetp(lua_State *L, int i, const void *p) {
+		int abs_i = lua_absindex(L, i);
+		luaL_checkstack(L, 1, "not enough stack slots");
+		lua_pushlightuserdata(L, (void*)p);
+		lua_insert(L, -2);
+		lua_rawset(L, abs_i);
+	}
 
-inline void *luaL_testudata(lua_State *L, int i, const char *tname) {
-    void *p = lua_touserdata(L, i);
-    luaL_checkstack(L, 2, "not enough stack slots");
-    if (p == NULL || !lua_getmetatable(L, i))
-        return NULL;
-    else {
-        int res = 0;
-        luaL_getmetatable(L, tname);
-        res = lua_rawequal(L, -1, -2);
-        lua_pop(L, 2);
-        if (!res)
-            p = NULL;
-    }
-    return p;
-}
+	inline void *luaL_testudata(lua_State *L, int i, const char *tname) {
+		void *p = lua_touserdata(L, i);
+		luaL_checkstack(L, 2, "not enough stack slots");
+		if (p == NULL || !lua_getmetatable(L, i))
+			return NULL;
+		else {
+			int res = 0;
+			luaL_getmetatable(L, tname);
+			res = lua_rawequal(L, -1, -2);
+			lua_pop(L, 2);
+			if (!res)
+				p = NULL;
+		}
+		return p;
+	}
 
-inline lua_Number lua_tonumberx(lua_State *L, int i, int *isnum) {
-    lua_Number n = lua_tonumber(L, i);
-    if (isnum != NULL) {
-        *isnum = (n != 0 || lua_isnumber(L, i));
-    }
-    return n;
-}
+	inline lua_Number lua_tonumberx(lua_State *L, int i, int *isnum) {
+		lua_Number n = lua_tonumber(L, i);
+		if (isnum != NULL) {
+			*isnum = (n != 0 || lua_isnumber(L, i));
+		}
+		return n;
+	}
 
-inline static void push_package_table(lua_State *L) {
-    lua_pushliteral(L, PACKAGE_KEY);
-    lua_rawget(L, LUA_REGISTRYINDEX);
-    if (!lua_istable(L, -1)) {
-        lua_pop(L, 1);
-        /* try to get package table from globals */
-        lua_pushliteral(L, "package");
-        lua_rawget(L, LUA_GLOBALSINDEX);
-        if (lua_istable(L, -1)) {
-            lua_pushliteral(L, PACKAGE_KEY);
-            lua_pushvalue(L, -2);
-            lua_rawset(L, LUA_REGISTRYINDEX);
-        }
-    }
-}
+	inline static void push_package_table(lua_State *L) {
+		lua_pushliteral(L, PACKAGE_KEY);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		if (!lua_istable(L, -1)) {
+			lua_pop(L, 1);
+			/* try to get package table from globals */
+			lua_pushliteral(L, "package");
+			lua_rawget(L, LUA_GLOBALSINDEX);
+			if (lua_istable(L, -1)) {
+				lua_pushliteral(L, PACKAGE_KEY);
+				lua_pushvalue(L, -2);
+				lua_rawset(L, LUA_REGISTRYINDEX);
+			}
+		}
+	}
 
-inline void lua_getuservalue(lua_State *L, int i) {
-    luaL_checktype(L, i, LUA_TUSERDATA);
-    luaL_checkstack(L, 2, "not enough stack slots");
-    lua_getfenv(L, i);
-    lua_pushvalue(L, LUA_GLOBALSINDEX);
-    if (lua_rawequal(L, -1, -2)) {
-        lua_pop(L, 1);
-        lua_pushnil(L);
-        lua_replace(L, -2);
-    }
-    else {
-        lua_pop(L, 1);
-        push_package_table(L);
-        if (lua_rawequal(L, -1, -2)) {
-            lua_pop(L, 1);
-            lua_pushnil(L);
-            lua_replace(L, -2);
-        }
-        else
-            lua_pop(L, 1);
-    }
-}
+	inline void lua_getuservalue(lua_State *L, int i) {
+		luaL_checktype(L, i, LUA_TUSERDATA);
+		luaL_checkstack(L, 2, "not enough stack slots");
+		lua_getfenv(L, i);
+		lua_pushvalue(L, LUA_GLOBALSINDEX);
+		if (lua_rawequal(L, -1, -2)) {
+			lua_pop(L, 1);
+			lua_pushnil(L);
+			lua_replace(L, -2);
+		}
+		else {
+			lua_pop(L, 1);
+			push_package_table(L);
+			if (lua_rawequal(L, -1, -2)) {
+				lua_pop(L, 1);
+				lua_pushnil(L);
+				lua_replace(L, -2);
+			}
+			else
+				lua_pop(L, 1);
+		}
+	}
 
-inline void lua_setuservalue(lua_State *L, int i) {
-    luaL_checktype(L, i, LUA_TUSERDATA);
-    if (lua_isnil(L, -1)) {
-        luaL_checkstack(L, 1, "not enough stack slots");
-        lua_pushvalue(L, LUA_GLOBALSINDEX);
-        lua_replace(L, -2);
-    }
-    lua_setfenv(L, i);
-}
+	inline void lua_setuservalue(lua_State *L, int i) {
+		luaL_checktype(L, i, LUA_TUSERDATA);
+		if (lua_isnil(L, -1)) {
+			luaL_checkstack(L, 1, "not enough stack slots");
+			lua_pushvalue(L, LUA_GLOBALSINDEX);
+			lua_replace(L, -2);
+		}
+		lua_setfenv(L, i);
+	}
 
-/*
-** Adapted from Lua 5.2.0
-*/
-inline void luaL_setfuncs(lua_State *L, const luaL_Reg *l, int nup) {
-    luaL_checkstack(L, nup + 1, "too many upvalues");
-    for (; l->name != NULL; l++) {  /* fill the table with given functions */
-        int i;
-        lua_pushstring(L, l->name);
-        for (i = 0; i < nup; i++)  /* copy upvalues to the top */
-            lua_pushvalue(L, -(nup + 1));
-        lua_pushcclosure(L, l->func, nup);  /* closure with those upvalues */
-        lua_settable(L, -(nup + 3)); /* table must be below the upvalues, the name and the closure */
-    }
-    lua_pop(L, nup);  /* remove upvalues */
-}
+	/*
+	** Adapted from Lua 5.2.0
+	*/
+	inline void luaL_setfuncs(lua_State *L, const luaL_Reg *l, int nup) {
+		luaL_checkstack(L, nup + 1, "too many upvalues");
+		for (; l->name != NULL; l++) {  /* fill the table with given functions */
+			int i;
+			lua_pushstring(L, l->name);
+			for (i = 0; i < nup; i++)  /* copy upvalues to the top */
+				lua_pushvalue(L, -(nup + 1));
+			lua_pushcclosure(L, l->func, nup);  /* closure with those upvalues */
+			lua_settable(L, -(nup + 3)); /* table must be below the upvalues, the name and the closure */
+		}
+		lua_pop(L, nup);  /* remove upvalues */
+	}
 
-inline void luaL_setmetatable(lua_State *L, const char *tname) {
-    luaL_checkstack(L, 1, "not enough stack slots");
-    luaL_getmetatable(L, tname);
-    lua_setmetatable(L, -2);
-}
+	inline void luaL_setmetatable(lua_State *L, const char *tname) {
+		luaL_checkstack(L, 1, "not enough stack slots");
+		luaL_getmetatable(L, tname);
+		lua_setmetatable(L, -2);
+	}
 
-inline int luaL_getsubtable(lua_State *L, int i, const char *name) {
-    int abs_i = lua_absindex(L, i);
-    luaL_checkstack(L, 3, "not enough stack slots");
-    lua_pushstring(L, name);
-    lua_gettable(L, abs_i);
-    if (lua_istable(L, -1))
-        return 1;
-    lua_pop(L, 1);
-    lua_newtable(L);
-    lua_pushstring(L, name);
-    lua_pushvalue(L, -2);
-    lua_settable(L, abs_i);
-    return 0;
-}
+	inline int luaL_getsubtable(lua_State *L, int i, const char *name) {
+		int abs_i = lua_absindex(L, i);
+		luaL_checkstack(L, 3, "not enough stack slots");
+		lua_pushstring(L, name);
+		lua_gettable(L, abs_i);
+		if (lua_istable(L, -1))
+			return 1;
+		lua_pop(L, 1);
+		lua_newtable(L);
+		lua_pushstring(L, name);
+		lua_pushvalue(L, -2);
+		lua_settable(L, abs_i);
+		return 0;
+	}
 
 #ifndef SOL_LUAJIT
-inline static int countlevels(lua_State *L) {
-    lua_Debug ar;
-    int li = 1, le = 1;
-    /* find an upper bound */
-    while (lua_getstack(L, le, &ar)) { li = le; le *= 2; }
-    /* do a binary search */
-    while (li < le) {
-        int m = (li + le) / 2;
-        if (lua_getstack(L, m, &ar)) li = m + 1;
-        else le = m;
-    }
-    return le - 1;
-}
+	inline static int countlevels(lua_State *L) {
+		lua_Debug ar;
+		int li = 1, le = 1;
+		/* find an upper bound */
+		while (lua_getstack(L, le, &ar)) { li = le; le *= 2; }
+		/* do a binary search */
+		while (li < le) {
+			int m = (li + le) / 2;
+			if (lua_getstack(L, m, &ar)) li = m + 1;
+			else le = m;
+		}
+		return le - 1;
+	}
 
-inline static int findfield(lua_State *L, int objidx, int level) {
-    if (level == 0 || !lua_istable(L, -1))
-        return 0;  /* not found */
-    lua_pushnil(L);  /* start 'next' loop */
-    while (lua_next(L, -2)) {  /* for each pair in table */
-        if (lua_type(L, -2) == LUA_TSTRING) {  /* ignore non-string keys */
-            if (lua_rawequal(L, objidx, -1)) {  /* found object? */
-                lua_pop(L, 1);  /* remove value (but keep name) */
-                return 1;
-            }
-            else if (findfield(L, objidx, level - 1)) {  /* try recursively */
-                lua_remove(L, -2);  /* remove table (but keep name) */
-                lua_pushliteral(L, ".");
-                lua_insert(L, -2);  /* place '.' between the two names */
-                lua_concat(L, 3);
-                return 1;
-            }
-        }
-        lua_pop(L, 1);  /* remove value */
-    }
-    return 0;  /* not found */
-}
+	inline static int findfield(lua_State *L, int objidx, int level) {
+		if (level == 0 || !lua_istable(L, -1))
+			return 0;  /* not found */
+		lua_pushnil(L);  /* start 'next' loop */
+		while (lua_next(L, -2)) {  /* for each pair in table */
+			if (lua_type(L, -2) == LUA_TSTRING) {  /* ignore non-string keys */
+				if (lua_rawequal(L, objidx, -1)) {  /* found object? */
+					lua_pop(L, 1);  /* remove value (but keep name) */
+					return 1;
+				}
+				else if (findfield(L, objidx, level - 1)) {  /* try recursively */
+					lua_remove(L, -2);  /* remove table (but keep name) */
+					lua_pushliteral(L, ".");
+					lua_insert(L, -2);  /* place '.' between the two names */
+					lua_concat(L, 3);
+					return 1;
+				}
+			}
+			lua_pop(L, 1);  /* remove value */
+		}
+		return 0;  /* not found */
+	}
 
-inline static int pushglobalfuncname(lua_State *L, lua_Debug *ar) {
-    int top = lua_gettop(L);
-    lua_getinfo(L, "f", ar);  /* push function */
-    lua_pushvalue(L, LUA_GLOBALSINDEX);
-    if (findfield(L, top + 1, 2)) {
-        lua_copy(L, -1, top + 1);  /* move name to proper place */
-        lua_pop(L, 2);  /* remove pushed values */
-        return 1;
-    }
-    else {
-        lua_settop(L, top);  /* remove function and global table */
-        return 0;
-    }
-}
+	inline static int pushglobalfuncname(lua_State *L, lua_Debug *ar) {
+		int top = lua_gettop(L);
+		lua_getinfo(L, "f", ar);  /* push function */
+		lua_pushvalue(L, LUA_GLOBALSINDEX);
+		if (findfield(L, top + 1, 2)) {
+			lua_copy(L, -1, top + 1);  /* move name to proper place */
+			lua_pop(L, 2);  /* remove pushed values */
+			return 1;
+		}
+		else {
+			lua_settop(L, top);  /* remove function and global table */
+			return 0;
+		}
+	}
 
-inline static void pushfuncname(lua_State *L, lua_Debug *ar) {
-    if (*ar->namewhat != '\0')  /* is there a name? */
-        lua_pushfstring(L, "function " LUA_QS, ar->name);
-    else if (*ar->what == 'm')  /* main? */
-        lua_pushliteral(L, "main chunk");
-    else if (*ar->what == 'C') {
-        if (pushglobalfuncname(L, ar)) {
-            lua_pushfstring(L, "function " LUA_QS, lua_tostring(L, -1));
-            lua_remove(L, -2);  /* remove name */
-        }
-        else
-            lua_pushliteral(L, "?");
-    }
-    else
-        lua_pushfstring(L, "function <%s:%d>", ar->short_src, ar->linedefined);
-}
+	inline static void pushfuncname(lua_State *L, lua_Debug *ar) {
+		if (*ar->namewhat != '\0')  /* is there a name? */
+			lua_pushfstring(L, "function " LUA_QS, ar->name);
+		else if (*ar->what == 'm')  /* main? */
+			lua_pushliteral(L, "main chunk");
+		else if (*ar->what == 'C') {
+			if (pushglobalfuncname(L, ar)) {
+				lua_pushfstring(L, "function " LUA_QS, lua_tostring(L, -1));
+				lua_remove(L, -2);  /* remove name */
+			}
+			else
+				lua_pushliteral(L, "?");
+		}
+		else
+			lua_pushfstring(L, "function <%s:%d>", ar->short_src, ar->linedefined);
+	}
 
 #define LEVELS1 12  /* size of the first part of the stack */
 #define LEVELS2 10  /* size of the second part of the stack */
 
-inline void luaL_traceback(lua_State *L, lua_State *L1,
-    const char *msg, int level) {
-    lua_Debug ar;
-    int top = lua_gettop(L);
-    int numlevels = countlevels(L1);
-    int mark = (numlevels > LEVELS1 + LEVELS2) ? LEVELS1 : 0;
-    if (msg) lua_pushfstring(L, "%s\n", msg);
-    lua_pushliteral(L, "stack traceback:");
-    while (lua_getstack(L1, level++, &ar)) {
-        if (level == mark) {  /* too many levels? */
-            lua_pushliteral(L, "\n\t...");  /* add a '...' */
-            level = numlevels - LEVELS2;  /* and skip to last ones */
-        }
-        else {
-            lua_getinfo(L1, "Slnt", &ar);
-            lua_pushfstring(L, "\n\t%s:", ar.short_src);
-            if (ar.currentline > 0)
-                lua_pushfstring(L, "%d:", ar.currentline);
-            lua_pushliteral(L, " in ");
-            pushfuncname(L, &ar);
-            lua_concat(L, lua_gettop(L) - top);
-        }
-    }
-    lua_concat(L, lua_gettop(L) - top);
-}
+	inline void luaL_traceback(lua_State *L, lua_State *L1,
+		const char *msg, int level) {
+		lua_Debug ar;
+		int top = lua_gettop(L);
+		int numlevels = countlevels(L1);
+		int mark = (numlevels > LEVELS1 + LEVELS2) ? LEVELS1 : 0;
+		if (msg) lua_pushfstring(L, "%s\n", msg);
+		lua_pushliteral(L, "stack traceback:");
+		while (lua_getstack(L1, level++, &ar)) {
+			if (level == mark) {  /* too many levels? */
+				lua_pushliteral(L, "\n\t...");  /* add a '...' */
+				level = numlevels - LEVELS2;  /* and skip to last ones */
+			}
+			else {
+				lua_getinfo(L1, "Slnt", &ar);
+				lua_pushfstring(L, "\n\t%s:", ar.short_src);
+				if (ar.currentline > 0)
+					lua_pushfstring(L, "%d:", ar.currentline);
+				lua_pushliteral(L, " in ");
+				pushfuncname(L, &ar);
+				lua_concat(L, lua_gettop(L) - top);
+			}
+		}
+		lua_concat(L, lua_gettop(L) - top);
+	}
 #endif
 
-inline const lua_Number *lua_version(lua_State *L) {
-    static const lua_Number version = LUA_VERSION_NUM;
-    if (L == NULL) return &version;
-    // TODO: wonky hacks to get at the inside of the incomplete type lua_State?
-    //else return L->l_G->version;
-    else return &version;
-}
+	inline const lua_Number *lua_version(lua_State *L) {
+		static const lua_Number version = LUA_VERSION_NUM;
+		if (L == NULL) return &version;
+		// TODO: wonky hacks to get at the inside of the incomplete type lua_State?
+		//else return L->l_G->version;
+		else return &version;
+	}
 
-inline static void luaL_checkversion_(lua_State *L, lua_Number ver) {
-    const lua_Number* v = lua_version(L);
-    if (v != lua_version(NULL))
-        luaL_error(L, "multiple Lua VMs detected");
-    else if (*v != ver)
-        luaL_error(L, "version mismatch: app. needs %f, Lua core provides %f",
-            ver, *v);
-    /* check conversions number -> integer types */
-    lua_pushnumber(L, -(lua_Number)0x1234);
-    if (lua_tointeger(L, -1) != -0x1234 ||
-        lua_tounsigned(L, -1) != (lua_Unsigned)-0x1234)
-        luaL_error(L, "bad conversion number->int;"
-            " must recompile Lua with proper settings");
-    lua_pop(L, 1);
-}
+	inline static void luaL_checkversion_(lua_State *L, lua_Number ver) {
+		const lua_Number* v = lua_version(L);
+		if (v != lua_version(NULL))
+			luaL_error(L, "multiple Lua VMs detected");
+		else if (*v != ver)
+			luaL_error(L, "version mismatch: app. needs %f, Lua core provides %f",
+				ver, *v);
+		/* check conversions number -> integer types */
+		lua_pushnumber(L, -(lua_Number)0x1234);
+		if (lua_tointeger(L, -1) != -0x1234 ||
+			lua_tounsigned(L, -1) != (lua_Unsigned)-0x1234)
+			luaL_error(L, "bad conversion number->int;"
+				" must recompile Lua with proper settings");
+		lua_pop(L, 1);
+	}
 
-inline void luaL_checkversion(lua_State* L) {
-    luaL_checkversion_(L, LUA_VERSION_NUM);
-}
+	inline void luaL_checkversion(lua_State* L) {
+		luaL_checkversion_(L, LUA_VERSION_NUM);
+	}
 
 #ifndef SOL_LUAJIT
-inline int luaL_fileresult(lua_State *L, int stat, const char *fname) {
-    int en = errno;  /* calls to Lua API may change this value */
-    if (stat) {
-        lua_pushboolean(L, 1);
-        return 1;
-    }
-    else {
-        char buf[1024];
+	inline int luaL_fileresult(lua_State *L, int stat, const char *fname) {
+		int en = errno;  /* calls to Lua API may change this value */
+		if (stat) {
+			lua_pushboolean(L, 1);
+			return 1;
+		}
+		else {
+			char buf[1024];
 #ifdef __GLIBC__
-        strerror_r(en, buf, 1024);
+			strerror_r(en, buf, 1024);
 #else
-        strerror_s(buf, 1024, en);
+			strerror_s(buf, 1024, en);
 #endif
-        lua_pushnil(L);
-        if (fname)
-            lua_pushfstring(L, "%s: %s", fname, buf);
-        else
-            lua_pushstring(L, buf);
-        lua_pushnumber(L, (lua_Number)en);
-        return 3;
-    }
-}
+			lua_pushnil(L);
+			if (fname)
+				lua_pushfstring(L, "%s: %s", fname, buf);
+			else
+				lua_pushstring(L, buf);
+			lua_pushnumber(L, (lua_Number)en);
+			return 3;
+		}
+	}
 #endif // luajit
 #endif // Lua 5.0 or Lua 5.1
 
 #if SOL_LUA_VERSION == 501
 
-typedef LUAI_INT32 LUA_INT32;
+	typedef LUAI_INT32 LUA_INT32;
 
-/********************************************************************/
-/*                    extract of 5.2's luaconf.h                    */
-/*  detects proper defines for faster unsigned<->number conversion  */
-/*           see copyright notice at the end of this file           */
-/********************************************************************/
+	/********************************************************************/
+	/*                    extract of 5.2's luaconf.h                    */
+	/*  detects proper defines for faster unsigned<->number conversion  */
+	/*           see copyright notice at the end of this file           */
+	/********************************************************************/
 
 #if !defined(LUA_ANSI) && defined(_WIN32) && !defined(_WIN32_WCE)
 #define LUA_WIN        /* enable goodies for regular Windows platforms */
@@ -2451,14 +2476,14 @@ typedef LUAI_INT32 LUA_INT32;
 
 #if defined(LUA_NUMBER_DOUBLE) && !defined(LUA_ANSI)    /* { */
 
-/* Microsoft compiler on a Pentium (32 bit) ? */
+	/* Microsoft compiler on a Pentium (32 bit) ? */
 #if defined(LUA_WIN) && defined(_MSC_VER) && defined(_M_IX86)    /* { */
 
 #define LUA_MSASMTRICK
 #define LUA_IEEEENDIAN        0
 #define LUA_NANTRICK
 
-/* pentium 32 bits? */
+	/* pentium 32 bits? */
 #elif defined(__i386__) || defined(__i386) || defined(__X86__) /* }{ */
 
 #define LUA_IEEE754TRICK
@@ -2466,7 +2491,7 @@ typedef LUAI_INT32 LUA_INT32;
 #define LUA_IEEEENDIAN        0
 #define LUA_NANTRICK
 
-/* pentium 64 bits? */
+	/* pentium 64 bits? */
 #elif defined(__x86_64)                        /* }{ */
 
 #define LUA_IEEE754TRICK
@@ -2479,55 +2504,55 @@ typedef LUAI_INT32 LUA_INT32;
 
 #else                                /* }{ */
 
-/* assume IEEE754 and a 32-bit integer type */
+	/* assume IEEE754 and a 32-bit integer type */
 #define LUA_IEEE754TRICK
 
 #endif                                /* } */
 
 #endif                            /* } */
 
-/********************************************************************/
-/*                    extract of 5.2's llimits.h                    */
-/*       gives us lua_number2unsigned and lua_unsigned2number       */
-/*           see copyright notice just below this one here          */
-/********************************************************************/
+	/********************************************************************/
+	/*                    extract of 5.2's llimits.h                    */
+	/*       gives us lua_number2unsigned and lua_unsigned2number       */
+	/*           see copyright notice just below this one here          */
+	/********************************************************************/
 
-/*********************************************************************
-* This file contains parts of Lua 5.2's source code:
-*
-* Copyright (C) 1994-2013 Lua.org, PUC-Rio.
-*
-* Permission is hereby granted, free of charge, to any person obtaining
-* a copy of this software and associated documentation files (the
-* "Software"), to deal in the Software without restriction, including
-* without limitation the rights to use, copy, modify, merge, publish,
-* distribute, sublicense, and/or sell copies of the Software, and to
-* permit persons to whom the Software is furnished to do so, subject to
-* the following conditions:
-*
-* The above copyright notice and this permission notice shall be
-* included in all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-* IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-* CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*********************************************************************/
+	/*********************************************************************
+	* This file contains parts of Lua 5.2's source code:
+	*
+	* Copyright (C) 1994-2013 Lua.org, PUC-Rio.
+	*
+	* Permission is hereby granted, free of charge, to any person obtaining
+	* a copy of this software and associated documentation files (the
+	* "Software"), to deal in the Software without restriction, including
+	* without limitation the rights to use, copy, modify, merge, publish,
+	* distribute, sublicense, and/or sell copies of the Software, and to
+	* permit persons to whom the Software is furnished to do so, subject to
+	* the following conditions:
+	*
+	* The above copyright notice and this permission notice shall be
+	* included in all copies or substantial portions of the Software.
+	*
+	* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+	* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+	* IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+	* CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+	* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+	* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+	*********************************************************************/
 
 #if defined(MS_ASMTRICK) || defined(LUA_MSASMTRICK)    /* { */
-/* trick with Microsoft assembler for X86 */
+	/* trick with Microsoft assembler for X86 */
 
 #define lua_number2unsigned(i,n)  \
   {__int64 l; __asm {__asm fld n   __asm fistp l} i = (unsigned int)l;}
 
 #elif defined(LUA_IEEE754TRICK)        /* }{ */
-/* the next trick should work on any machine using IEEE754 with
-a 32-bit int type */
+	/* the next trick should work on any machine using IEEE754 with
+	a 32-bit int type */
 
-union compat52_luai_Cast { double l_d; LUA_INT32 l_p[2]; };
+	union compat52_luai_Cast { double l_d; LUA_INT32 l_p[2]; };
 
 #if !defined(LUA_IEEEENDIAN)    /* { */
 #define LUAI_EXTRAIEEE    \
@@ -2547,10 +2572,10 @@ union compat52_luai_Cast { double l_d; LUA_INT32 l_p[2]; };
 
 #endif                /* } */
 
-/* the following definitions always work, but may be slow */
+	/* the following definitions always work, but may be slow */
 
 #if !defined(lua_number2unsigned)    /* { */
-/* the following definition assures proper modulo behavior */
+	/* the following definition assures proper modulo behavior */
 #if defined(LUA_NUMBER_DOUBLE) || defined(LUA_NUMBER_FLOAT)
 #include <math.h>
 #define SUPUNSIGNED    ((lua_Number)(~(lua_Unsigned)0) + 1)
@@ -2562,253 +2587,253 @@ union compat52_luai_Cast { double l_d; LUA_INT32 l_p[2]; };
 #endif                /* } */
 
 #if !defined(lua_unsigned2number)
-/* on several machines, coercion from unsigned to double is slow,
-so it may be worth to avoid */
+	/* on several machines, coercion from unsigned to double is slow,
+	so it may be worth to avoid */
 #define lua_unsigned2number(u)  \
     (((u) <= (lua_Unsigned)INT_MAX) ? (lua_Number)(int)(u) : (lua_Number)(u))
 #endif
 
-/********************************************************************/
+	/********************************************************************/
 
-inline static void compat52_call_lua(lua_State *L, char const code[], size_t len,
-    int nargs, int nret) {
-    lua_rawgetp(L, LUA_REGISTRYINDEX, (void*)code);
-    if (lua_type(L, -1) != LUA_TFUNCTION) {
-        lua_pop(L, 1);
-        if (luaL_loadbuffer(L, code, len, "=none"))
-            lua_error(L);
-        lua_pushvalue(L, -1);
-        lua_rawsetp(L, LUA_REGISTRYINDEX, (void*)code);
-    }
-    lua_insert(L, -nargs - 1);
-    lua_call(L, nargs, nret);
-}
+	inline static void compat52_call_lua(lua_State *L, char const code[], size_t len,
+		int nargs, int nret) {
+		lua_rawgetp(L, LUA_REGISTRYINDEX, (void*)code);
+		if (lua_type(L, -1) != LUA_TFUNCTION) {
+			lua_pop(L, 1);
+			if (luaL_loadbuffer(L, code, len, "=none"))
+				lua_error(L);
+			lua_pushvalue(L, -1);
+			lua_rawsetp(L, LUA_REGISTRYINDEX, (void*)code);
+		}
+		lua_insert(L, -nargs - 1);
+		lua_call(L, nargs, nret);
+	}
 
-static const char compat52_arith_code[] = {
-    "local op,a,b=...\n"
-    "if op==0 then return a+b\n"
-    "elseif op==1 then return a-b\n"
-    "elseif op==2 then return a*b\n"
-    "elseif op==3 then return a/b\n"
-    "elseif op==4 then return a%b\n"
-    "elseif op==5 then return a^b\n"
-    "elseif op==6 then return -a\n"
-    "end\n"
-};
+	static const char compat52_arith_code[] = {
+		"local op,a,b=...\n"
+		"if op==0 then return a+b\n"
+		"elseif op==1 then return a-b\n"
+		"elseif op==2 then return a*b\n"
+		"elseif op==3 then return a/b\n"
+		"elseif op==4 then return a%b\n"
+		"elseif op==5 then return a^b\n"
+		"elseif op==6 then return -a\n"
+		"end\n"
+	};
 
-inline void lua_arith(lua_State *L, int op) {
-    if (op < LUA_OPADD || op > LUA_OPUNM)
-        luaL_error(L, "invalid 'op' argument for lua_arith");
-    luaL_checkstack(L, 5, "not enough stack slots");
-    if (op == LUA_OPUNM)
-        lua_pushvalue(L, -1);
-    lua_pushnumber(L, op);
-    lua_insert(L, -3);
-    compat52_call_lua(L, compat52_arith_code,
-        sizeof(compat52_arith_code) - 1, 3, 1);
-}
+	inline void lua_arith(lua_State *L, int op) {
+		if (op < LUA_OPADD || op > LUA_OPUNM)
+			luaL_error(L, "invalid 'op' argument for lua_arith");
+		luaL_checkstack(L, 5, "not enough stack slots");
+		if (op == LUA_OPUNM)
+			lua_pushvalue(L, -1);
+		lua_pushnumber(L, op);
+		lua_insert(L, -3);
+		compat52_call_lua(L, compat52_arith_code,
+			sizeof(compat52_arith_code) - 1, 3, 1);
+	}
 
-static const char compat52_compare_code[] = {
-    "local a,b=...\n"
-    "return a<=b\n"
-};
+	static const char compat52_compare_code[] = {
+		"local a,b=...\n"
+		"return a<=b\n"
+	};
 
-inline int lua_compare(lua_State *L, int idx1, int idx2, int op) {
-    int result = 0;
-    switch (op) {
-    case LUA_OPEQ:
-        return lua_equal(L, idx1, idx2);
-    case LUA_OPLT:
-        return lua_lessthan(L, idx1, idx2);
-    case LUA_OPLE:
-        luaL_checkstack(L, 5, "not enough stack slots");
-        idx1 = lua_absindex(L, idx1);
-        idx2 = lua_absindex(L, idx2);
-        lua_pushvalue(L, idx1);
-        lua_pushvalue(L, idx2);
-        compat52_call_lua(L, compat52_compare_code,
-            sizeof(compat52_compare_code) - 1, 2, 1);
-        result = lua_toboolean(L, -1);
-        lua_pop(L, 1);
-        return result;
-    default:
-        luaL_error(L, "invalid 'op' argument for lua_compare");
-    }
-    return 0;
-}
+	inline int lua_compare(lua_State *L, int idx1, int idx2, int op) {
+		int result = 0;
+		switch (op) {
+		case LUA_OPEQ:
+			return lua_equal(L, idx1, idx2);
+		case LUA_OPLT:
+			return lua_lessthan(L, idx1, idx2);
+		case LUA_OPLE:
+			luaL_checkstack(L, 5, "not enough stack slots");
+			idx1 = lua_absindex(L, idx1);
+			idx2 = lua_absindex(L, idx2);
+			lua_pushvalue(L, idx1);
+			lua_pushvalue(L, idx2);
+			compat52_call_lua(L, compat52_compare_code,
+				sizeof(compat52_compare_code) - 1, 2, 1);
+			result = lua_toboolean(L, -1);
+			lua_pop(L, 1);
+			return result;
+		default:
+			luaL_error(L, "invalid 'op' argument for lua_compare");
+		}
+		return 0;
+	}
 
-inline void lua_pushunsigned(lua_State *L, lua_Unsigned n) {
-    lua_pushnumber(L, lua_unsigned2number(n));
-}
+	inline void lua_pushunsigned(lua_State *L, lua_Unsigned n) {
+		lua_pushnumber(L, lua_unsigned2number(n));
+	}
 
-inline lua_Unsigned luaL_checkunsigned(lua_State *L, int i) {
-    lua_Unsigned result;
-    lua_Number n = lua_tonumber(L, i);
-    if (n == 0 && !lua_isnumber(L, i))
-        luaL_checktype(L, i, LUA_TNUMBER);
-    lua_number2unsigned(result, n);
-    return result;
-}
+	inline lua_Unsigned luaL_checkunsigned(lua_State *L, int i) {
+		lua_Unsigned result;
+		lua_Number n = lua_tonumber(L, i);
+		if (n == 0 && !lua_isnumber(L, i))
+			luaL_checktype(L, i, LUA_TNUMBER);
+		lua_number2unsigned(result, n);
+		return result;
+	}
 
-inline lua_Unsigned lua_tounsignedx(lua_State *L, int i, int *isnum) {
-    lua_Unsigned result;
-    lua_Number n = lua_tonumberx(L, i, isnum);
-    lua_number2unsigned(result, n);
-    return result;
-}
+	inline lua_Unsigned lua_tounsignedx(lua_State *L, int i, int *isnum) {
+		lua_Unsigned result;
+		lua_Number n = lua_tonumberx(L, i, isnum);
+		lua_number2unsigned(result, n);
+		return result;
+	}
 
-inline lua_Unsigned luaL_optunsigned(lua_State *L, int i, lua_Unsigned def) {
-    return luaL_opt(L, luaL_checkunsigned, i, def);
-}
+	inline lua_Unsigned luaL_optunsigned(lua_State *L, int i, lua_Unsigned def) {
+		return luaL_opt(L, luaL_checkunsigned, i, def);
+	}
 
-inline lua_Integer lua_tointegerx(lua_State *L, int i, int *isnum) {
-    lua_Integer n = lua_tointeger(L, i);
-    if (isnum != NULL) {
-        *isnum = (n != 0 || lua_isnumber(L, i));
-    }
-    return n;
-}
+	inline lua_Integer lua_tointegerx(lua_State *L, int i, int *isnum) {
+		lua_Integer n = lua_tointeger(L, i);
+		if (isnum != NULL) {
+			*isnum = (n != 0 || lua_isnumber(L, i));
+		}
+		return n;
+	}
 
-inline void lua_len(lua_State *L, int i) {
-    switch (lua_type(L, i)) {
-    case LUA_TSTRING: /* fall through */
-    case LUA_TTABLE:
-        if (!luaL_callmeta(L, i, "__len"))
-            lua_pushnumber(L, (int)lua_objlen(L, i));
-        break;
-    case LUA_TUSERDATA:
-        if (luaL_callmeta(L, i, "__len"))
-            break;
-        /* maybe fall through */
-    default:
-        luaL_error(L, "attempt to get length of a %s value",
-            lua_typename(L, lua_type(L, i)));
-    }
-}
+	inline void lua_len(lua_State *L, int i) {
+		switch (lua_type(L, i)) {
+		case LUA_TSTRING: /* fall through */
+		case LUA_TTABLE:
+			if (!luaL_callmeta(L, i, "__len"))
+				lua_pushnumber(L, (int)lua_objlen(L, i));
+			break;
+		case LUA_TUSERDATA:
+			if (luaL_callmeta(L, i, "__len"))
+				break;
+			/* maybe fall through */
+		default:
+			luaL_error(L, "attempt to get length of a %s value",
+				lua_typename(L, lua_type(L, i)));
+		}
+	}
 
-inline int luaL_len(lua_State *L, int i) {
-    int res = 0, isnum = 0;
-    luaL_checkstack(L, 1, "not enough stack slots");
-    lua_len(L, i);
-    res = (int)lua_tointegerx(L, -1, &isnum);
-    lua_pop(L, 1);
-    if (!isnum)
-        luaL_error(L, "object length is not a number");
-    return res;
-}
+	inline int luaL_len(lua_State *L, int i) {
+		int res = 0, isnum = 0;
+		luaL_checkstack(L, 1, "not enough stack slots");
+		lua_len(L, i);
+		res = (int)lua_tointegerx(L, -1, &isnum);
+		lua_pop(L, 1);
+		if (!isnum)
+			luaL_error(L, "object length is not a number");
+		return res;
+	}
 
-inline const char *luaL_tolstring(lua_State *L, int idx, size_t *len) {
-    if (!luaL_callmeta(L, idx, "__tostring")) {
-        int t = lua_type(L, idx);
-        switch (t) {
-        case LUA_TNIL:
-            lua_pushliteral(L, "nil");
-            break;
-        case LUA_TSTRING:
-        case LUA_TNUMBER:
-            lua_pushvalue(L, idx);
-            break;
-        case LUA_TBOOLEAN:
-            if (lua_toboolean(L, idx))
-                lua_pushliteral(L, "true");
-            else
-                lua_pushliteral(L, "false");
-            break;
-        default:
-            lua_pushfstring(L, "%s: %p", lua_typename(L, t),
-                lua_topointer(L, idx));
-            break;
-        }
-    }
-    return lua_tolstring(L, -1, len);
-}
+	inline const char *luaL_tolstring(lua_State *L, int idx, size_t *len) {
+		if (!luaL_callmeta(L, idx, "__tostring")) {
+			int t = lua_type(L, idx);
+			switch (t) {
+			case LUA_TNIL:
+				lua_pushliteral(L, "nil");
+				break;
+			case LUA_TSTRING:
+			case LUA_TNUMBER:
+				lua_pushvalue(L, idx);
+				break;
+			case LUA_TBOOLEAN:
+				if (lua_toboolean(L, idx))
+					lua_pushliteral(L, "true");
+				else
+					lua_pushliteral(L, "false");
+				break;
+			default:
+				lua_pushfstring(L, "%s: %p", lua_typename(L, t),
+					lua_topointer(L, idx));
+				break;
+			}
+		}
+		return lua_tolstring(L, -1, len);
+	}
 
-inline void luaL_requiref(lua_State *L, char const* modname,
-    lua_CFunction openf, int glb) {
-    luaL_checkstack(L, 3, "not enough stack slots");
-    lua_pushcfunction(L, openf);
-    lua_pushstring(L, modname);
-    lua_call(L, 1, 1);
-    lua_getglobal(L, "package");
-    if (lua_istable(L, -1) == 0) {
-        lua_pop(L, 1);
-        lua_createtable(L, 0, 16);
-        lua_setglobal(L, "package");
-        lua_getglobal(L, "package");
-    }
-    lua_getfield(L, -1, "loaded");
-    if (lua_istable(L, -1) == 0) {
-        lua_pop(L, 1);
-        lua_createtable(L, 0, 1);
-        lua_setfield(L, -2, "loaded");
-        lua_getfield(L, -1, "loaded");
-    }
-    lua_replace(L, -2);
-    lua_pushvalue(L, -2);
-    lua_setfield(L, -2, modname);
-    lua_pop(L, 1);
-    if (glb) {
-        lua_pushvalue(L, -1);
-        lua_setglobal(L, modname);
-    }
-}
+	inline void luaL_requiref(lua_State *L, char const* modname,
+		lua_CFunction openf, int glb) {
+		luaL_checkstack(L, 3, "not enough stack slots");
+		lua_pushcfunction(L, openf);
+		lua_pushstring(L, modname);
+		lua_call(L, 1, 1);
+		lua_getglobal(L, "package");
+		if (lua_istable(L, -1) == 0) {
+			lua_pop(L, 1);
+			lua_createtable(L, 0, 16);
+			lua_setglobal(L, "package");
+			lua_getglobal(L, "package");
+		}
+		lua_getfield(L, -1, "loaded");
+		if (lua_istable(L, -1) == 0) {
+			lua_pop(L, 1);
+			lua_createtable(L, 0, 1);
+			lua_setfield(L, -2, "loaded");
+			lua_getfield(L, -1, "loaded");
+		}
+		lua_replace(L, -2);
+		lua_pushvalue(L, -2);
+		lua_setfield(L, -2, modname);
+		lua_pop(L, 1);
+		if (glb) {
+			lua_pushvalue(L, -1);
+			lua_setglobal(L, modname);
+		}
+	}
 
-inline void luaL_buffinit(lua_State *L, luaL_Buffer_52 *B) {
-    /* make it crash if used via pointer to a 5.1-style luaL_Buffer */
-    B->b.p = NULL;
-    B->b.L = NULL;
-    B->b.lvl = 0;
-    /* reuse the buffer from the 5.1-style luaL_Buffer though! */
-    B->ptr = B->b.buffer;
-    B->capacity = LUAL_BUFFERSIZE;
-    B->nelems = 0;
-    B->L2 = L;
-}
+	inline void luaL_buffinit(lua_State *L, luaL_Buffer_52 *B) {
+		/* make it crash if used via pointer to a 5.1-style luaL_Buffer */
+		B->b.p = NULL;
+		B->b.L = NULL;
+		B->b.lvl = 0;
+		/* reuse the buffer from the 5.1-style luaL_Buffer though! */
+		B->ptr = B->b.buffer;
+		B->capacity = LUAL_BUFFERSIZE;
+		B->nelems = 0;
+		B->L2 = L;
+	}
 
-inline char *luaL_prepbuffsize(luaL_Buffer_52 *B, size_t s) {
-    if (B->capacity - B->nelems < s) { /* needs to grow */
-        char* newptr = NULL;
-        size_t newcap = B->capacity * 2;
-        if (newcap - B->nelems < s)
-            newcap = B->nelems + s;
-        if (newcap < B->capacity) /* overflow */
-            luaL_error(B->L2, "buffer too large");
-        newptr = (char*)lua_newuserdata(B->L2, newcap);
-        memcpy(newptr, B->ptr, B->nelems);
-        if (B->ptr != B->b.buffer)
-            lua_replace(B->L2, -2); /* remove old buffer */
-        B->ptr = newptr;
-        B->capacity = newcap;
-    }
-    return B->ptr + B->nelems;
-}
+	inline char *luaL_prepbuffsize(luaL_Buffer_52 *B, size_t s) {
+		if (B->capacity - B->nelems < s) { /* needs to grow */
+			char* newptr = NULL;
+			size_t newcap = B->capacity * 2;
+			if (newcap - B->nelems < s)
+				newcap = B->nelems + s;
+			if (newcap < B->capacity) /* overflow */
+				luaL_error(B->L2, "buffer too large");
+			newptr = (char*)lua_newuserdata(B->L2, newcap);
+			memcpy(newptr, B->ptr, B->nelems);
+			if (B->ptr != B->b.buffer)
+				lua_replace(B->L2, -2); /* remove old buffer */
+			B->ptr = newptr;
+			B->capacity = newcap;
+		}
+		return B->ptr + B->nelems;
+	}
 
-inline void luaL_addlstring(luaL_Buffer_52 *B, const char *s, size_t l) {
-    memcpy(luaL_prepbuffsize(B, l), s, l);
-    luaL_addsize(B, l);
-}
+	inline void luaL_addlstring(luaL_Buffer_52 *B, const char *s, size_t l) {
+		memcpy(luaL_prepbuffsize(B, l), s, l);
+		luaL_addsize(B, l);
+	}
 
-inline void luaL_addvalue(luaL_Buffer_52 *B) {
-    size_t len = 0;
-    const char *s = lua_tolstring(B->L2, -1, &len);
-    if (!s)
-        luaL_error(B->L2, "cannot convert value to string");
-    if (B->ptr != B->b.buffer)
-        lua_insert(B->L2, -2); /* userdata buffer must be at stack top */
-    luaL_addlstring(B, s, len);
-    lua_remove(B->L2, B->ptr != B->b.buffer ? -2 : -1);
-}
+	inline void luaL_addvalue(luaL_Buffer_52 *B) {
+		size_t len = 0;
+		const char *s = lua_tolstring(B->L2, -1, &len);
+		if (!s)
+			luaL_error(B->L2, "cannot convert value to string");
+		if (B->ptr != B->b.buffer)
+			lua_insert(B->L2, -2); /* userdata buffer must be at stack top */
+		luaL_addlstring(B, s, len);
+		lua_remove(B->L2, B->ptr != B->b.buffer ? -2 : -1);
+	}
 
-inline void luaL_pushresult(luaL_Buffer_52 *B) {
-    lua_pushlstring(B->L2, B->ptr, B->nelems);
-    if (B->ptr != B->b.buffer)
-        lua_replace(B->L2, -2); /* remove userdata buffer */
-}
+	inline void luaL_pushresult(luaL_Buffer_52 *B) {
+		lua_pushlstring(B->L2, B->ptr, B->nelems);
+		if (B->ptr != B->b.buffer)
+			lua_replace(B->L2, -2); /* remove userdata buffer */
+	}
 
 #endif /* SOL_LUA_VERSION == 501 */
 
 #endif // SOL_5_X_X_INL
-// end of sol/compatibility/5.x.x.inl
+	// end of sol/compatibility/5.x.x.inl
 
 #ifdef __cplusplus
 }
@@ -3143,7 +3168,7 @@ namespace sol {
 		template <typename... Args>
 		as_table_t(Args&&... args) : source(std::forward<Args>(args)...) {}
 
-		operator std::add_lvalue_reference_t<T> () {
+		operator std::add_lvalue_reference_t<T>() {
 			return source;
 		}
 	};
@@ -3238,32 +3263,32 @@ namespace sol {
 	typedef meta_function meta_method;
 
 	const std::array<std::string, 2> meta_variable_names = { {
-		"__index",
-		"__newindex",
-	} };
+			"__index",
+			"__newindex",
+		} };
 
 	const std::array<std::string, 21> meta_function_names = { {
-		"new",
-		"__index",
-		"__newindex",
-		"__mode",
-		"__call",
-		"__metatable",
-		"__tostring",
-		"__len",
-		"__unm",
-		"__add",
-		"__sub",
-		"__mul",
-		"__div",
-		"__mod",
-		"__pow",
-		"__concat",
-		"__eq",
-		"__lt",
-		"__le",
-		"__gc",
-	} };
+			"new",
+			"__index",
+			"__newindex",
+			"__mode",
+			"__call",
+			"__metatable",
+			"__tostring",
+			"__len",
+			"__unm",
+			"__add",
+			"__sub",
+			"__mul",
+			"__div",
+			"__mod",
+			"__pow",
+			"__concat",
+			"__eq",
+			"__lt",
+			"__le",
+			"__gc",
+		} };
 
 	inline const std::string& name_of(meta_function mf) {
 		return meta_function_names[static_cast<int>(mf)];
@@ -3531,7 +3556,7 @@ namespace sol {
 		|| std::is_base_of<stack_reference, meta::unqualified_t<T>>::value
 		|| meta::is_specialization_of<std::tuple, meta::unqualified_t<T>>::value
 		|| meta::is_specialization_of<std::pair, meta::unqualified_t<T>>::value
-	> { };
+				> { };
 
 	template <typename T>
 	struct is_lua_reference : std::integral_constant<bool,
@@ -3608,9 +3633,9 @@ namespace sol {
 	}
 } // sol
 
-// end of sol/types.hpp
+  // end of sol/types.hpp
 
-// beginning of sol/stack_reference.hpp
+  // beginning of sol/stack_reference.hpp
 
 namespace sol {
 	class stack_reference {
@@ -3671,7 +3696,7 @@ namespace sol {
 	}
 } // sol
 
-// end of sol/stack_reference.hpp
+  // end of sol/stack_reference.hpp
 
 namespace sol {
 	namespace stack {
@@ -3819,13 +3844,13 @@ namespace sol {
 	}
 } // sol
 
-// end of sol/reference.hpp
+  // end of sol/reference.hpp
 
-// beginning of sol/stack.hpp
+  // beginning of sol/stack.hpp
 
-// beginning of sol/stack_core.hpp
+  // beginning of sol/stack_core.hpp
 
-// beginning of sol/userdata.hpp
+  // beginning of sol/userdata.hpp
 
 namespace sol {
 	template <typename base_t>
@@ -3882,9 +3907,9 @@ namespace sol {
 
 } // sol
 
-// end of sol/userdata.hpp
+  // end of sol/userdata.hpp
 
-// beginning of sol/tie.hpp
+  // beginning of sol/tie.hpp
 
 namespace sol {
 
@@ -3960,9 +3985,9 @@ namespace sol {
 
 } // sol
 
-// end of sol/tie.hpp
+  // end of sol/tie.hpp
 
-// beginning of sol/stack_guard.hpp
+  // beginning of sol/stack_guard.hpp
 
 namespace sol {
 	namespace detail {
@@ -3998,7 +4023,7 @@ namespace sol {
 	};
 } // sol
 
-// end of sol/stack_guard.hpp
+  // end of sol/stack_guard.hpp
 
 #include <vector>
 
@@ -4376,13 +4401,13 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/stack_core.hpp
+  // end of sol/stack_core.hpp
 
-// beginning of sol/stack_check.hpp
+  // beginning of sol/stack_check.hpp
 
-// beginning of sol/usertype_traits.hpp
+  // beginning of sol/usertype_traits.hpp
 
-// beginning of sol/demangle.hpp
+  // beginning of sol/demangle.hpp
 
 #include <cctype>
 
@@ -4515,7 +4540,7 @@ namespace sol {
 	} // detail
 } // sol
 
-// end of sol/demangle.hpp
+  // end of sol/demangle.hpp
 
 namespace sol {
 
@@ -4644,7 +4669,7 @@ namespace sol {
 	} // detail
 } // sol
 
-// end of sol/inheritance.hpp
+  // end of sol/inheritance.hpp
 
 #include <utility>
 
@@ -4691,6 +4716,34 @@ namespace sol {
 				if (!success) {
 					// expected type, actual type
 					handler(L, index, expected, indextype);
+				}
+				return success;
+			}
+		};
+
+		template<typename T>
+		struct checker<T, type::number, std::enable_if_t<std::is_integral<T>::value>> {
+			template <typename Handler>
+			static bool check(lua_State* L, int index, Handler&& handler, record& tracking) {
+				tracking.use(1);
+				bool success = lua_isinteger(L, index) == 1;
+				if (!success) {
+					// expected type, actual type
+					handler(L, index, type::number, type_of(L, index));
+				}
+				return success;
+			}
+		};
+
+		template<typename T>
+		struct checker<T, type::number, std::enable_if_t<std::is_floating_point<T>::value>> {
+			template <typename Handler>
+			static bool check(lua_State* L, int index, Handler&& handler, record& tracking) {
+				tracking.use(1);
+				bool success = lua_isnumber(L, index) == 1;
+				if (!success) {
+					// expected type, actual type
+					handler(L, index, type::number, type_of(L, index));
 				}
 				return success;
 			}
@@ -4966,28 +5019,28 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/stack_check.hpp
+  // end of sol/stack_check.hpp
 
-// beginning of sol/stack_get.hpp
+  // beginning of sol/stack_get.hpp
 
-// beginning of sol/overload.hpp
+  // beginning of sol/overload.hpp
 
 namespace sol {
-    template <typename... Functions>
-    struct overload_set {
-        std::tuple<Functions...> functions;
-        template <typename Arg, typename... Args, meta::disable<std::is_same<overload_set, meta::unqualified_t<Arg>>> = meta::enabler>
-        overload_set (Arg&& arg, Args&&... args) : functions(std::forward<Arg>(arg), std::forward<Args>(args)...) {}
-        overload_set(const overload_set&) = default;
-        overload_set(overload_set&&) = default;
-        overload_set& operator=(const overload_set&) = default;
-        overload_set& operator=(overload_set&&) = default;
-    };
+	template <typename... Functions>
+	struct overload_set {
+		std::tuple<Functions...> functions;
+		template <typename Arg, typename... Args, meta::disable<std::is_same<overload_set, meta::unqualified_t<Arg>>> = meta::enabler>
+		overload_set(Arg&& arg, Args&&... args) : functions(std::forward<Arg>(arg), std::forward<Args>(args)...) {}
+		overload_set(const overload_set&) = default;
+		overload_set(overload_set&&) = default;
+		overload_set& operator=(const overload_set&) = default;
+		overload_set& operator=(overload_set&&) = default;
+	};
 
-    template <typename... Args>
-    decltype(auto) overload(Args&&... args) {
-        return overload_set<std::decay_t<Args>...>(std::forward<Args>(args)...);
-    }
+	template <typename... Args>
+	decltype(auto) overload(Args&&... args) {
+		return overload_set<std::decay_t<Args>...>(std::forward<Args>(args)...);
+	}
 }
 
 // end of sol/overload.hpp
@@ -5189,7 +5242,7 @@ namespace sol {
 				tracking.use(1);
 				std::size_t len;
 				auto str = lua_tolstring(L, index, &len);
-				return std::string( str, len );
+				return std::string(str, len);
 			}
 		};
 
@@ -5210,7 +5263,7 @@ namespace sol {
 				return lua_tostring(L, index);
 			}
 		};
-		
+
 		template<>
 		struct getter<char> {
 			static char get(lua_State* L, int index, record& tracking) {
@@ -5238,7 +5291,7 @@ namespace sol {
 					// https://sourceforge.net/p/mingw-w64/bugs/538/
 					// http://chat.stackoverflow.com/transcript/message/32271369#32271369
 					for (auto& c : r) {
-                        uint8_t* b = reinterpret_cast<uint8_t*>(&c);
+						uint8_t* b = reinterpret_cast<uint8_t*>(&c);
 						std::swap(b[0], b[1]);
 					}
 #endif 
@@ -5467,13 +5520,13 @@ namespace sol {
 		template<typename... Args>
 		struct getter<std::tuple<Args...>> {
 			typedef std::tuple<decltype(stack::get<Args>(nullptr, 0))...> R;
-			
+
 			template <typename... TArgs>
 			static R apply(std::index_sequence<>, lua_State*, int, record&, TArgs&&... args) {
 				// Fuck you too, VC++
-				return R{std::forward<TArgs>(args)...};
+				return R{ std::forward<TArgs>(args)... };
 			}
-			
+
 			template <std::size_t I, std::size_t... Ix, typename... TArgs>
 			static R apply(std::index_sequence<I, Ix...>, lua_State* L, int index, record& tracking, TArgs&&... args) {
 				// Fuck you too, VC++
@@ -5496,9 +5549,9 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/stack_get.hpp
+  // end of sol/stack_get.hpp
 
-// beginning of sol/stack_check_get.hpp
+  // beginning of sol/stack_check_get.hpp
 
 namespace sol {
 	namespace stack {
@@ -5584,11 +5637,11 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/stack_check_get.hpp
+  // end of sol/stack_check_get.hpp
 
-// beginning of sol/stack_push.hpp
+  // beginning of sol/stack_push.hpp
 
-// beginning of sol/raii.hpp
+  // beginning of sol/raii.hpp
 
 namespace sol {
 	namespace detail {
@@ -5694,7 +5747,7 @@ namespace sol {
 
 } // sol
 
-// end of sol/raii.hpp
+  // end of sol/raii.hpp
 
 #ifdef SOL_CODECVT_SUPPORT
 #endif
@@ -5774,7 +5827,7 @@ namespace sol {
 				return pusher<detail::as_value_tag<T>>{}.push(L, std::forward<Args>(args)...);
 			}
 		};
-		
+
 		template<typename T>
 		struct pusher<T*, meta::disable_if_t<meta::all<meta::has_begin_end<meta::unqualified_t<T>>, meta::neg<meta::any<std::is_base_of<reference, meta::unqualified_t<T>>, std::is_base_of<stack_reference, meta::unqualified_t<T>>>>>::value>> {
 			template <typename... Args>
@@ -6279,7 +6332,7 @@ namespace sol {
 			static int push(lua_State* L, const std::u16string& u16str) {
 				return push(L, u16str, u16str.size());
 			}
-			
+
 			static int push(lua_State* L, const std::u16string& u16str, std::size_t sz) {
 				return stack::push(L, u16str.data(), u16str.data() + sz);
 			}
@@ -6303,7 +6356,7 @@ namespace sol {
 			static int push(std::index_sequence<I...>, lua_State* L, T&& t) {
 				int pushcount = 0;
 				(void)detail::swallow{ 0, (pushcount += stack::push(L,
-					  detail::forward_get<I>(t)
+					detail::forward_get<I>(t)
 				), 0)... };
 				return pushcount;
 			}
@@ -6358,9 +6411,9 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/stack_push.hpp
+  // end of sol/stack_push.hpp
 
-// beginning of sol/stack_pop.hpp
+  // beginning of sol/stack_pop.hpp
 
 namespace sol {
 	namespace stack {
@@ -6381,9 +6434,9 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/stack_pop.hpp
+  // end of sol/stack_pop.hpp
 
-// beginning of sol/stack_field.hpp
+  // beginning of sol/stack_field.hpp
 
 namespace sol {
 	namespace stack {
@@ -6616,9 +6669,9 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/stack_field.hpp
+  // end of sol/stack_field.hpp
 
-// beginning of sol/stack_probe.hpp
+  // beginning of sol/stack_probe.hpp
 
 namespace sol {
 	namespace stack {
@@ -6678,7 +6731,7 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/stack_probe.hpp
+  // end of sol/stack_probe.hpp
 
 #include <cstring>
 
@@ -6719,7 +6772,7 @@ namespace sol {
 				static decltype(auto) eval(types<>, std::index_sequence<>, lua_State*, int, record&, Fx&& fx, Args&&... args) {
 					return std::forward<Fx>(fx)(std::forward<Args>(args)...);
 				}
-				
+
 				template <typename Fx, typename Arg, typename... Args, std::size_t I, std::size_t... Is, typename... FxArgs>
 				static decltype(auto) eval(types<Arg, Args...>, std::index_sequence<I, Is...>, lua_State* L, int start, record& tracking, Fx&& fx, FxArgs&&... fxargs) {
 					return eval(types<Args...>(), std::index_sequence<Is...>(), L, start, tracking, std::forward<Fx>(fx), std::forward<FxArgs>(fxargs)..., stack_detail::unchecked_get<Arg>(L, start + tracking.used, tracking));
@@ -6871,17 +6924,17 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/stack.hpp
+  // end of sol/stack.hpp
 
-// beginning of sol/variadic_args.hpp
+  // beginning of sol/variadic_args.hpp
 
-// beginning of sol/stack_proxy.hpp
+  // beginning of sol/stack_proxy.hpp
 
-// beginning of sol/function.hpp
+  // beginning of sol/function.hpp
 
-// beginning of sol/function_result.hpp
+  // beginning of sol/function_result.hpp
 
-// beginning of sol/proxy_base.hpp
+  // beginning of sol/proxy_base.hpp
 
 namespace sol {
 	template <typename Super>
@@ -6905,7 +6958,7 @@ namespace sol {
 	};
 } // sol
 
-// end of sol/proxy_base.hpp
+  // end of sol/proxy_base.hpp
 
 #include <cstdint>
 
@@ -6966,13 +7019,13 @@ namespace sol {
 	};
 } // sol
 
-// end of sol/function_result.hpp
+  // end of sol/function_result.hpp
 
-// beginning of sol/function_types.hpp
+  // beginning of sol/function_types.hpp
 
-// beginning of sol/function_types_core.hpp
+  // beginning of sol/function_types_core.hpp
 
-// beginning of sol/wrapper.hpp
+  // beginning of sol/wrapper.hpp
 
 namespace sol {
 
@@ -7180,7 +7233,7 @@ namespace sol {
 
 } // sol
 
-// end of sol/wrapper.hpp
+  // end of sol/wrapper.hpp
 
 namespace sol {
 	namespace function_detail {
@@ -7192,16 +7245,16 @@ namespace sol {
 	} // function_detail
 } // sol
 
-// end of sol/function_types_core.hpp
+  // end of sol/function_types_core.hpp
 
-// beginning of sol/function_types_templated.hpp
+  // beginning of sol/function_types_templated.hpp
 
-// beginning of sol/call.hpp
+  // beginning of sol/call.hpp
 
-// beginning of sol/protect.hpp
+  // beginning of sol/protect.hpp
 
 namespace sol {
-	
+
 	template <typename T>
 	struct protect_t {
 		T value;
@@ -7223,9 +7276,9 @@ namespace sol {
 
 } // sol
 
-// end of sol/protect.hpp
+  // end of sol/protect.hpp
 
-// beginning of sol/property.hpp
+  // beginning of sol/property.hpp
 
 namespace sol {
 
@@ -7307,7 +7360,7 @@ namespace sol {
 
 } // sol
 
-// end of sol/property.hpp
+  // end of sol/property.hpp
 
 namespace sol {
 	namespace call_detail {
@@ -7512,7 +7565,7 @@ namespace sol {
 				typedef typename wrap::returns_list returns_list;
 				typedef typename wrap::args_list args_list;
 				typedef typename wrap::caller caller;
-				return stack::call_into_lua<checked>(returns_list(), args_list(), L, boost + ( is_variable ? 3 : 2 ), caller(), std::forward<Fx>(f), o);
+				return stack::call_into_lua<checked>(returns_list(), args_list(), L, boost + (is_variable ? 3 : 2), caller(), std::forward<Fx>(f), o);
 			}
 
 			template <typename Fx>
@@ -7541,7 +7594,7 @@ namespace sol {
 			static int call_assign(std::true_type, lua_State* L, V&& f, object_type& o) {
 				typedef typename wrap::args_list args_list;
 				typedef typename wrap::caller caller;
-				return stack::call_into_lua<checked>(types<void>(), args_list(), L, boost + ( is_variable ? 3 : 2 ), caller(), f, o);
+				return stack::call_into_lua<checked>(types<void>(), args_list(), L, boost + (is_variable ? 3 : 2), caller(), f, o);
 			}
 
 			template <typename V>
@@ -7599,7 +7652,7 @@ namespace sol {
 			static int call(lua_State* L, V&& f, object_type& o) {
 				typedef typename wrap::returns_list returns_list;
 				typedef typename wrap::caller caller;
-				return stack::call_into_lua<checked>(returns_list(), types<>(), L, boost + ( is_variable ? 3 : 2 ), caller(), f, o);
+				return stack::call_into_lua<checked>(returns_list(), types<>(), L, boost + (is_variable ? 3 : 2), caller(), f, o);
 			}
 
 			template <typename V>
@@ -7852,7 +7905,7 @@ namespace sol {
 
 } // sol
 
-// end of sol/call.hpp
+  // end of sol/call.hpp
 
 namespace sol {
 	namespace function_detail {
@@ -7959,9 +8012,9 @@ namespace sol {
 
 } // sol
 
-// end of sol/function_types_templated.hpp
+  // end of sol/function_types_templated.hpp
 
-// beginning of sol/function_types_stateless.hpp
+  // beginning of sol/function_types_stateless.hpp
 
 namespace sol {
 	namespace function_detail {
@@ -8099,9 +8152,9 @@ namespace sol {
 	} // function_detail
 } // sol
 
-// end of sol/function_types_stateless.hpp
+  // end of sol/function_types_stateless.hpp
 
-// beginning of sol/function_types_stateful.hpp
+  // beginning of sol/function_types_stateful.hpp
 
 namespace sol {
 	namespace function_detail {
@@ -8179,9 +8232,9 @@ namespace sol {
 	} // function_detail
 } // sol
 
-// end of sol/function_types_stateful.hpp
+  // end of sol/function_types_stateful.hpp
 
-// beginning of sol/function_types_overloaded.hpp
+  // beginning of sol/function_types_overloaded.hpp
 
 namespace sol {
 	namespace function_detail {
@@ -8213,9 +8266,9 @@ namespace sol {
 	} // function_detail
 } // sol
 
-// end of sol/function_types_overloaded.hpp
+  // end of sol/function_types_overloaded.hpp
 
-// beginning of sol/resolve.hpp
+  // beginning of sol/resolve.hpp
 
 namespace sol {
 	namespace detail {
@@ -8285,7 +8338,7 @@ namespace sol {
 	}
 } // sol
 
-// end of sol/resolve.hpp
+  // end of sol/resolve.hpp
 
 namespace sol {
 	namespace stack {
@@ -8596,7 +8649,7 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/function_types.hpp
+  // end of sol/function_types.hpp
 
 namespace sol {
 	template <typename base_t>
@@ -8716,11 +8769,11 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/function.hpp
+  // end of sol/function.hpp
 
-// beginning of sol/protected_function.hpp
+  // beginning of sol/protected_function.hpp
 
-// beginning of sol/protected_function_result.hpp
+  // beginning of sol/protected_function_result.hpp
 
 namespace sol {
 	struct protected_function_result : public proxy_base<protected_function_result> {
@@ -8821,7 +8874,7 @@ namespace sol {
 	};
 } // sol
 
-// end of sol/protected_function_result.hpp
+  // end of sol/protected_function_result.hpp
 
 #include <algorithm>
 
@@ -8849,7 +8902,7 @@ namespace sol {
 			}
 		};
 	}
-	
+
 	template <typename base_t>
 	class basic_protected_function : public base_t {
 	public:
@@ -8984,7 +9037,7 @@ namespace sol {
 	};
 } // sol
 
-// end of sol/protected_function.hpp
+  // end of sol/protected_function.hpp
 
 namespace sol {
 	struct stack_proxy : public proxy_base<stack_proxy> {
@@ -9048,9 +9101,9 @@ namespace sol {
 		}
 
 		template <std::size_t I, std::size_t N, typename Arg, typename... Args, typename T, meta::enable<meta::boolean<(N > 0)>> = meta::enabler>
-		stack_proxy get(types<Arg, Args...>, index_value<N>, index_value<I>, const T& fr) {
-			return get(types<Args...>(), index_value<N - 1>(), index_value<I + lua_size<Arg>::value>(), fr);
-		}
+			stack_proxy get(types<Arg, Args...>, index_value<N>, index_value<I>, const T& fr) {
+				return get(types<Args...>(), index_value<N - 1>(), index_value<I + lua_size<Arg>::value>(), fr);
+			}
 	}
 
 	template <>
@@ -9080,7 +9133,7 @@ namespace sol {
 	}
 } // sol
 
-// end of sol/stack_proxy.hpp
+  // end of sol/stack_proxy.hpp
 
 #include <limits>
 #include <iterator>
@@ -9291,7 +9344,7 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/variadic_args.hpp
+  // end of sol/variadic_args.hpp
 
 namespace sol {
 
@@ -9414,7 +9467,7 @@ namespace sol {
 	}
 } // sol
 
-// end of sol/object.hpp
+  // end of sol/object.hpp
 
 namespace sol {
 	template<typename Table, typename Key>
@@ -9560,22 +9613,22 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/proxy.hpp
+  // end of sol/proxy.hpp
 
-// beginning of sol/usertype.hpp
+  // beginning of sol/usertype.hpp
 
-// beginning of sol/usertype_metatable.hpp
+  // beginning of sol/usertype_metatable.hpp
 
-// beginning of sol/deprecate.hpp
+  // beginning of sol/deprecate.hpp
 
 #ifndef SOL_DEPRECATED
-    #ifdef _MSC_VER
-        #define SOL_DEPRECATED __declspec(deprecated)
-    #elif __GNUC__
-        #define SOL_DEPRECATED __attribute__((deprecated)) 
-    #else
-        #define SOL_DEPRECATED [[deprecated]]
-    #endif // compilers
+#ifdef _MSC_VER
+#define SOL_DEPRECATED __declspec(deprecated)
+#elif __GNUC__
+#define SOL_DEPRECATED __attribute__((deprecated)) 
+#else
+#define SOL_DEPRECATED [[deprecated]]
+#endif // compilers
 #endif // SOL_DEPRECATED
 
 namespace sol {
@@ -9587,7 +9640,7 @@ namespace sol {
 	} // detail
 } // sol
 
-// end of sol/deprecate.hpp
+  // end of sol/deprecate.hpp
 
 #include <unordered_map>
 #include <cstdio>
@@ -9683,7 +9736,7 @@ namespace sol {
 				lua_pop(L, 1);
 				return;
 			}
-			
+
 			stack::get_field(L, basewalkkey);
 			if (type_of(L, -1) == type::nil) {
 				lua_pop(L, 2);
@@ -9913,21 +9966,21 @@ namespace sol {
 
 		template <typename... Args, typename = std::enable_if_t<sizeof...(Args) == sizeof...(Tn)>>
 		usertype_metatable(Args&&... args) : functions(std::forward<Args>(args)...),
-		mapping(),
-		indexfunc(usertype_detail::indexing_fail<true>), newindexfunc(usertype_detail::indexing_fail<false>),
-		destructfunc(nullptr), callconstructfunc(nullptr),
-		indexbase(&core_indexing_call<true>), newindexbase(&core_indexing_call<false>),
-		indexbaseclasspropogation(usertype_detail::walk_all_bases<true>), newindexbaseclasspropogation(usertype_detail::walk_all_bases<false>),
-		baseclasscheck(nullptr), baseclasscast(nullptr),
-		mustindex(contains_variable() || contains_index()), secondarymeta(contains_variable()),
-		hasequals(false), hasless(false), haslessequals(false) {
+			mapping(),
+			indexfunc(usertype_detail::indexing_fail<true>), newindexfunc(usertype_detail::indexing_fail<false>),
+			destructfunc(nullptr), callconstructfunc(nullptr),
+			indexbase(&core_indexing_call<true>), newindexbase(&core_indexing_call<false>),
+			indexbaseclasspropogation(usertype_detail::walk_all_bases<true>), newindexbaseclasspropogation(usertype_detail::walk_all_bases<false>),
+			baseclasscheck(nullptr), baseclasscast(nullptr),
+			mustindex(contains_variable() || contains_index()), secondarymeta(contains_variable()),
+			hasequals(false), hasless(false), haslessequals(false) {
 			std::initializer_list<typename mapping_t::value_type> ilist{ {
-				std::pair<std::string, usertype_detail::find_call_pair>(
-					usertype_detail::make_string(std::get<I * 2>(functions)),
-					usertype_detail::find_call_pair(&usertype_metatable::real_find_call<I * 2, I * 2 + 1, false>,
-						&usertype_metatable::real_find_call<I * 2, I * 2 + 1, true>)
-					)
-			}... };
+					std::pair<std::string, usertype_detail::find_call_pair>(
+						usertype_detail::make_string(std::get<I * 2>(functions)),
+						usertype_detail::find_call_pair(&usertype_metatable::real_find_call<I * 2, I * 2 + 1, false>,
+							&usertype_metatable::real_find_call<I * 2, I * 2 + 1, true>)
+						)
+				}... };
 			mapping.insert(ilist);
 		}
 
@@ -10155,9 +10208,9 @@ namespace sol {
 
 } // sol
 
-// end of sol/usertype_metatable.hpp
+  // end of sol/usertype_metatable.hpp
 
-// beginning of sol/simple_usertype_metatable.hpp
+  // beginning of sol/simple_usertype_metatable.hpp
 
 namespace sol {
 
@@ -10272,7 +10325,7 @@ namespace sol {
 				lua_pop(L, 1);
 			}
 			lua_pop(L, 1);
-			
+
 			int ret = 0;
 			bool found = false;
 			// Otherwise, we need to do propagating calls through the bases
@@ -10457,15 +10510,15 @@ namespace sol {
 		simple_usertype_metatable(lua_State* L) : simple_usertype_metatable(L, meta::condition<meta::all<std::is_default_constructible<T>>, decltype(default_constructor), usertype_detail::check_destructor_tag>()) {}
 
 		template<typename Arg, typename... Args, meta::disable_any<
-			meta::any_same<meta::unqualified_t<Arg>, 
-				usertype_detail::verified_tag, 
-				usertype_detail::add_destructor_tag,
-				usertype_detail::check_destructor_tag
+			meta::any_same<meta::unqualified_t<Arg>,
+			usertype_detail::verified_tag,
+			usertype_detail::add_destructor_tag,
+			usertype_detail::check_destructor_tag
 			>,
 			meta::is_specialization_of<constructors, meta::unqualified_t<Arg>>,
 			meta::is_specialization_of<constructor_wrapper, meta::unqualified_t<Arg>>
 		> = meta::enabler>
-		simple_usertype_metatable(lua_State* L, Arg&& arg, Args&&... args) : simple_usertype_metatable(L, meta::condition<meta::all<std::is_default_constructible<T>, meta::neg<usertype_detail::has_constructor<Args...>>>, decltype(default_constructor), usertype_detail::check_destructor_tag>(), std::forward<Arg>(arg), std::forward<Args>(args)...) {}
+			simple_usertype_metatable(lua_State* L, Arg&& arg, Args&&... args) : simple_usertype_metatable(L, meta::condition<meta::all<std::is_default_constructible<T>, meta::neg<usertype_detail::has_constructor<Args...>>>, decltype(default_constructor), usertype_detail::check_destructor_tag>(), std::forward<Arg>(arg), std::forward<Args>(args)...) {}
 
 		template<typename... Args, typename... CArgs>
 		simple_usertype_metatable(lua_State* L, constructors<CArgs...> constructorlist, Args&&... args) : simple_usertype_metatable(L, usertype_detail::check_destructor_tag(), std::forward<Args>(args)..., "new", constructorlist) {}
@@ -10482,7 +10535,7 @@ namespace sol {
 		template <typename T>
 		struct pusher<simple_usertype_metatable<T>> {
 			typedef simple_usertype_metatable<T> umt_t;
-			
+
 			static usertype_detail::simple_map& make_cleanup(lua_State* L, umt_t& umx) {
 				static int uniqueness = 0;
 				std::string uniquegcmetakey = usertype_traits<T>::user_gc_metatable;
@@ -10624,13 +10677,13 @@ namespace sol {
 						stack::set_field(L, sol::meta_function::call_function, umx.callconstructfunc, metabehind.stack_index());
 					}
 					if (umx.secondarymeta) {
-						stack::set_field(L, meta_function::index, 
+						stack::set_field(L, meta_function::index,
 							make_closure(&usertype_detail::simple_index_call,
 								make_light(varmap),
 								umx.indexfunc,
 								umx.newindexfunc
 							), metabehind.stack_index());
-						stack::set_field(L, meta_function::new_index, 
+						stack::set_field(L, meta_function::new_index,
 							make_closure(&usertype_detail::simple_new_index_call,
 								make_light(varmap),
 								umx.indexfunc,
@@ -10684,12 +10737,12 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/simple_usertype_metatable.hpp
+  // end of sol/simple_usertype_metatable.hpp
 
-// beginning of sol/container_usertype_metatable.hpp
+  // beginning of sol/container_usertype_metatable.hpp
 
 namespace sol {
-	
+
 	namespace detail {
 
 		template <typename T>
@@ -11073,7 +11126,7 @@ namespace sol {
 
 } // sol
 
-// end of sol/container_usertype_metatable.hpp
+  // end of sol/container_usertype_metatable.hpp
 
 namespace sol {
 
@@ -11123,7 +11176,7 @@ namespace sol {
 	public:
 		template<typename... Args>
 		simple_usertype(lua_State* L, Args&&... args) : base_t(simple, L, std::forward<Args>(args)...), state(L) {}
-		
+
 		template <typename N, typename F>
 		void set(N&& n, F&& f) {
 			auto meta = static_cast<simple_usertype_metatable<T>*>(base_t::registrar_data());
@@ -11141,9 +11194,9 @@ namespace sol {
 	} // stack
 } // sol
 
-// end of sol/usertype.hpp
+  // end of sol/usertype.hpp
 
-// beginning of sol/table_iterator.hpp
+  // beginning of sol/table_iterator.hpp
 
 namespace sol {
 
@@ -11237,7 +11290,7 @@ namespace sol {
 
 } // sol
 
-// end of sol/table_iterator.hpp
+  // end of sol/table_iterator.hpp
 
 namespace sol {
 	namespace detail {
@@ -11305,7 +11358,7 @@ namespace sol {
 				detail::forward_get<I * 2>(pairs),
 				detail::forward_get<I * 2 + 1>(pairs),
 				lua_gettop(base_t::lua_state())
-			), 0)... });
+				), 0)... });
 		}
 
 		template <bool global, typename T, typename Key>
@@ -11584,7 +11637,7 @@ namespace sol {
 		template <typename... Args>
 		basic_table_core& add(Args&&... args) {
 			auto pp = stack::push_pop(*this);
-			(void)detail::swallow{0, 
+			(void)detail::swallow{ 0,
 				(stack::set_ref(base_t::lua_state(), std::forward<Args>(args)), 0)...
 			};
 			return *this;
@@ -11670,15 +11723,15 @@ namespace sol {
 	};
 } // sol
 
-// end of sol/table_core.hpp
+  // end of sol/table_core.hpp
 
 namespace sol {
 	typedef table_core<false> table;
 } // sol
 
-// end of sol/table.hpp
+  // end of sol/table.hpp
 
-// beginning of sol/load_result.hpp
+  // beginning of sol/load_result.hpp
 
 namespace sol {
 	struct load_result : public proxy_base<load_result> {
@@ -11789,7 +11842,7 @@ namespace sol {
 	};
 } // sol
 
-// end of sol/load_result.hpp
+  // end of sol/load_result.hpp
 
 namespace sol {
 	enum class lib : char {
@@ -12119,7 +12172,7 @@ namespace sol {
 			global.new_simple_usertype<Class, CTor0, CTor...>(name, std::forward<Args>(args)...);
 			return *this;
 		}
-		
+
 		template<typename Class, typename... CArgs, typename... Args>
 		state_view& new_simple_usertype(const std::string& name, constructors<CArgs...> ctor, Args&&... args) {
 			global.new_simple_usertype<Class>(name, ctor, std::forward<Args>(args)...);
@@ -12221,7 +12274,7 @@ namespace sol {
 	};
 } // sol
 
-// end of sol/state_view.hpp
+  // end of sol/state_view.hpp
 
 namespace sol {
 	inline int default_at_panic(lua_State* L) {
@@ -12255,11 +12308,11 @@ namespace sol {
 	};
 } // sol
 
-// end of sol/state.hpp
+  // end of sol/state.hpp
 
-// beginning of sol/coroutine.hpp
+  // beginning of sol/coroutine.hpp
 
-// beginning of sol/thread.hpp
+  // beginning of sol/thread.hpp
 
 namespace sol {
 	class thread : public reference {
@@ -12310,7 +12363,7 @@ namespace sol {
 	};
 } // sol
 
-// end of sol/thread.hpp
+  // end of sol/thread.hpp
 
 namespace sol {
 	class coroutine : public reference {
@@ -12401,6 +12454,6 @@ namespace sol {
 	};
 } // sol
 
-// end of sol/coroutine.hpp
+  // end of sol/coroutine.hpp
 
 #endif // SOL_SINGLE_INCLUDE_HPP
