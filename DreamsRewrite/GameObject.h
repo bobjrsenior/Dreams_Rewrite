@@ -12,6 +12,7 @@ class GameObject {
 public:
 	bool isStatic = false;
 	bool canCollide = true;
+	bool hasUpdateScript = false;
 
 private:
 	irr::core::vector2df position;

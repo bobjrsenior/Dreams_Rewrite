@@ -7,6 +7,7 @@ Scene = {
             IsCollidable = 1,
             Tag = "TestTag",
             SpritePath = "sprites/RedSquare.png",
+            Script = "scripts/movement.lua",
             SpriteStartX = 0,
             SpriteStartY = 0,
             SpriteWidth = 32,

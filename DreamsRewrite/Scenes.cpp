@@ -14,3 +14,7 @@ void loadScene(Scene* scene) {
 	scene->loadGameObjects();
 	activeScene = scene;
 }
+
+void luaErrorHandler(std::string message) {
+	return;
+}

@@ -10,6 +10,8 @@
 #include "IrrItems.h"
 #include <iostream>
 
+void luaErrorHandler(std::string message);
+
 class Scene {
 public:
 
@@ -151,15 +153,21 @@ public:
 				irr::video::ITexture* images = driver->getTexture(fullImagePath.c_str());
 
 				obj.setImage(images);
-				/*
-				if (updateScript != "") {
-					lua.script_file(path + updateScript);
+				
+				//if (updateScript != "") {
+					//lua.script_file(path + updateScript);
+					sol::load_result script1 = lua.load_file(path + updateScript);
+					if (script1.valid()) {
+						script1();
+						sol::protected_function updateFunction = lua["update"];
+						lua["ErrorHandler"] = &luaErrorHandler;
+						updateFunction.error_handler = lua["ErrorHandler"];
 
-					sol::protected_function updateFunction = lua["update"];
-
-					obj.setUpdateFunction(updateFunction);
-				}
-				*/
+						obj.setUpdateFunction(updateFunction);
+						obj.hasUpdateScript = true;
+					}
+				//}
+				
 				gameobjects.push_back(obj);
 
 			}

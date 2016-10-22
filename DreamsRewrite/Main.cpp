@@ -192,16 +192,18 @@ int main()
 
 			for (int i = 0; i < activeScene->getNumGameObjects(); ++i) {
 				GameObject obj = activeScene->getGameObject(i);
-				setPosition(obj.getPosition());
-				lua.set_function("getPosition", &getLuaPosition);
+				if (obj.hasUpdateScript) {
+					setPosition(obj.getPosition());
+					lua.set_function("getPosition", &getLuaPosition);
 
-				lua.set_function("setPosition", &setLuaPosition);
+					lua.set_function("setPosition", &setLuaPosition);
 
 
-				//obj.getUpdateFunction()();
+					obj.getUpdateFunction()();
 
-				obj.setPosition(getPosition());
-				activeScene->setGameObject(i, obj);
+					obj.setPosition(getPosition());
+					activeScene->setGameObject(i, obj);
+				}
 				drawGameObject(driver, &obj);
 			}
 			/*
