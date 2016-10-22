@@ -1,0 +1,1640 @@
+Microsoft (R) COFF/PE Dumper Version 14.00.24215.1
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file C:\Users\user\Documents\Visual Studio 2015\Projects\DreamsRewrite\lua\lib\luac.lib
+
+File Type: LIBRARY
+
+FILE HEADER VALUES
+            8664 machine (x64)
+               3 number of sections
+        580AE75D time date stamp Sat Oct 22 00:13:17 2016
+             106 file pointer to symbol table
+               8 number of symbols
+               0 size of optional header
+               0 characteristics
+
+SECTION HEADER #1
+.debug$S name
+       0 physical address
+       0 virtual address
+      3E size of raw data
+      8C file pointer to raw data (0000008C to 000000C9)
+       0 file pointer to relocation table
+       0 file pointer to line numbers
+       0 number of relocations
+       0 number of line numbers
+42100040 flags
+         Initialized Data
+         Discardable
+         1 byte align
+         Read Only
+
+SECTION HEADER #2
+.idata$2 name
+       0 physical address
+       0 virtual address
+      14 size of raw data
+      CA file pointer to raw data (000000CA to 000000DD)
+      DE file pointer to relocation table
+       0 file pointer to line numbers
+       3 number of relocations
+       0 number of line numbers
+C0300040 flags
+         Initialized Data
+         4 byte align
+         Read Write
+
+SECTION HEADER #3
+.idata$6 name
+       0 physical address
+       0 virtual address
+       A size of raw data
+      FC file pointer to raw data (000000FC to 00000105)
+      DE file pointer to relocation table
+       0 file pointer to line numbers
+       0 number of relocations
+       0 number of line numbers
+C0200040 flags
+         Initialized Data
+         2 byte align
+         Read Write
+
+FILE HEADER VALUES
+            8664 machine (x64)
+               2 number of sections
+        580AE75D time date stamp Sat Oct 22 00:13:17 2016
+              B6 file pointer to symbol table
+               2 number of symbols
+               0 size of optional header
+               0 characteristics
+
+SECTION HEADER #1
+.debug$S name
+       0 physical address
+       0 virtual address
+      3E size of raw data
+      64 file pointer to raw data (00000064 to 000000A1)
+       0 file pointer to relocation table
+       0 file pointer to line numbers
+       0 number of relocations
+       0 number of line numbers
+42100040 flags
+         Initialized Data
+         Discardable
+         1 byte align
+         Read Only
+
+SECTION HEADER #2
+.idata$3 name
+       0 physical address
+       0 virtual address
+      14 size of raw data
+      A2 file pointer to raw data (000000A2 to 000000B5)
+       0 file pointer to relocation table
+       0 file pointer to line numbers
+       0 number of relocations
+       0 number of line numbers
+C0300040 flags
+         Initialized Data
+         4 byte align
+         Read Write
+
+FILE HEADER VALUES
+            8664 machine (x64)
+               3 number of sections
+        580AE75D time date stamp Sat Oct 22 00:13:17 2016
+              DA file pointer to symbol table
+               2 number of symbols
+               0 size of optional header
+               0 characteristics
+
+SECTION HEADER #1
+.debug$S name
+       0 physical address
+       0 virtual address
+      3E size of raw data
+      8C file pointer to raw data (0000008C to 000000C9)
+       0 file pointer to relocation table
+       0 file pointer to line numbers
+       0 number of relocations
+       0 number of line numbers
+42100040 flags
+         Initialized Data
+         Discardable
+         1 byte align
+         Read Only
+
+SECTION HEADER #2
+.idata$5 name
+       0 physical address
+       0 virtual address
+       8 size of raw data
+      CA file pointer to raw data (000000CA to 000000D1)
+       0 file pointer to relocation table
+       0 file pointer to line numbers
+       0 number of relocations
+       0 number of line numbers
+C0400040 flags
+         Initialized Data
+         8 byte align
+         Read Write
+
+SECTION HEADER #3
+.idata$4 name
+       0 physical address
+       0 virtual address
+       8 size of raw data
+      D2 file pointer to raw data (000000D2 to 000000D9)
+       0 file pointer to relocation table
+       0 file pointer to line numbers
+       0 number of relocations
+       0 number of line numbers
+C0400040 flags
+         Initialized Data
+         8 byte align
+         Read Write
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : luaL_addlstring
+  Type         : code
+  Name type    : name
+  Hint         : 0
+  Name         : luaL_addlstring
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : luaL_addstring
+  Type         : code
+  Name type    : name
+  Hint         : 1
+  Name         : luaL_addstring
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : luaL_addvalue
+  Type         : code
+  Name type    : name
+  Hint         : 2
+  Name         : luaL_addvalue
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : luaL_argerror
+  Type         : code
+  Name type    : name
+  Hint         : 3
+  Name         : luaL_argerror
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : luaL_buffinit
+  Type         : code
+  Name type    : name
+  Hint         : 4
+  Name         : luaL_buffinit
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001B
+  DLL name     : luac.exe
+  Symbol name  : luaL_buffinitsize
+  Type         : code
+  Name type    : name
+  Hint         : 5
+  Name         : luaL_buffinitsize
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : luaL_callmeta
+  Type         : code
+  Name type    : name
+  Hint         : 6
+  Name         : luaL_callmeta
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : luaL_checkany
+  Type         : code
+  Name type    : name
+  Hint         : 7
+  Name         : luaL_checkany
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001B
+  DLL name     : luac.exe
+  Symbol name  : luaL_checkinteger
+  Type         : code
+  Name type    : name
+  Hint         : 8
+  Name         : luaL_checkinteger
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001B
+  DLL name     : luac.exe
+  Symbol name  : luaL_checklstring
+  Type         : code
+  Name type    : name
+  Hint         : 9
+  Name         : luaL_checklstring
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001A
+  DLL name     : luac.exe
+  Symbol name  : luaL_checknumber
+  Type         : code
+  Name type    : name
+  Hint         : 10
+  Name         : luaL_checknumber
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001A
+  DLL name     : luac.exe
+  Symbol name  : luaL_checkoption
+  Type         : code
+  Name type    : name
+  Hint         : 11
+  Name         : luaL_checkoption
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : luaL_checkstack
+  Type         : code
+  Name type    : name
+  Hint         : 12
+  Name         : luaL_checkstack
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : luaL_checktype
+  Type         : code
+  Name type    : name
+  Hint         : 13
+  Name         : luaL_checktype
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : luaL_checkudata
+  Type         : code
+  Name type    : name
+  Hint         : 14
+  Name         : luaL_checkudata
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001C
+  DLL name     : luac.exe
+  Symbol name  : luaL_checkversion_
+  Type         : code
+  Name type    : name
+  Hint         : 15
+  Name         : luaL_checkversion_
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : luaL_error
+  Type         : code
+  Name type    : name
+  Hint         : 16
+  Name         : luaL_error
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : luaL_execresult
+  Type         : code
+  Name type    : name
+  Hint         : 17
+  Name         : luaL_execresult
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : luaL_fileresult
+  Type         : code
+  Name type    : name
+  Hint         : 18
+  Name         : luaL_fileresult
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001B
+  DLL name     : luac.exe
+  Symbol name  : luaL_getmetafield
+  Type         : code
+  Name type    : name
+  Hint         : 19
+  Name         : luaL_getmetafield
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001A
+  DLL name     : luac.exe
+  Symbol name  : luaL_getsubtable
+  Type         : code
+  Name type    : name
+  Hint         : 20
+  Name         : luaL_getsubtable
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000013
+  DLL name     : luac.exe
+  Symbol name  : luaL_gsub
+  Type         : code
+  Name type    : name
+  Hint         : 21
+  Name         : luaL_gsub
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000012
+  DLL name     : luac.exe
+  Symbol name  : luaL_len
+  Type         : code
+  Name type    : name
+  Hint         : 22
+  Name         : luaL_len
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001A
+  DLL name     : luac.exe
+  Symbol name  : luaL_loadbufferx
+  Type         : code
+  Name type    : name
+  Hint         : 23
+  Name         : luaL_loadbufferx
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : luaL_loadfilex
+  Type         : code
+  Name type    : name
+  Hint         : 24
+  Name         : luaL_loadfilex
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : luaL_loadstring
+  Type         : code
+  Name type    : name
+  Hint         : 25
+  Name         : luaL_loadstring
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001B
+  DLL name     : luac.exe
+  Symbol name  : luaL_newmetatable
+  Type         : code
+  Name type    : name
+  Hint         : 26
+  Name         : luaL_newmetatable
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : luaL_newstate
+  Type         : code
+  Name type    : name
+  Hint         : 27
+  Name         : luaL_newstate
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : luaL_optinteger
+  Type         : code
+  Name type    : name
+  Hint         : 28
+  Name         : luaL_optinteger
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : luaL_optlstring
+  Type         : code
+  Name type    : name
+  Hint         : 29
+  Name         : luaL_optlstring
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : luaL_optnumber
+  Type         : code
+  Name type    : name
+  Hint         : 30
+  Name         : luaL_optnumber
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001B
+  DLL name     : luac.exe
+  Symbol name  : luaL_prepbuffsize
+  Type         : code
+  Name type    : name
+  Hint         : 31
+  Name         : luaL_prepbuffsize
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : luaL_pushresult
+  Type         : code
+  Name type    : name
+  Hint         : 32
+  Name         : luaL_pushresult
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001D
+  DLL name     : luac.exe
+  Symbol name  : luaL_pushresultsize
+  Type         : code
+  Name type    : name
+  Hint         : 33
+  Name         : luaL_pushresultsize
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000012
+  DLL name     : luac.exe
+  Symbol name  : luaL_ref
+  Type         : code
+  Name type    : name
+  Hint         : 34
+  Name         : luaL_ref
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : luaL_requiref
+  Type         : code
+  Name type    : name
+  Hint         : 35
+  Name         : luaL_requiref
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : luaL_setfuncs
+  Type         : code
+  Name type    : name
+  Hint         : 36
+  Name         : luaL_setfuncs
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001B
+  DLL name     : luac.exe
+  Symbol name  : luaL_setmetatable
+  Type         : code
+  Name type    : name
+  Hint         : 37
+  Name         : luaL_setmetatable
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : luaL_testudata
+  Type         : code
+  Name type    : name
+  Hint         : 38
+  Name         : luaL_testudata
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : luaL_tolstring
+  Type         : code
+  Name type    : name
+  Hint         : 39
+  Name         : luaL_tolstring
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : luaL_traceback
+  Type         : code
+  Name type    : name
+  Hint         : 40
+  Name         : luaL_traceback
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : luaL_unref
+  Type         : code
+  Name type    : name
+  Hint         : 41
+  Name         : luaL_unref
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : luaL_where
+  Type         : code
+  Name type    : name
+  Hint         : 42
+  Name         : luaL_where
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_absindex
+  Type         : code
+  Name type    : name
+  Hint         : 43
+  Name         : lua_absindex
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000013
+  DLL name     : luac.exe
+  Symbol name  : lua_arith
+  Type         : code
+  Name type    : name
+  Hint         : 44
+  Name         : lua_arith
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000015
+  DLL name     : luac.exe
+  Symbol name  : lua_atpanic
+  Type         : code
+  Name type    : name
+  Hint         : 45
+  Name         : lua_atpanic
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000013
+  DLL name     : luac.exe
+  Symbol name  : lua_callk
+  Type         : code
+  Name type    : name
+  Hint         : 46
+  Name         : lua_callk
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : lua_checkstack
+  Type         : code
+  Name type    : name
+  Hint         : 47
+  Name         : lua_checkstack
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000013
+  DLL name     : luac.exe
+  Symbol name  : lua_close
+  Type         : code
+  Name type    : name
+  Hint         : 48
+  Name         : lua_close
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000015
+  DLL name     : luac.exe
+  Symbol name  : lua_compare
+  Type         : code
+  Name type    : name
+  Hint         : 49
+  Name         : lua_compare
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : lua_concat
+  Type         : code
+  Name type    : name
+  Hint         : 50
+  Name         : lua_concat
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000012
+  DLL name     : luac.exe
+  Symbol name  : lua_copy
+  Type         : code
+  Name type    : name
+  Hint         : 51
+  Name         : lua_copy
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : lua_createtable
+  Type         : code
+  Name type    : name
+  Hint         : 52
+  Name         : lua_createtable
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000012
+  DLL name     : luac.exe
+  Symbol name  : lua_dump
+  Type         : code
+  Name type    : name
+  Hint         : 53
+  Name         : lua_dump
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000013
+  DLL name     : luac.exe
+  Symbol name  : lua_error
+  Type         : code
+  Name type    : name
+  Hint         : 54
+  Name         : lua_error
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000010
+  DLL name     : luac.exe
+  Symbol name  : lua_gc
+  Type         : code
+  Name type    : name
+  Hint         : 55
+  Name         : lua_gc
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : lua_getallocf
+  Type         : code
+  Name type    : name
+  Hint         : 56
+  Name         : lua_getallocf
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_getfield
+  Type         : code
+  Name type    : name
+  Hint         : 57
+  Name         : lua_getfield
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : lua_getglobal
+  Type         : code
+  Name type    : name
+  Hint         : 58
+  Name         : lua_getglobal
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000015
+  DLL name     : luac.exe
+  Symbol name  : lua_gethook
+  Type         : code
+  Name type    : name
+  Hint         : 59
+  Name         : lua_gethook
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001A
+  DLL name     : luac.exe
+  Symbol name  : lua_gethookcount
+  Type         : code
+  Name type    : name
+  Hint         : 60
+  Name         : lua_gethookcount
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : lua_gethookmask
+  Type         : code
+  Name type    : name
+  Hint         : 61
+  Name         : lua_gethookmask
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000012
+  DLL name     : luac.exe
+  Symbol name  : lua_geti
+  Type         : code
+  Name type    : name
+  Hint         : 62
+  Name         : lua_geti
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000015
+  DLL name     : luac.exe
+  Symbol name  : lua_getinfo
+  Type         : code
+  Name type    : name
+  Hint         : 63
+  Name         : lua_getinfo
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_getlocal
+  Type         : code
+  Name type    : name
+  Hint         : 64
+  Name         : lua_getlocal
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001A
+  DLL name     : luac.exe
+  Symbol name  : lua_getmetatable
+  Type         : code
+  Name type    : name
+  Hint         : 65
+  Name         : lua_getmetatable
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_getstack
+  Type         : code
+  Name type    : name
+  Hint         : 66
+  Name         : lua_getstack
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_gettable
+  Type         : code
+  Name type    : name
+  Hint         : 67
+  Name         : lua_gettable
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : lua_gettop
+  Type         : code
+  Name type    : name
+  Hint         : 68
+  Name         : lua_gettop
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : lua_getupvalue
+  Type         : code
+  Name type    : name
+  Hint         : 69
+  Name         : lua_getupvalue
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001A
+  DLL name     : luac.exe
+  Symbol name  : lua_getuservalue
+  Type         : code
+  Name type    : name
+  Hint         : 70
+  Name         : lua_getuservalue
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : lua_iscfunction
+  Type         : code
+  Name type    : name
+  Hint         : 71
+  Name         : lua_iscfunction
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : lua_isinteger
+  Type         : code
+  Name type    : name
+  Hint         : 72
+  Name         : lua_isinteger
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_isnumber
+  Type         : code
+  Name type    : name
+  Hint         : 73
+  Name         : lua_isnumber
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_isstring
+  Type         : code
+  Name type    : name
+  Hint         : 74
+  Name         : lua_isstring
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : lua_isuserdata
+  Type         : code
+  Name type    : name
+  Hint         : 75
+  Name         : lua_isuserdata
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : lua_isyieldable
+  Type         : code
+  Name type    : name
+  Hint         : 76
+  Name         : lua_isyieldable
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000011
+  DLL name     : luac.exe
+  Symbol name  : lua_len
+  Type         : code
+  Name type    : name
+  Hint         : 77
+  Name         : lua_len
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000012
+  DLL name     : luac.exe
+  Symbol name  : lua_load
+  Type         : code
+  Name type    : name
+  Hint         : 78
+  Name         : lua_load
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_newstate
+  Type         : code
+  Name type    : name
+  Hint         : 79
+  Name         : lua_newstate
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : lua_newthread
+  Type         : code
+  Name type    : name
+  Hint         : 80
+  Name         : lua_newthread
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : lua_newuserdata
+  Type         : code
+  Name type    : name
+  Hint         : 81
+  Name         : lua_newuserdata
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000012
+  DLL name     : luac.exe
+  Symbol name  : lua_next
+  Type         : code
+  Name type    : name
+  Hint         : 82
+  Name         : lua_next
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : lua_pcallk
+  Type         : code
+  Name type    : name
+  Hint         : 83
+  Name         : lua_pcallk
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : lua_pushboolean
+  Type         : code
+  Name type    : name
+  Hint         : 84
+  Name         : lua_pushboolean
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001A
+  DLL name     : luac.exe
+  Symbol name  : lua_pushcclosure
+  Type         : code
+  Name type    : name
+  Hint         : 85
+  Name         : lua_pushcclosure
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : lua_pushfstring
+  Type         : code
+  Name type    : name
+  Hint         : 86
+  Name         : lua_pushfstring
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : lua_pushinteger
+  Type         : code
+  Name type    : name
+  Hint         : 87
+  Name         : lua_pushinteger
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001F
+  DLL name     : luac.exe
+  Symbol name  : lua_pushlightuserdata
+  Type         : code
+  Name type    : name
+  Hint         : 88
+  Name         : lua_pushlightuserdata
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : lua_pushlstring
+  Type         : code
+  Name type    : name
+  Hint         : 89
+  Name         : lua_pushlstring
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000015
+  DLL name     : luac.exe
+  Symbol name  : lua_pushnil
+  Type         : code
+  Name type    : name
+  Hint         : 90
+  Name         : lua_pushnil
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : lua_pushnumber
+  Type         : code
+  Name type    : name
+  Hint         : 91
+  Name         : lua_pushnumber
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : lua_pushstring
+  Type         : code
+  Name type    : name
+  Hint         : 92
+  Name         : lua_pushstring
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : lua_pushthread
+  Type         : code
+  Name type    : name
+  Hint         : 93
+  Name         : lua_pushthread
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : lua_pushvalue
+  Type         : code
+  Name type    : name
+  Hint         : 94
+  Name         : lua_pushvalue
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001A
+  DLL name     : luac.exe
+  Symbol name  : lua_pushvfstring
+  Type         : code
+  Name type    : name
+  Hint         : 95
+  Name         : lua_pushvfstring
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_rawequal
+  Type         : code
+  Name type    : name
+  Hint         : 96
+  Name         : lua_rawequal
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : lua_rawget
+  Type         : code
+  Name type    : name
+  Hint         : 97
+  Name         : lua_rawget
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000015
+  DLL name     : luac.exe
+  Symbol name  : lua_rawgeti
+  Type         : code
+  Name type    : name
+  Hint         : 98
+  Name         : lua_rawgeti
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000015
+  DLL name     : luac.exe
+  Symbol name  : lua_rawgetp
+  Type         : code
+  Name type    : name
+  Hint         : 99
+  Name         : lua_rawgetp
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : lua_rawlen
+  Type         : code
+  Name type    : name
+  Hint         : 100
+  Name         : lua_rawlen
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : lua_rawset
+  Type         : code
+  Name type    : name
+  Hint         : 101
+  Name         : lua_rawset
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000015
+  DLL name     : luac.exe
+  Symbol name  : lua_rawseti
+  Type         : code
+  Name type    : name
+  Hint         : 102
+  Name         : lua_rawseti
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000015
+  DLL name     : luac.exe
+  Symbol name  : lua_rawsetp
+  Type         : code
+  Name type    : name
+  Hint         : 103
+  Name         : lua_rawsetp
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : lua_resume
+  Type         : code
+  Name type    : name
+  Hint         : 104
+  Name         : lua_resume
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : lua_rotate
+  Type         : code
+  Name type    : name
+  Hint         : 105
+  Name         : lua_rotate
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : lua_setallocf
+  Type         : code
+  Name type    : name
+  Hint         : 106
+  Name         : lua_setallocf
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_setfield
+  Type         : code
+  Name type    : name
+  Hint         : 107
+  Name         : lua_setfield
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : lua_setglobal
+  Type         : code
+  Name type    : name
+  Hint         : 108
+  Name         : lua_setglobal
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000015
+  DLL name     : luac.exe
+  Symbol name  : lua_sethook
+  Type         : code
+  Name type    : name
+  Hint         : 109
+  Name         : lua_sethook
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000012
+  DLL name     : luac.exe
+  Symbol name  : lua_seti
+  Type         : code
+  Name type    : name
+  Hint         : 110
+  Name         : lua_seti
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_setlocal
+  Type         : code
+  Name type    : name
+  Hint         : 111
+  Name         : lua_setlocal
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001A
+  DLL name     : luac.exe
+  Symbol name  : lua_setmetatable
+  Type         : code
+  Name type    : name
+  Hint         : 112
+  Name         : lua_setmetatable
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_settable
+  Type         : code
+  Name type    : name
+  Hint         : 113
+  Name         : lua_settable
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : lua_settop
+  Type         : code
+  Name type    : name
+  Hint         : 114
+  Name         : lua_settop
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : lua_setupvalue
+  Type         : code
+  Name type    : name
+  Hint         : 115
+  Name         : lua_setupvalue
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001A
+  DLL name     : luac.exe
+  Symbol name  : lua_setuservalue
+  Type         : code
+  Name type    : name
+  Hint         : 116
+  Name         : lua_setuservalue
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : lua_status
+  Type         : code
+  Name type    : name
+  Hint         : 117
+  Name         : lua_status
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 0000001C
+  DLL name     : luac.exe
+  Symbol name  : lua_stringtonumber
+  Type         : code
+  Name type    : name
+  Hint         : 118
+  Name         : lua_stringtonumber
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : lua_toboolean
+  Type         : code
+  Name type    : name
+  Hint         : 119
+  Name         : lua_toboolean
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : lua_tocfunction
+  Type         : code
+  Name type    : name
+  Hint         : 120
+  Name         : lua_tocfunction
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : lua_tointegerx
+  Type         : code
+  Name type    : name
+  Hint         : 121
+  Name         : lua_tointegerx
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : lua_tolstring
+  Type         : code
+  Name type    : name
+  Hint         : 122
+  Name         : lua_tolstring
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : lua_tonumberx
+  Type         : code
+  Name type    : name
+  Hint         : 123
+  Name         : lua_tonumberx
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : lua_topointer
+  Type         : code
+  Name type    : name
+  Hint         : 124
+  Name         : lua_topointer
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_tothread
+  Type         : code
+  Name type    : name
+  Hint         : 125
+  Name         : lua_tothread
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000018
+  DLL name     : luac.exe
+  Symbol name  : lua_touserdata
+  Type         : code
+  Name type    : name
+  Hint         : 126
+  Name         : lua_touserdata
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000012
+  DLL name     : luac.exe
+  Symbol name  : lua_type
+  Type         : code
+  Name type    : name
+  Hint         : 127
+  Name         : lua_type
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000016
+  DLL name     : luac.exe
+  Symbol name  : lua_typename
+  Type         : code
+  Name type    : name
+  Hint         : 128
+  Name         : lua_typename
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000017
+  DLL name     : luac.exe
+  Symbol name  : lua_upvalueid
+  Type         : code
+  Name type    : name
+  Hint         : 129
+  Name         : lua_upvalueid
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000019
+  DLL name     : luac.exe
+  Symbol name  : lua_upvaluejoin
+  Type         : code
+  Name type    : name
+  Hint         : 130
+  Name         : lua_upvaluejoin
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000015
+  DLL name     : luac.exe
+  Symbol name  : lua_version
+  Type         : code
+  Name type    : name
+  Hint         : 131
+  Name         : lua_version
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000013
+  DLL name     : luac.exe
+  Symbol name  : lua_xmove
+  Type         : code
+  Name type    : name
+  Hint         : 132
+  Name         : lua_xmove
+
+  Version      : 0
+  Machine      : 8664 (x64)
+  TimeDateStamp: 580AE75D Sat Oct 22 00:13:17 2016
+  SizeOfData   : 00000014
+  DLL name     : luac.exe
+  Symbol name  : lua_yieldk
+  Type         : code
+  Name type    : name
+  Hint         : 133
+  Name         : lua_yieldk
+
+  Summary
+
+          BA .debug$S
+          14 .idata$2
+          14 .idata$3
+           8 .idata$4
+           8 .idata$5
+           A .idata$6
