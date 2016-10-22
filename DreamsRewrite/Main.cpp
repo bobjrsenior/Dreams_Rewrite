@@ -11,6 +11,7 @@ and tell the linker to link with the .lib file.
 */
 #include <irrlicht.h>
 #include "sol.hpp"
+#include "EventReciever.h"
 
 using namespace irr;
 
@@ -20,9 +21,23 @@ using namespace irr;
 
 core::vector2df position;
 sol::state lua;
+EventReceiver eventReciever;
 
 sol::table getPosition() {
 	return lua.create_table_with("X", position.X, "Y", position.Y);
+}
+
+void setPosition(sol::table newPosition) {
+
+	float newX = newPosition["X"].get_or<float>(position.X);
+	float newY = newPosition["Y"].get_or<float>(position.Y);
+
+	position.X = (f32) newX;
+	position.Y = (f32) newY;
+}
+
+bool isKeyDown(int key) {
+	return eventReciever.IsKeyDown((EKEY_CODE) key);
 }
 
 /*
@@ -31,13 +46,23 @@ a caption, and get a pointer to the video driver.
 */
 int main()
 {
+
 	lua.open_libraries(sol::lib::base);
 
 	lua.set_function("getPosition", &getPosition);
 
+	lua.set_function("setPosition", &setPosition);
+
+	lua.set_function("isKeyDown", &isKeyDown);
+
+	lua.script_file("keycodeLuaTable.lua");
+
+	lua.script_file("test.lua");
+
+	sol::protected_function problematicwoof = lua["update"];
 
 	IrrlichtDevice *device = createDevice(video::EDT_OPENGL,
-		core::dimension2d<u32>(512, 384));
+		core::dimension2d<u32>(512, 384), false, false, false, false, &eventReciever);
 
 	if (device == 0)
 		return 1; // could not create selected driver.
@@ -67,6 +92,8 @@ int main()
 			u32 time = device->getTimer()->getTime();
 
 			driver->beginScene(true, true, video::SColor(255, 120, 102, 136));
+
+			problematicwoof();
 
 			driver->draw2DImage(images, core::position2d<s32>((s32) position.X, (s32) position.Y),
 				redSquareRect, 0,
