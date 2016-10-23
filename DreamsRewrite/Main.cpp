@@ -1,3 +1,8 @@
+#ifdef _WIN32
+#include <Windows.h>
+#include <mmsystem.h>
+#undef PlaySound
+#endif
 #include <irrlicht.h>
 #include "EventReciever.h"
 #include <vector>
@@ -147,6 +152,14 @@ inline void forceKeyUp(int key) {
 	eventReciever.forceKeyUp((EKEY_CODE)key);
 }
 
+inline void playSound(std::string soundFile) {
+#ifdef _WIN32
+	std::string fullPath = config.assetsFolder + soundFile;
+	PlaySoundA((fullPath.c_str()), NULL, SND_ASYNC | SND_FILENAME);
+#endif
+
+}
+
 inline void drawGameObject(video::IVideoDriver* driver, GameObject *obj) {
 	irr::core::vector2df objPosition = obj->getPosition();
 
@@ -190,6 +203,8 @@ void bindLuaCallbacks() {
 	lua.set_function("getPosition", &getLuaPosition);
 
 	lua.set_function("setPosition", &setLuaPosition);
+
+	lua.set_function("playSound", &playSound);
 
 	lua.script_file("keycodeLuaTable.lua");
 
@@ -291,7 +306,7 @@ int main()
 
 	//driver->getMaterial2D().TextureLayer[0].BilinearFilter = true;
 	//driver->getMaterial2D().AntiAliasing = video::EAAM_FULL_BASIC;
-
+	
 	u32 prevTime = device->getTimer()->getRealTime();
 	// Main game loop
 	while (device->run() && driver && continueGame)

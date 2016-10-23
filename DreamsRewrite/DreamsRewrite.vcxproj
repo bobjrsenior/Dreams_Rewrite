@@ -94,7 +94,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\user\Documents\Visual Studio 2015\Projects\DreamsRewrite\irrlicht-1.8.4\lib\Win64-visualStudio;C:\Users\user\Documents\Visual Studio 2015\Projects\DreamsRewrite\lua\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lua5.3.3.lib;luac.lib;Irrlicht.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>lua5.3.3.lib;luac.lib;Irrlicht.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -110,7 +110,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\user\Documents\Visual Studio 2015\Projects\DreamsRewrite\irrlicht-1.8.4\lib\Win64-visualStudio;C:\Users\user\Documents\Visual Studio 2015\Projects\DreamsRewrite\lua\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lua5.3.3.lib;luac.lib;Irrlicht.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>lua5.3.3.lib;luac.lib;Irrlicht.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -130,7 +130,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\user\Documents\Visual Studio 2015\Projects\DreamsRewrite\irrlicht-1.8.4\lib\Win64-visualStudio;C:\Users\user\Documents\Visual Studio 2015\Projects\DreamsRewrite\lua\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lua5.3.3.lib;luac.lib;Irrlicht.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>lua5.3.3.lib;luac.lib;Irrlicht.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -150,7 +150,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Users\user\Documents\Visual Studio 2015\Projects\DreamsRewrite\irrlicht-1.8.4\lib\Win64-visualStudio;C:\Users\user\Documents\Visual Studio 2015\Projects\DreamsRewrite\lua\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>lua5.3.3.lib;luac.lib;Irrlicht.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>lua5.3.3.lib;luac.lib;Irrlicht.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -16,6 +16,7 @@ function update()
     if isKeyDown(KEYCODE["KEY_LEFT"]) then
         position = {X = screenWidth / 4, Y = screenHeight / 2}
         setPosition(position)
+        playSound("sfx\\left.wav")
     else
         position = {X = screenWidth * 2, Y = 0}
         setPosition(position)
