@@ -17,6 +17,7 @@ function update()
         last = curTime
         mousePos = getMousePos()
         mousePos["X"] = curTime % getScreenWidth()
+        mousePos["Y"] = (curTime * curTime) % getScreenHeight()
         setMousePos(mousePos)
     end
 end

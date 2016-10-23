@@ -1,17 +1,8 @@
-velocity = {X = 0, Y = 0}
-canJump = 1
+velocity2 = {X = 0, Y = 0}
+canJump2 = 1
+direction = 1
 
 function update()
-    if isKeyDown(KEYCODE["KEY_ESCAPE"]) then
-        quitGame()
-        return
-    end
-    
-    if isKeyDown(KEYCODE["KEY_RETURN"]) then
-        forceKeyUp(KEYCODE["KEY_RETURN"])
-        loadScene(2)
-        return
-    end
     
     screenWidth = getScreenWidth()
     screenHeight = getScreenHeight()
@@ -28,28 +19,32 @@ function update()
     if tableLength(collision) > 0 then
         for _,value in ipairs(collision) do
             if compareTag(value, "Goal") == 1 then
-                loadScene(2)
+                
             elseif compareTag(value, "Enemy") == 1 then
-                loadScene(0)
+
+            elseif compareTag(value, "Player") == 1 then
+
             else
                 collisionDir = collisionDirection(value)
                 if math.abs(collisionDir["X"]) > math.abs(collisionDir["Y"]) then
                     if collisionDir["X"] > 0 then
                         xLock = 1
+                        direction = -xLock
                     else
                         xLock = -1
+                        direction = -xLock
                     end
                 else
                     if collisionDir["Y"] > 0 then
                         yLock = 1
-                        canJump = 1
-                        if velocity["Y"] > 0 then
-                            velocity["Y"] = 0
+                        canJump2 = 1
+                        if velocity2["Y"] > 0 then
+                            velocity2["Y"] = 0
                         end
                     else
                         yLock = -1
-                        if velocity["Y"] < 0 then
-                            velocity["Y"] = 0
+                        if velocity2["Y"] < 0 then
+                            velocity2["Y"] = 0
                         end
                     end
                 end
@@ -58,29 +53,35 @@ function update()
     end
 
     
-    if xLock ~= 1 and position["X"] < screenWidth - 32 and (isKeyDown(KEYCODE["KEY_RIGHT"]) or isKeyDown(KEYCODE["KEY_KEY_D"])) then
-        position["X"] = position["X"] + xRatio
-    elseif xLock ~= -1 and position["X"] > 0 and (isKeyDown(KEYCODE["KEY_LEFT"]) or isKeyDown(KEYCODE["KEY_KEY_A"])) then
-        position["X"] = position["X"] - xRatio
+    if position["X"] >= screenWidth - 32 then
+        direction = -1
+    elseif position["X"] <= 0 then
+        direction = 1
     end
     
-    if yLock ~= -1 and canJump == 1  and (isKeyDown(KEYCODE["KEY_UP"]) or isKeyDown(KEYCODE["KEY_KEY_W"])) then
-        velocity["Y"] = velocity["Y"] - 5
-        canJump = 0
+    if xLock ~= 1 and position["X"] < screenWidth - 32 and direction == 1 then
+        position["X"] = position["X"] + (1.5 * xRatio)
+    elseif xLock ~= -1 and position["X"] > 0 and direction == -1 then
+        position["X"] = position["X"] - (1.5 * xRatio)
+    end
+    
+    if yLock ~= -1 and canJump2 == 1  and (isKeyDown(KEYCODE["KEY_UP"]) or isKeyDown(KEYCODE["KEY_KEY_W"])) then
+        velocity2["Y"] = velocity2["Y"] - 5
+        canJump2 = 0
     end
     
     if yLock ~= 1 then
-        velocity["Y"] = velocity["Y"] + (0.01 * deltaTime)
+        velocity2["Y"] = velocity2["Y"] + (0.01 * deltaTime)
 
     end
 
-    position["Y"] = position["Y"] + (velocity["Y"] * yRatio)
+    position["Y"] = position["Y"] + (velocity2["Y"] * yRatio)
 
         
     if position["Y"] >= screenHeight - 32 then
         position["Y"] = screenHeight - 32
-        velocity["Y"] = 0
-        canJump = 1
+        velocity2["Y"] = 0
+        canJump2 = 1
     end
     
     setPosition(position)
