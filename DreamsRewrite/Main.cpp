@@ -72,11 +72,11 @@ void setLuaPosition(sol::table newPosition) {
 	position.Y = (f32) newY;
 }
 
-void setPosition(core::vector2df newPosition) {
+inline void setPosition(core::vector2df newPosition) {
 	position = newPosition;
 }
 
-core::vector2df getPosition() {
+inline core::vector2df getPosition() {
 	return position;
 }
 
@@ -113,9 +113,12 @@ inline sol::table collisionDirection(int otherObjIndex) {
 	return lua.create_table_with("X", xPos, "Y", yPos);
 }
 
-
 inline bool isKeyDown(int key) {
 	return eventReciever.IsKeyDown((EKEY_CODE) key);
+}
+
+inline void forceKeyUp(int key) {
+	eventReciever.forceKeyUp((EKEY_CODE)key);
 }
 
 inline void drawGameObject(video::IVideoDriver* driver, GameObject *obj) {
@@ -128,6 +131,8 @@ inline void drawGameObject(video::IVideoDriver* driver, GameObject *obj) {
 
 void bindLuaCallbacks() {
 	lua.set_function("isKeyDown", &isKeyDown);
+
+	lua.set_function("forceKeyUp", &forceKeyUp);
 
 	lua.set_function("getMousePos", &getLuaMousePos);
 
@@ -159,7 +164,7 @@ int main()
 	std::vector<GameObject> gameObjects;
 	frameRate = 60;
 	millisecondsPerFrame = 1000.0f / frameRate;
-	printf("MILLIS/FRAME: %f\n", millisecondsPerFrame);
+
 	lua.open_libraries(sol::lib::base, sol::lib::math);
 	{
 		
@@ -252,10 +257,13 @@ int main()
 
 			driver->beginScene(true, true, video::SColor(255, 120, 102, 136));
 
-			for (int i = 0; i < activeScene->getNumGameObjects(); ++i) {
-				GameObject obj = activeScene->getGameObject(i);
+			Scene *curScene = activeScene;
+			for (int i = 0; i < curScene->getNumGameObjects() && continueGame; ++i) {
+				
+				GameObject obj = curScene->getGameObject(i);
 				curObjectIndex = i;
 				if (obj.hasUpdateScript) {
+					
 					setPosition(obj.getPosition());
 					lua.set_function("getPosition", &getLuaPosition);
 
@@ -264,8 +272,12 @@ int main()
 
 					obj.getUpdateFunction()();
 
+					if (curScene != activeScene) {
+						break;
+					}
+
 					obj.setPosition(getPosition());
-					activeScene->setGameObject(i, obj);
+					curScene->setGameObject(i, obj);
 				}
 				drawGameObject(driver, &obj);
 			}

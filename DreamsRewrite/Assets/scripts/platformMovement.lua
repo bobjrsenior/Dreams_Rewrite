@@ -4,6 +4,13 @@ canJump = 1
 function update()
     if isKeyDown(KEYCODE["KEY_ESCAPE"]) then
         quitGame()
+        return
+    end
+    
+    if isKeyDown(KEYCODE["KEY_RETURN"]) then
+        forceKeyUp(KEYCODE["KEY_RETURN"])
+        loadScene(0)
+        return
     end
     
     screenWidth = getScreenWidth()

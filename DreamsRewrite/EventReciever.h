@@ -27,6 +27,10 @@ public:
 			KeyIsDown[i] = false;
 	}
 
+	void forceKeyUp(irr::EKEY_CODE keyCode) {
+		KeyIsDown[keyCode] = false;
+	}
+
 private:
 	// We use this array to store the current state of each key
 	bool KeyIsDown[irr::KEY_KEY_CODES_COUNT];

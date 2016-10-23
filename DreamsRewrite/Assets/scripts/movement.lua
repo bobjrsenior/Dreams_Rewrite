@@ -3,6 +3,12 @@ function update()
         quitGame()
     end
     
+    if isKeyDown(KEYCODE["KEY_RETURN"]) then
+        forceKeyUp(KEYCODE["KEY_RETURN"])
+        loadScene(1)
+        return
+    end
+    
     screenWidth = getScreenWidth()
     screenHeight = getScreenHeight()
     change = 0
