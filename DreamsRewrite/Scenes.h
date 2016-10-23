@@ -59,20 +59,24 @@ public:
 	}
 
 	void loadGameObjects() {
+		// Load up the scene file
 		lua.script_file(path + filename);
 
+		// CHeck if it has a game object table
 		sol::optional<sol::table> gameOjectTblOpt = lua["Scene"]["GameObjects"];
 		if (gameOjectTblOpt == sol::nullopt) {
 			printf("Error Loading config file");
 			return;
 		}
 		else {
+			// Retrieve the table
 			sol::table gameObjectTbl = gameOjectTblOpt.value();
 			if (gameObjectTbl.size() == 0) {
 				printf("Not enough scenes\n");
 				return;
 			}
-			std::cout << gameObjectTbl.size() << std::endl;
+			
+			// GO through everything in the table
 			for (int i = 1; i <= gameObjectTbl.size(); ++i) {
 				sol::table objTable = gameObjectTbl[i];
 
@@ -85,8 +89,11 @@ public:
 				std::string updateScript;
 				std::string spritePath;
 
+				// Retreive position
 				position.X = objTable["PositionX"].get_or<float>(0);
 				position.Y = objTable["PositionY"].get_or<float>(0);
+
+
 				sol::optional<int> isStaticOpt = objTable["IsStatic"];
 				if (isStaticOpt == sol::nullopt) {
 					isStatic = false;
@@ -141,6 +148,7 @@ public:
 					imagePosition.LowerRightCorner.Y = imagePosition.UpperLeftCorner.Y + spriteHeightOpt.value();
 				}
 
+				// Create the game object and set its values
 				GameObject obj = GameObject();
 				obj.setPosition(position);
 				obj.setImagePosition(imagePosition);
@@ -148,26 +156,26 @@ public:
 				obj.setIsStatic(isStatic);
 				obj.setIsCollidable(isCollidable);
 
+				// Get the image and attach it to the game object
 				std::string fullImagePath = path + spritePath;
 
 				irr::video::ITexture* images = driver->getTexture(fullImagePath.c_str());
 
 				obj.setImage(images);
 				
-				//if (updateScript != "") {
-					//lua.script_file(path + updateScript);
-					sol::load_result script1 = lua.load_file(path + updateScript);
-					if (script1.valid()) {
-						script1();
-						sol::protected_function updateFunction = lua["update"];
-						lua["ErrorHandler"] = &luaErrorHandler;
-						updateFunction.error_handler = lua["ErrorHandler"];
+				// Load the object's script and attach the update function is the script exists
+				sol::load_result script1 = lua.load_file(path + updateScript);
+				if (script1.valid()) {
+					script1();
+					sol::protected_function updateFunction = lua["update"];
+					lua["ErrorHandler"] = &luaErrorHandler;
+					updateFunction.error_handler = lua["ErrorHandler"];
 
-						obj.setUpdateFunction(updateFunction);
-						obj.hasUpdateScript = true;
-					}
-				//}
+					obj.setUpdateFunction(updateFunction);
+					obj.hasUpdateScript = true;
+				}
 				
+				// Add game object to the game object list
 				gameobjects.push_back(obj);
 
 			}

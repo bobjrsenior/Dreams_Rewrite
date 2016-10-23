@@ -88,25 +88,27 @@ inline int getScreenHeight() {
 	return config.screenHeight;
 }
 
-int isColliding() {
+sol::table isColliding() {
+	sol::table collisions = lua.create_table_with("0", 0);
 	if (curObjectIndex != -1) {
+
 		GameObject obj = activeScene->getGameObject(curObjectIndex);
 		for (int i = 0; i < activeScene->getNumGameObjects(); ++i) {
 			if (i != curObjectIndex) {
 				if (obj.isColliding(activeScene->getGameObject(i))) {
-					return i;
+					collisions.add(i);
 				}
 			}
 		}
 	}
-	return -1;
+	return collisions;
 }
 
 inline sol::table collisionDirection(int otherObjIndex) {
 	f32 xPos = 0;
 	f32 yPos = 0;
 	if (curObjectIndex != -1 && otherObjIndex != curObjectIndex && otherObjIndex < activeScene->getNumGameObjects()) {
-		core::vector2df dir = activeScene->getGameObject(curObjectIndex).collisionDirection(activeScene->getGameObject(otherObjIndex));
+		core::vector2df dir = activeScene->getGameObject(curObjectIndex).collisionDirectionNormalized(activeScene->getGameObject(otherObjIndex));
 		xPos = dir.X;
 		yPos = dir.Y;
 	}
@@ -138,7 +140,7 @@ void bindLuaCallbacks() {
 
 	lua.set_function("setMousePos", &setLuaMousePos);
 
-	lua.set_function("setMousePos", &getTime);
+	lua.set_function("getTime", &getTime);
 
 	lua.set_function("quitGame", &quitGame);
 
@@ -153,6 +155,8 @@ void bindLuaCallbacks() {
 	lua.set_function("collisionDirection", &collisionDirection);
 
 	lua.script_file("keycodeLuaTable.lua");
+
+	lua.script("function tableLength(T) local count = 0 for _ in pairs(T) do count = count + 1 end  return count  end");
 }
 
 /*
@@ -165,7 +169,7 @@ int main()
 	frameRate = 60;
 	millisecondsPerFrame = 1000.0f / frameRate;
 
-	lua.open_libraries(sol::lib::base, sol::lib::math);
+	lua.open_libraries(sol::lib::base, sol::lib::math, sol::lib::table);
 	{
 		
 		bindLuaCallbacks();

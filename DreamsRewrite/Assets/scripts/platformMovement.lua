@@ -9,7 +9,7 @@ function update()
     
     if isKeyDown(KEYCODE["KEY_RETURN"]) then
         forceKeyUp(KEYCODE["KEY_RETURN"])
-        loadScene(0)
+        loadScene(2)
         return
     end
     
@@ -25,25 +25,27 @@ function update()
     position = getPosition()
     deltaTime = getDeltaTime()
     collision = isColliding()
-    if collision ~= -1 then
-        collisionDir = collisionDirection(collision)
-        if math.abs(collisionDir["X"]) > math.abs(collisionDir["Y"]) then
-            if collisionDir["X"] > 0 then
-                xLock = 1
-            else
-                xLock = -1
-            end
-        else
-            if collisionDir["Y"] > 0 then
-                yLock = 1
-                canJump = 1
-                if velocity["Y"] > 0 then
-                    velocity["Y"] = 0
+    if tableLength(collision) > 0 then
+        for _,value in ipairs(collision) do
+            collisionDir = collisionDirection(value)
+            if math.abs(collisionDir["X"]) > math.abs(collisionDir["Y"]) then
+                if collisionDir["X"] > 0 then
+                    xLock = 1
+                else
+                    xLock = -1
                 end
             else
-                yLock = -1
-                if velocity["Y"] < 0 then
-                    velocity["Y"] = 0
+                if collisionDir["Y"] > 0 then
+                    yLock = 1
+                    canJump = 1
+                    if velocity["Y"] > 0 then
+                        velocity["Y"] = 0
+                    end
+                else
+                    yLock = -1
+                    if velocity["Y"] < 0 then
+                        velocity["Y"] = 0
+                    end
                 end
             end
         end

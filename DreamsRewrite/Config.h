@@ -3,6 +3,9 @@
 #include "Scenes.h"
 #include <irrlicht.h>
 
+///
+/// Main Game Settings
+///
 class Config {
 public:
 	std::string title;

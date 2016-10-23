@@ -27,6 +27,34 @@ Scene = {
             SpriteWidth = 32,
             SpriteHeight = 32
 
+        },
+        {
+            PositionX = 184,
+            PositionY = 480-64,
+            IsStatic = false,
+            IsCollidable = 1,
+            Tag = "TestTag",
+            SpritePath = "sprites/RedSquare.png",
+            Script = "",
+            SpriteStartX = 0,
+            SpriteStartY = 0,
+            SpriteWidth = 32,
+            SpriteHeight = 32
+
+        },
+        {
+            PositionX = 280,
+            PositionY = 480-64,
+            IsStatic = false,
+            IsCollidable = 1,
+            Tag = "TestTag2",
+            SpritePath = "sprites/RedSquare.png",
+            Script = "",
+            SpriteStartX = 0,
+            SpriteStartY = 0,
+            SpriteWidth = 32,
+            SpriteHeight = 32
+
         }
     }
 }

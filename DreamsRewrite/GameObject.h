@@ -15,10 +15,15 @@ public:
 	bool hasUpdateScript = false;
 
 private:
+	// Where the object is in pixels (Upper left corner)
 	irr::core::vector2df position;
+	// The path/name of the script attached to this object
 	std::string objectScript;
+	// Update function associated with this script
 	sol::protected_function updateFunction;
+	// Image/Sprite this object uses
 	irr::video::ITexture* image;
+	// Where in the image the sprite is
 	irr::core::rect<irr::s32> imagePosition;
 
 
