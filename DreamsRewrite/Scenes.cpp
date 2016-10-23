@@ -1,4 +1,5 @@
 #include "Scenes.h"
+#include "Config.h"
 
 Scene* activeScene = NULL;
 

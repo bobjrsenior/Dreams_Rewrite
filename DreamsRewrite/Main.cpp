@@ -13,15 +13,46 @@ using namespace irr;
 core::vector2df position;
 EventReceiver eventReciever;
 Config config;
+u32 curTime;
+bool continueGame = true;
 
+inline void quitGame() {
+	continueGame = false;
+}
 
-const wchar_t* convertToLPtr(std::string str) {
+inline u32 getTime() {
+	return curTime;
+}
+
+inline void loadSceneIndex(int index) {
+	if (index >= 0 && index < config.scenes.size()) {
+		loadScene(&config.scenes[index]);
+	}
+}
+
+inline sol::table getLuaMousePos() {
+	core::position2d<s32> mPos = device->getCursorControl()->getPosition();
+	return lua.create_table_with("X", mPos.X, "Y", mPos.Y);
+}
+
+void setLuaMousePos(sol::table newPosition) {
+	core::position2d<s32> mPos = device->getCursorControl()->getPosition();
+	float newX = newPosition["X"].get_or<float>(mPos.X);
+	float newY = newPosition["Y"].get_or<float>(mPos.Y);
+
+	mPos.X = (s32)newX;
+	mPos.Y = (s32)newY;
+
+	device->getCursorControl()->setPosition(mPos);
+}
+
+inline const wchar_t* convertToLPtr(std::string str) {
 	std::wstring widestr = std::wstring(str.begin(), str.end());
 	const wchar_t* widecstr = widestr.c_str();
 	return widecstr;
 }
 
-sol::table getLuaPosition() {
+inline sol::table getLuaPosition() {
 	return lua.create_table_with("X", position.X, "Y", position.Y);
 }
 
@@ -47,11 +78,25 @@ inline bool isKeyDown(int key) {
 }
 
 inline void drawGameObject(video::IVideoDriver* driver, GameObject *obj) {
-	irr::core::vector2df position = obj->getPosition();
+	irr::core::vector2df objPosition = obj->getPosition();
 
-	driver->draw2DImage(obj->getImage(), core::position2d<s32>((s32)position.X, (s32)position.Y),
+	driver->draw2DImage(obj->getImage(), core::position2d<s32>((s32)objPosition.X, (s32)objPosition.Y),
 		obj->getImagePosition(), 0,
 		video::SColor(255, 255, 255, 255), true);
+}
+
+void bindLuaCallbacks() {
+	lua.set_function("isKeyDown", &isKeyDown);
+
+	lua.set_function("getMousePos", &getLuaMousePos);
+
+	lua.set_function("setMousePos", &setLuaMousePos);
+
+	lua.set_function("setMousePos", &getTime);
+
+	lua.set_function("quitGame", &quitGame);
+
+	lua.script_file("keycodeLuaTable.lua");
 }
 
 /*
@@ -63,9 +108,8 @@ int main()
 	std::vector<GameObject> gameObjects;
 	lua.open_libraries(sol::lib::base);
 	{
-		lua.set_function("isKeyDown", &isKeyDown);
-
-		lua.script_file("keycodeLuaTable.lua");
+		
+		bindLuaCallbacks();
 
 		lua.script_file("Config.lua");
 
@@ -134,59 +178,23 @@ int main()
 
 	}
 	
+	lua["loadScene"] = &loadSceneIndex;
 	Scene firstScene = config.scenes[0];
 
 	loadScene(&firstScene);
-	
-
-	/*GameObject obj1 = GameObject();
-	GameObject obj2 = GameObject();
-	obj1.setPosition(150, 150);
-
-
-	lua.script_file("test.lua");
-	
-	sol::protected_function updateFunction = lua["update"];
-	
-	obj1.setUpdateFunction(updateFunction);
-
-	lua.script_file("test2.lua");
-
-	updateFunction = lua["update"];
-
-	obj2.setUpdateFunction(updateFunction);
-	
-	obj1.setObjectScript("test.lua");
-	obj2.setObjectScript("test2.lua");
-
-	obj1.setImage(images);
-	obj2.setImage(images);
-	*/
 
 	//driver->makeColorKeyTexture(images, core::position2d<s32>(0, 0));
 	gui::IGUIFont* defaultFont = device->getGUIEnvironment()->getBuiltInFont();
 
-	core::rect<s32> redSquareRect(0, 0, 32, 32);
-
-	//obj1.setImagePosition(redSquareRect);
-	//obj2.setImagePosition(redSquareRect);
-
-	//gameObjects.push_back(obj1);
-	//gameObjects.push_back(obj2);
-
-
 	driver->getMaterial2D().TextureLayer[0].BilinearFilter = true;
 	driver->getMaterial2D().AntiAliasing = video::EAAM_FULL_BASIC;
 
-	position.X = 150;
-	position.Y = 150;
 
-
-	while (device->run() && driver)
+	while (device->run() && driver && continueGame)
 	{
-		if (device->isWindowActive() || 1)
+		if (device->isWindowActive() && continueGame)
 		{
-			u32 time = device->getTimer()->getTime();
+			curTime = device->getTimer()->getTime();
 
 			driver->beginScene(true, true, video::SColor(255, 120, 102, 136));
 
@@ -212,10 +220,6 @@ int main()
 				std::cout << "(" << collDIr.X << ", " << collDIr.Y << ")" << std::endl;
 			}*/
 
-			//driver->draw2DImage(images, core::position2d<s32>((s32) position.X, (s32) position.Y),
-			//	redSquareRect, 0,
-			//	video::SColor(255, 255, 255, 255), true);
-
 			// draw some text
 			if (defaultFont) {
 				defaultFont->draw(L"Text",
@@ -224,7 +228,7 @@ int main()
 			}
 
 			core::position2d<s32> m = device->getCursorControl()->getPosition();
-			driver->draw2DRectangle(video::SColor(100, 255, 255, 255),
+			driver->draw2DRectangle(video::SColor(100, (curTime % 255), (2 * curTime) % 255, (int) ((1.5f * curTime)) % 255),
 				core::rect<s32>(m.X - 20, m.Y - 20, m.X + 20, m.Y + 20));
 
 			driver->endScene();
@@ -232,7 +236,7 @@ int main()
 		}
 
 	}
-
+	deloadScene(activeScene);
 	device->drop();
 	return 0;
 }
