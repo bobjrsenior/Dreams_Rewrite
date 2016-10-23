@@ -13,6 +13,7 @@ using namespace irr;
 core::vector2df position;
 EventReceiver eventReciever;
 Config config;
+int curObjectIndex = -1;
 u32 curTime;
 u32 frameRate;
 f32 millisecondsPerFrame;
@@ -24,6 +25,10 @@ inline void quitGame() {
 
 inline u32 getTime() {
 	return curTime;
+}
+
+inline float getMillisPerFrame() {
+	return millisecondsPerFrame;
 }
 
 inline void loadSceneIndex(int index) {
@@ -83,6 +88,32 @@ inline int getScreenHeight() {
 	return config.screenHeight;
 }
 
+int isColliding() {
+	if (curObjectIndex != -1) {
+		GameObject obj = activeScene->getGameObject(curObjectIndex);
+		for (int i = 0; i < activeScene->getNumGameObjects(); ++i) {
+			if (i != curObjectIndex) {
+				if (obj.isColliding(activeScene->getGameObject(i))) {
+					return i;
+				}
+			}
+		}
+	}
+	return -1;
+}
+
+inline sol::table collisionDirection(int otherObjIndex) {
+	f32 xPos = 0;
+	f32 yPos = 0;
+	if (curObjectIndex != -1 && otherObjIndex != curObjectIndex && otherObjIndex < activeScene->getNumGameObjects()) {
+		core::vector2df dir = activeScene->getGameObject(curObjectIndex).collisionDirection(activeScene->getGameObject(otherObjIndex));
+		xPos = dir.X;
+		yPos = dir.Y;
+	}
+	return lua.create_table_with("X", xPos, "Y", yPos);
+}
+
+
 inline bool isKeyDown(int key) {
 	return eventReciever.IsKeyDown((EKEY_CODE) key);
 }
@@ -110,6 +141,12 @@ void bindLuaCallbacks() {
 
 	lua.set_function("getScreenHeight", &getScreenHeight);
 
+	lua.set_function("getDeltaTime", &getMillisPerFrame);
+
+	lua.set_function("isColliding", &isColliding);
+
+	lua.set_function("collisionDirection", &collisionDirection);
+
 	lua.script_file("keycodeLuaTable.lua");
 }
 
@@ -123,7 +160,7 @@ int main()
 	frameRate = 60;
 	millisecondsPerFrame = 1000.0f / frameRate;
 	printf("MILLIS/FRAME: %f\n", millisecondsPerFrame);
-	lua.open_libraries(sol::lib::base);
+	lua.open_libraries(sol::lib::base, sol::lib::math);
 	{
 		
 		bindLuaCallbacks();
@@ -217,6 +254,7 @@ int main()
 
 			for (int i = 0; i < activeScene->getNumGameObjects(); ++i) {
 				GameObject obj = activeScene->getGameObject(i);
+				curObjectIndex = i;
 				if (obj.hasUpdateScript) {
 					setPosition(obj.getPosition());
 					lua.set_function("getPosition", &getLuaPosition);
