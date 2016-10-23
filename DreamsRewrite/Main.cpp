@@ -89,9 +89,10 @@ inline int getScreenHeight() {
 }
 
 sol::table isColliding() {
-	sol::table collisions = lua.create_table_with("0", 0);
+	// Table to hold the index of every object we are colliding with
+	sol::table collisions = lua.create_table_with();
 	if (curObjectIndex != -1) {
-
+		// CHeck collision against every object
 		GameObject obj = activeScene->getGameObject(curObjectIndex);
 		for (int i = 0; i < activeScene->getNumGameObjects(); ++i) {
 			if (i != curObjectIndex) {
@@ -105,6 +106,7 @@ sol::table isColliding() {
 }
 
 inline sol::table collisionDirection(int otherObjIndex) {
+
 	f32 xPos = 0;
 	f32 yPos = 0;
 	if (curObjectIndex != -1 && otherObjIndex != curObjectIndex && otherObjIndex < activeScene->getNumGameObjects()) {
@@ -131,6 +133,9 @@ inline void drawGameObject(video::IVideoDriver* driver, GameObject *obj) {
 		video::SColor(255, 255, 255, 255), true);
 }
 
+///
+/// Lua Callbacks
+///
 void bindLuaCallbacks() {
 	lua.set_function("isKeyDown", &isKeyDown);
 
@@ -170,6 +175,8 @@ int main()
 	millisecondsPerFrame = 1000.0f / frameRate;
 
 	lua.open_libraries(sol::lib::base, sol::lib::math, sol::lib::table);
+
+	// Initialize the game (load config/scenes)
 	{
 		
 		bindLuaCallbacks();
@@ -253,6 +260,7 @@ int main()
 	driver->getMaterial2D().AntiAliasing = video::EAAM_FULL_BASIC;
 
 	u32 prevTime = device->getTimer()->getRealTime();
+	// Main game loop
 	while (device->run() && driver && continueGame)
 	{
 		if (device->isWindowActive() && continueGame)
@@ -261,9 +269,11 @@ int main()
 
 			driver->beginScene(true, true, video::SColor(255, 120, 102, 136));
 
+			// Go through every gameobject in the current scene
 			Scene *curScene = activeScene;
 			for (int i = 0; i < curScene->getNumGameObjects() && continueGame; ++i) {
 				
+				// Grab the object and call its update script if it has one
 				GameObject obj = curScene->getGameObject(i);
 				curObjectIndex = i;
 				if (obj.hasUpdateScript) {
@@ -276,6 +286,7 @@ int main()
 
 					obj.getUpdateFunction()();
 
+					// CHeck to see if the script changed scenes
 					if (curScene != activeScene) {
 						break;
 					}
@@ -283,13 +294,9 @@ int main()
 					obj.setPosition(getPosition());
 					curScene->setGameObject(i, obj);
 				}
+				// Draw the object
 				drawGameObject(driver, &obj);
 			}
-			/*
-			if (gameObjects[0].isColliding(gameObjects[1])) {
-				core::vector2df collDIr = gameObjects[0].collisionDirectionNormalized(gameObjects[1]);
-				std::cout << "(" << collDIr.X << ", " << collDIr.Y << ")" << std::endl;
-			}*/
 
 			// draw some text
 			if (defaultFont) {
@@ -303,12 +310,16 @@ int main()
 					video::SColor(255, 0, 255, 255));
 			}
 
+			// Makes a colorful box around the mouse
 			core::position2d<s32> m = device->getCursorControl()->getPosition();
 			driver->draw2DRectangle(video::SColor(100, (curTime % 255), (2 * curTime) % 255, (int) ((1.5f * curTime)) % 255),
 				core::rect<s32>(m.X - 20, m.Y - 20, m.X + 20, m.Y + 20));
 
+			// Finish the scene
 			driver->endScene();
 			prevTime = curTime;
+
+			// If not in fullscreen (VSync ins't on), make sure the frame rate is consistent
 			if (!config.fullscreen) {
 				u32 cycleCheck = device->getTimer()->getRealTime();
 
