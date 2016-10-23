@@ -151,6 +151,7 @@ public:
 				// Create the game object and set its values
 				GameObject obj = GameObject();
 				obj.setPosition(position);
+				obj.setTag(tag);
 				obj.setImagePosition(imagePosition);
 				obj.setObjectScript(path + updateScript);
 				obj.setIsStatic(isStatic);

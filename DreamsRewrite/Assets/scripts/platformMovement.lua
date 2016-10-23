@@ -27,6 +27,9 @@ function update()
     collision = isColliding()
     if tableLength(collision) > 0 then
         for _,value in ipairs(collision) do
+            if compareTag(value, "Goal") == 1 then
+                loadScene(2)
+            end
             collisionDir = collisionDirection(value)
             if math.abs(collisionDir["X"]) > math.abs(collisionDir["Y"]) then
                 if collisionDir["X"] > 0 then

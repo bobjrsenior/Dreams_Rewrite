@@ -55,6 +55,20 @@ Scene = {
             SpriteWidth = 32,
             SpriteHeight = 32
 
+        },
+        {
+            PositionX = 360,
+            PositionY = 480-64,
+            IsStatic = false,
+            IsCollidable = 1,
+            Tag = "Goal",
+            SpritePath = "sprites/Goal.png",
+            Script = "",
+            SpriteStartX = 0,
+            SpriteStartY = 0,
+            SpriteWidth = 32,
+            SpriteHeight = 32
+
         }
     }
 }

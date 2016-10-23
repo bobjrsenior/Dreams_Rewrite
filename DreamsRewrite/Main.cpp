@@ -88,6 +88,16 @@ inline int getScreenHeight() {
 	return config.screenHeight;
 }
 
+inline int compareTag(int objectIndex, std::string tag) {
+	if (curObjectIndex != -1 && objectIndex < activeScene->getNumGameObjects()) {
+		if (tag == activeScene->getGameObject(objectIndex).getTag()) {
+			return 1;
+		}
+		return 0;
+	}
+	return -1;
+}
+
 sol::table isColliding() {
 	// Table to hold the index of every object we are colliding with
 	sol::table collisions = lua.create_table_with();
@@ -158,6 +168,8 @@ void bindLuaCallbacks() {
 	lua.set_function("isColliding", &isColliding);
 
 	lua.set_function("collisionDirection", &collisionDirection);
+
+	lua.set_function("compareTag", &compareTag);
 
 	lua.script_file("keycodeLuaTable.lua");
 

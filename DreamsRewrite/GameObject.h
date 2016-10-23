@@ -25,6 +25,7 @@ private:
 	irr::video::ITexture* image;
 	// Where in the image the sprite is
 	irr::core::rect<irr::s32> imagePosition;
+	std::string tag;
 
 
 
@@ -47,6 +48,14 @@ public:
 	void setPosition(float x, float y) {
 		position.X = x;
 		position.Y = y;
+	}
+
+	std::string getTag() {
+		return tag;
+	}
+
+	void setTag(std::string newTag) {
+		tag = newTag;
 	}
 
 	void setObjectScript(std::string filepath) {
