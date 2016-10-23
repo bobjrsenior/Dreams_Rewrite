@@ -14,6 +14,8 @@ core::vector2df position;
 EventReceiver eventReciever;
 Config config;
 u32 curTime;
+u32 frameRate;
+f32 millisecondsPerFrame;
 bool continueGame = true;
 
 inline void quitGame() {
@@ -73,6 +75,14 @@ core::vector2df getPosition() {
 	return position;
 }
 
+inline int getScreenWidth(){
+	return config.screenWidth;
+}
+
+inline int getScreenHeight() {
+	return config.screenWidth;
+}
+
 inline bool isKeyDown(int key) {
 	return eventReciever.IsKeyDown((EKEY_CODE) key);
 }
@@ -96,6 +106,10 @@ void bindLuaCallbacks() {
 
 	lua.set_function("quitGame", &quitGame);
 
+	lua.set_function("getScreenWidth", &getScreenWidth);
+
+	lua.set_function("getScreenHeight", &getScreenHeight);
+
 	lua.script_file("keycodeLuaTable.lua");
 }
 
@@ -106,6 +120,9 @@ a caption, and get a pointer to the video driver.
 int main()
 {
 	std::vector<GameObject> gameObjects;
+	frameRate = 60;
+	millisecondsPerFrame = 1000.0f / frameRate;
+	printf("MILLIS/FRAME: %f\n", millisecondsPerFrame);
 	lua.open_libraries(sol::lib::base);
 	{
 		
@@ -189,12 +206,12 @@ int main()
 	driver->getMaterial2D().TextureLayer[0].BilinearFilter = true;
 	driver->getMaterial2D().AntiAliasing = video::EAAM_FULL_BASIC;
 
-
+	u32 prevTime = device->getTimer()->getRealTime();
 	while (device->run() && driver && continueGame)
 	{
 		if (device->isWindowActive() && continueGame)
 		{
-			curTime = device->getTimer()->getTime();
+			curTime = device->getTimer()->getRealTime();
 
 			driver->beginScene(true, true, video::SColor(255, 120, 102, 136));
 
@@ -222,7 +239,12 @@ int main()
 
 			// draw some text
 			if (defaultFont) {
-				defaultFont->draw(L"Text",
+				float curFrameRate = 0;
+				if (curTime != 0) {
+					curFrameRate = 1000.0f / (curTime - prevTime);
+				}				
+				std::wstring framerateStr = std::to_wstring(curFrameRate);
+				defaultFont->draw(framerateStr.c_str(),
 					core::rect<s32>(130, 10, 300, 50),
 					video::SColor(255, 0, 255, 255));
 			}
@@ -232,6 +254,14 @@ int main()
 				core::rect<s32>(m.X - 20, m.Y - 20, m.X + 20, m.Y + 20));
 
 			driver->endScene();
+			prevTime = curTime;
+			if (!config.fullscreen) {
+				u32 cycleCheck = device->getTimer()->getRealTime();
+
+				while (cycleCheck - curTime < millisecondsPerFrame) {
+					cycleCheck = device->getTimer()->getRealTime();
+				}
+			}
 
 		}
 
