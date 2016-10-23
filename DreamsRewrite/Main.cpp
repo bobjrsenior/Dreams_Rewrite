@@ -11,6 +11,7 @@ using namespace irr;
 #endif
 
 core::vector2df position;
+video::SColor clearColor;
 EventReceiver eventReciever;
 Config config;
 int curObjectIndex = -1;
@@ -76,6 +77,14 @@ inline void setPosition(core::vector2df newPosition) {
 	position = newPosition;
 }
 
+inline sol::table getClearColor() {
+	return lua.create_table_with("R", clearColor.getRed(), "G", clearColor.getGreen(), "B", clearColor.getBlue(), "A", clearColor.getAlpha());
+}
+
+inline void setClearColor(s32 red, s32 green, s32 blue, s32 alpha) {
+	clearColor = video::SColor(alpha, red, green, blue);
+}
+
 inline core::vector2df getPosition() {
 	return position;
 }
@@ -128,6 +137,9 @@ inline sol::table collisionDirection(int otherObjIndex) {
 }
 
 inline bool isKeyDown(int key) {
+	if (key < 0 || key >= eventReciever.numKeys()) {
+		return false;
+	}
 	return eventReciever.IsKeyDown((EKEY_CODE) key);
 }
 
@@ -171,6 +183,14 @@ void bindLuaCallbacks() {
 
 	lua.set_function("compareTag", &compareTag);
 
+	lua.set_function("getClearColor", &getClearColor);
+
+	lua.set_function("setClearColor", &setClearColor);
+
+	lua.set_function("getPosition", &getLuaPosition);
+
+	lua.set_function("setPosition", &setLuaPosition);
+
 	lua.script_file("keycodeLuaTable.lua");
 
 	lua.script("function tableLength(T) local count = 0 for _ in pairs(T) do count = count + 1 end  return count  end");
@@ -183,6 +203,7 @@ a caption, and get a pointer to the video driver.
 int main()
 {
 	std::vector<GameObject> gameObjects;
+	clearColor = video::SColor(255, 120, 102, 136);
 	frameRate = 60;
 	millisecondsPerFrame = 1000.0f / frameRate;
 
@@ -268,8 +289,8 @@ int main()
 	//driver->makeColorKeyTexture(images, core::position2d<s32>(0, 0));
 	gui::IGUIFont* defaultFont = device->getGUIEnvironment()->getBuiltInFont();
 
-	driver->getMaterial2D().TextureLayer[0].BilinearFilter = true;
-	driver->getMaterial2D().AntiAliasing = video::EAAM_FULL_BASIC;
+	//driver->getMaterial2D().TextureLayer[0].BilinearFilter = true;
+	//driver->getMaterial2D().AntiAliasing = video::EAAM_FULL_BASIC;
 
 	u32 prevTime = device->getTimer()->getRealTime();
 	// Main game loop
@@ -279,7 +300,7 @@ int main()
 		{
 			curTime = device->getTimer()->getRealTime();
 
-			driver->beginScene(true, true, video::SColor(255, 120, 102, 136));
+			driver->beginScene(true, true, clearColor);
 
 			// Go through every gameobject in the current scene
 			Scene *curScene = activeScene;
@@ -291,9 +312,6 @@ int main()
 				if (obj.hasUpdateScript) {
 					
 					setPosition(obj.getPosition());
-					lua.set_function("getPosition", &getLuaPosition);
-
-					lua.set_function("setPosition", &setLuaPosition);
 
 
 					obj.getUpdateFunction()();

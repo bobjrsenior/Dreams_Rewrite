@@ -11,7 +11,7 @@ public:
 		// Remember whether each key is down or up
 		if (event.EventType == irr::EET_KEY_INPUT_EVENT)
 			KeyIsDown[event.KeyInput.Key] = event.KeyInput.PressedDown;
-		
+				
 		return false;
 	}
 
@@ -29,6 +29,10 @@ public:
 
 	void forceKeyUp(irr::EKEY_CODE keyCode) {
 		KeyIsDown[keyCode] = false;
+	}
+
+	int numKeys() {
+		return irr::KEY_KEY_CODES_COUNT;
 	}
 
 private:

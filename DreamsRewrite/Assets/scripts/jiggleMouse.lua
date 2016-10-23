@@ -7,7 +7,7 @@ function update()
     end
     if isKeyDown(KEYCODE["KEY_RETURN"]) then
         forceKeyUp(KEYCODE["KEY_RETURN"])
-        loadScene(0)
+        loadScene(3)
         return
     end
     
@@ -19,5 +19,8 @@ function update()
         mousePos["X"] = curTime % getScreenWidth()
         mousePos["Y"] = (curTime * curTime) % getScreenHeight()
         setMousePos(mousePos)
+        
+        setClearColor(curTime % 255, (curTime * curTime) % 255, (curTime % 127) + (curTime * curTime) % 128, 255)
+        
     end
 end

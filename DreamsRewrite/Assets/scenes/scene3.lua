@@ -3,7 +3,7 @@ Scene = {
         {
             PositionX = 75,
             PositionY = 75,
-            IsStatic = false,
+            IsStatic = 0,
             IsCollidable = 1,
             Tag = "TestTag",
             SpritePath = "",

@@ -6,7 +6,8 @@ Config = {
     Scenes = {
         "scenes/scene1.lua",
         "scenes/scene2.lua",
-        "scenes/scene3.lua"
+        "scenes/scene3.lua",
+        "scenes/scene4.lua"
     },
     AssetFolder = "Assets/"
 }
