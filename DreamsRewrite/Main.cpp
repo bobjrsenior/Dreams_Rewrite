@@ -80,7 +80,7 @@ inline int getScreenWidth(){
 }
 
 inline int getScreenHeight() {
-	return config.screenWidth;
+	return config.screenHeight;
 }
 
 inline bool isKeyDown(int key) {
