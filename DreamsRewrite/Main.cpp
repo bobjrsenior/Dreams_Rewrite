@@ -154,16 +154,15 @@ inline void forceKeyUp(int key) {
 
 inline void playSound(std::string soundFile) {
 #ifdef _WIN32
-	std::string fullPath = config.assetsFolder + soundFile;
-	PlaySoundA((fullPath.c_str()), NULL, SND_ASYNC | SND_FILENAME);
+	PlaySoundA((config.assetsFolder + soundFile).c_str(), NULL, SND_ASYNC | SND_FILENAME);
 #endif
-
 }
 
 inline void drawGameObject(video::IVideoDriver* driver, GameObject *obj) {
 	irr::core::vector2df objPosition = obj->getPosition();
+	irr::core::rect<irr::s32> imagePosition = obj->getImagePosition();
 
-	driver->draw2DImage(obj->getImage(), core::position2d<s32>((s32)objPosition.X, (s32)objPosition.Y),
+	driver->draw2DImage(obj->getImage(), core::position2d<s32>((s32)(objPosition.X - (0.5f * imagePosition.getWidth())), (s32)(objPosition.Y - (0.5f * imagePosition.getHeight()))),
 		obj->getImagePosition(), 0,
 		video::SColor(255, 255, 255, 255), true);
 }

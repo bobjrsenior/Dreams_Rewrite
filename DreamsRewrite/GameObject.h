@@ -102,11 +102,11 @@ public:
 		irr::f32 xDiff = (irr::f32) abs(other.getPosition().X - position.X);
 		irr::f32 yDiff = (irr::f32) abs(other.getPosition().Y - position.Y);
 
-		irr::f32 minXDiff = (irr::f32) (-other.getImagePosition().getWidth());
-		irr::f32 minYDiff = (irr::f32) (-other.getImagePosition().getHeight());
+		irr::f32 maxXDiff = (irr::f32) (0.5f * (imagePosition.getWidth() + other.getImagePosition().getWidth()));
+		irr::f32 maxYDiff = (irr::f32) (0.5f * (imagePosition.getHeight() + other.getImagePosition().getHeight()));
 
-		irr::f32 maxXDiff = (irr::f32) (imagePosition.getWidth());
-		irr::f32 maxYDiff = (irr::f32) (imagePosition.getHeight());
+		irr::f32 minXDiff = -maxXDiff;
+		irr::f32 minYDiff = -maxYDiff;
 
 		if (xDiff > minXDiff && xDiff < maxXDiff && yDiff > minYDiff && yDiff < maxYDiff) {
 			return true;
@@ -115,20 +115,16 @@ public:
 	}
 
 	irr::core::vector2df collisionDirection(GameObject other) {
-		irr::core::vector2di center = getImagePosition().getCenter();
-		irr::core::vector2di otherCenter = other.getImagePosition().getCenter();
 		irr::core::vector2df dir;
-		dir.X = (other.getPosition().X + otherCenter.X) - (position.X + center.X);
-		dir.Y = (other.getPosition().Y + otherCenter.Y) - (position.Y + center.Y);
+		dir.X = other.getPosition().X - position.X;
+		dir.Y = other.getPosition().Y - position.Y;
 		return dir;
 	}
 
 	irr::core::vector2df collisionDirectionNormalized(GameObject other) {
-		irr::core::vector2di center = getImagePosition().getCenter();
-		irr::core::vector2di otherCenter = other.getImagePosition().getCenter();
 		irr::core::vector2df dir;
-		dir.X = (other.getPosition().X + otherCenter.X) - (position.X + center.X);
-		dir.Y = (other.getPosition().Y + otherCenter.Y) - (position.Y + center.Y);
+		dir.X = other.getPosition().X - position.X;
+		dir.Y = other.getPosition().Y - position.Y;
 		dir.normalize();
 		return dir;
 	}

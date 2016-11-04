@@ -53,13 +53,13 @@ function update()
     end
 
     
-    if position["X"] >= screenWidth - 32 then
+    if position["X"] >= screenWidth - 16 then
         direction = -1
     elseif position["X"] <= 0 then
         direction = 1
     end
     
-    if xLock ~= 1 and position["X"] < screenWidth - 32 and direction == 1 then
+    if xLock ~= 1 and position["X"] < screenWidth + 16 and direction == 1 then
         position["X"] = position["X"] + (1.5 * xRatio)
     elseif xLock ~= -1 and position["X"] > 0 and direction == -1 then
         position["X"] = position["X"] - (1.5 * xRatio)
@@ -78,8 +78,8 @@ function update()
     position["Y"] = position["Y"] + (velocity2["Y"] * yRatio)
 
         
-    if position["Y"] >= screenHeight - 32 then
-        position["Y"] = screenHeight - 32
+    if position["Y"] >= screenHeight - 16 then
+        position["Y"] = screenHeight - 16
         velocity2["Y"] = 0
         canJump2 = 1
     end

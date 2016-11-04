@@ -58,9 +58,9 @@ function update()
     end
 
     
-    if xLock ~= 1 and position["X"] < screenWidth - 32 and (isKeyDown(KEYCODE["KEY_RIGHT"]) or isKeyDown(KEYCODE["KEY_KEY_D"])) then
+    if xLock ~= 1 and position["X"] < screenWidth + 16 and (isKeyDown(KEYCODE["KEY_RIGHT"]) or isKeyDown(KEYCODE["KEY_KEY_D"])) then
         position["X"] = position["X"] + xRatio
-    elseif xLock ~= -1 and position["X"] > 0 and (isKeyDown(KEYCODE["KEY_LEFT"]) or isKeyDown(KEYCODE["KEY_KEY_A"])) then
+    elseif xLock ~= -1 and position["X"] > 16 and (isKeyDown(KEYCODE["KEY_LEFT"]) or isKeyDown(KEYCODE["KEY_KEY_A"])) then
         position["X"] = position["X"] - xRatio
     end
     
@@ -77,8 +77,8 @@ function update()
     position["Y"] = position["Y"] + (velocity["Y"] * yRatio)
 
         
-    if position["Y"] >= screenHeight - 32 then
-        position["Y"] = screenHeight - 32
+    if position["Y"] >= screenHeight - 16 then
+        position["Y"] = screenHeight - 16
         velocity["Y"] = 0
         canJump = 1
     end
