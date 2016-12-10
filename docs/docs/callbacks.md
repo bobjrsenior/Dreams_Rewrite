@@ -186,3 +186,129 @@ This function does not check for collision. It just gives the direction.
             print("collisionYDir: " .. collisionDir["Y"])
         end
     end
+    
+    
+## compareTag(objectIdentifier, tag)
+
+#### Parameters
+
+* objectIdentifier: An object identifier representing an object to get the direction toward
+* tag: A string representing the tag to compare against
+
+#### Return Value
+
+* 1 if the tags are equal, 0 if they are not
+
+#### Errors
+
+* Invalid object identifier: -1 is returned
+
+The tag comes from the tag given to each gameobject in the scene's lua config. It compares the objects tag with the one passed in and returns the result.
+
+    collision = isColliding()
+    if tableLength(collision) > 0 then
+        for _,value in ipairs(collision) do
+            if compareTag(value, "Goal") == 1 then
+                loadScene(2)
+            end
+        end
+    end
+    
+## getClearColor()
+
+#### Parameters
+
+* N/A
+
+#### Return Value
+
+* A table representing the current clear color with the indices R, G, B, A
+
+Retrieves the current window clear color (the color shown in areas where nothing is drawn)
+
+    clearColor = getClearColor()
+    print("ClearR: " .. clearColor["R"])
+    print("ClearG: " .. clearColor["G"])
+    print("ClearB: " .. clearColor["B"])
+    print("ClearA: " .. clearColor["A"])
+    
+## setClearColor(red, green, blue, alpha)
+
+#### Parameters
+
+* red: The new red value for the clear color
+* green: The new green value for the clear color
+* blue: The new blue value for the clear color
+* alpha: The new alpha value for the clear color
+
+#### Return Value
+
+* N/A
+
+Changes the current windows clear color to that passed in (the color shown in areas where nothing is drawn)
+
+    setClearColor(127, 127, 127, 255)
+    
+## getPosition()
+
+#### Parameters
+
+* N/A
+
+#### Return Value
+
+* A table representing the current position of this object with the indices X and Y
+
+Retrieves the current position of this object
+
+    position = getPosition()
+    print("PosX: " .. position["X"])
+    print("PosY: " .. position["Y"])
+    
+## setPosition(newPos)
+
+#### Parameters
+
+* newPos: A table representing the new position of this object with the indices X and Y
+
+#### Return Value
+
+* N/A
+
+Changes the current position of this object
+
+    position = getPosition()
+    position["X"] = position["X"] + 5
+    setPosition(position)
+    
+## playSound(sound)
+
+#### Parameters
+
+* sound: A string representing the path to the sound file relative to the assets folder
+
+#### Return Value
+
+* N/A
+
+Windows only
+
+Plays the sound corresponding to the sound passed in.
+
+    playSound("sfx\\spookyBackgoundMusic.wav")
+    
+## tableLength(table)
+
+#### Parameters
+
+* table: A lua table
+
+#### Return Value
+
+* The number of entries in the lua table
+
+A simple helper function to retrieve the number of entries in a table.
+
+    position = getPosition()
+    length = tableLength(position)
+    print("There are " .. length .. " pairs in the position table"
