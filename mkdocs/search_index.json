@@ -2,28 +2,13 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome to Dreams of Magnus\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.\n\n\n\nTODO\n\n\n\n\nCallbacks\n\n\nKEY Codes\n\n\nOrginization\n\n\nCross/inner page linking\n\n\nisKeyDown/ect->Key codes\n\n\ncollision->compareTag",
+            "text": "Welcome to Dreams of Magnus\n\n\nDreams of Magnus official documentatin",
             "title": "Home"
         },
         {
             "location": "/#welcome-to-dreams-of-magnus",
-            "text": "For full documentation visit  mkdocs.org .",
+            "text": "Dreams of Magnus official documentatin",
             "title": "Welcome to Dreams of Magnus"
-        },
-        {
-            "location": "/#commands",
-            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
-            "title": "Commands"
-        },
-        {
-            "location": "/#project-layout",
-            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
-            "title": "Project layout"
-        },
-        {
-            "location": "/#todo",
-            "text": "Callbacks  KEY Codes  Orginization  Cross/inner page linking  isKeyDown/ect->Key codes  collision->compareTag",
-            "title": "TODO"
         },
         {
             "location": "/about/",
@@ -34,6 +19,31 @@
             "location": "/about/#about",
             "text": "",
             "title": "About"
+        },
+        {
+            "location": "/configs/",
+            "text": "Config File Specifications\n\n\nConfig.lua\n\n\nMust always be named Config.lua.\n\n\nThis is the main config file for the game and is required.\n\n\nConfig = {\n    Title = \"Test Window Title\",\n    Fullscreen = 0,\n    ScreenWidth = 640,\n    ScreenHeight = 480,\n    Scenes = {\n        \"scenes/scene1.lua\",\n    },\n    AssetFolder = \"Assets/\"\n}\n\n\n\n\n\nTitle: The game windows title (string)\n\n\nFullscreen: 0 if the game is windowed. 1 if the game should be fullscreen\n\n\nScreenWidth: The width of the game window in pixels (whole number)\n\n\nScreenHeight: The height of the game window in pixels (whole number)\n\n\nScenes: A lua table with paths to scene configs files as entries (each entry is a string)\n\n\nAssetFolder: Path the the games main asset folder (\"Assets/\" by default) (string)\n\n\n\n\nScene\n\n\nRequired for each scene in the game.\n\n\nScene = {\n    GameObjects = {\n        {\n            PositionX = 75,\n            PositionY = 75,\n            IsStatic = false,\n            IsCollidable = 1,\n            Tag = \"Player\",\n            SpritePath = \"sprites/RedSquare.png\",\n            Script = \"scripts/player.lua\",\n            SpriteStartX = 0,\n            SpriteStartY = 0,\n            SpriteWidth = 32,\n            SpriteHeight = 32\n        }\n    }\n}\n\n\n\n\n\nGameObjects: A lua table containing a GameObject for each entry\n\n\n\n\nGameObject\n\n\nObjects in the game\n\n\n{\n    PositionX = 75,\n    PositionY = 75,\n    IsStatic = false,\n    IsCollidable = 1,\n    Tag = \"Player\",\n    SpritePath = \"sprites/RedSquare.png\",\n    Script = \"scripts/player.lua\",\n    SpriteStartX = 0,\n    SpriteStartY = 0,\n    SpriteWidth = 32,\n    SpriteHeight = 32\n}\n\n\n\n\n\nPositionX: The initial X position of this object\n\n\nPositionY: The initial Y position of this object\n\n\nIsStatic: Does this object move? (currently a placeholder parameter)\n\n\nIsCollidable: Does this object collide with others (1 = does collide, 0 = doesn't collide)?\n\n\nTag: A tag that identifies this type of object (string)\n\n\nSpritePath: The location of this objects sprite\n\n\nScript: The location of this objects script (containing an update function)\n\n\nSpriteStartX: What X pixel the sprite starts at in the Sprite image\n\n\nSpriteStartY: What Y pixel the sprite starts at in the Sprite image\n\n\nSpriteWidth: The width of the sprite in pixels\n\n\nSpriteHeight: The height of the sprite in pixels",
+            "title": "Config Files"
+        },
+        {
+            "location": "/configs/#config-file-specifications",
+            "text": "",
+            "title": "Config File Specifications"
+        },
+        {
+            "location": "/configs/#configlua",
+            "text": "Must always be named Config.lua.  This is the main config file for the game and is required.  Config = {\n    Title = \"Test Window Title\",\n    Fullscreen = 0,\n    ScreenWidth = 640,\n    ScreenHeight = 480,\n    Scenes = {\n        \"scenes/scene1.lua\",\n    },\n    AssetFolder = \"Assets/\"\n}   Title: The game windows title (string)  Fullscreen: 0 if the game is windowed. 1 if the game should be fullscreen  ScreenWidth: The width of the game window in pixels (whole number)  ScreenHeight: The height of the game window in pixels (whole number)  Scenes: A lua table with paths to scene configs files as entries (each entry is a string)  AssetFolder: Path the the games main asset folder (\"Assets/\" by default) (string)",
+            "title": "Config.lua"
+        },
+        {
+            "location": "/configs/#scene",
+            "text": "Required for each scene in the game.  Scene = {\n    GameObjects = {\n        {\n            PositionX = 75,\n            PositionY = 75,\n            IsStatic = false,\n            IsCollidable = 1,\n            Tag = \"Player\",\n            SpritePath = \"sprites/RedSquare.png\",\n            Script = \"scripts/player.lua\",\n            SpriteStartX = 0,\n            SpriteStartY = 0,\n            SpriteWidth = 32,\n            SpriteHeight = 32\n        }\n    }\n}   GameObjects: A lua table containing a GameObject for each entry",
+            "title": "Scene"
+        },
+        {
+            "location": "/configs/#gameobject",
+            "text": "Objects in the game  {\n    PositionX = 75,\n    PositionY = 75,\n    IsStatic = false,\n    IsCollidable = 1,\n    Tag = \"Player\",\n    SpritePath = \"sprites/RedSquare.png\",\n    Script = \"scripts/player.lua\",\n    SpriteStartX = 0,\n    SpriteStartY = 0,\n    SpriteWidth = 32,\n    SpriteHeight = 32\n}   PositionX: The initial X position of this object  PositionY: The initial Y position of this object  IsStatic: Does this object move? (currently a placeholder parameter)  IsCollidable: Does this object collide with others (1 = does collide, 0 = doesn't collide)?  Tag: A tag that identifies this type of object (string)  SpritePath: The location of this objects sprite  Script: The location of this objects script (containing an update function)  SpriteStartX: What X pixel the sprite starts at in the Sprite image  SpriteStartY: What Y pixel the sprite starts at in the Sprite image  SpriteWidth: The width of the sprite in pixels  SpriteHeight: The height of the sprite in pixels",
+            "title": "GameObject"
         },
         {
             "location": "/callbacks/",

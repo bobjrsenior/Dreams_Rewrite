@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>About - Dreams Of Magnus</title>
+        <title>Config Files - Dreams Of Magnus</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -48,11 +48,11 @@
                     <li >
                         <a href="..">Home</a>
                     </li>
-                    <li class="active">
-                        <a href="./">About</a>
-                    </li>
                     <li >
-                        <a href="../configs/">Config Files</a>
+                        <a href="../about/">About</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">Config Files</a>
                     </li>
                     <li >
                         <a href="../callbacks/">Lua Callbacks</a>
@@ -69,12 +69,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="..">
+                        <a rel="next" href="../about/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../configs/">
+                        <a rel="prev" href="../callbacks/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -91,12 +91,89 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#about">About</a></li>
+        <li class="main active"><a href="#config-file-specifications">Config File Specifications</a></li>
+            <li><a href="#configlua">Config.lua</a></li>
+            <li><a href="#scene">Scene</a></li>
+            <li><a href="#gameobject">GameObject</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="about">About</h2></div>
+<h1 id="config-file-specifications">Config File Specifications</h1>
+<h2 id="configlua">Config.lua</h2>
+<p>Must always be named Config.lua.</p>
+<p>This is the main config file for the game and is required.</p>
+<pre><code>Config = {
+    Title = "Test Window Title",
+    Fullscreen = 0,
+    ScreenWidth = 640,
+    ScreenHeight = 480,
+    Scenes = {
+        "scenes/scene1.lua",
+    },
+    AssetFolder = "Assets/"
+}
+</code></pre>
+<ul>
+<li>Title: The game windows title (string)</li>
+<li>Fullscreen: 0 if the game is windowed. 1 if the game should be fullscreen</li>
+<li>ScreenWidth: The width of the game window in pixels (whole number)</li>
+<li>ScreenHeight: The height of the game window in pixels (whole number)</li>
+<li>Scenes: A lua table with paths to scene configs files as entries (each entry is a string)</li>
+<li>AssetFolder: Path the the games main asset folder ("Assets/" by default) (string)</li>
+</ul>
+<h2 id="scene">Scene</h2>
+<p>Required for each scene in the game.</p>
+<pre><code>Scene = {
+    GameObjects = {
+        {
+            PositionX = 75,
+            PositionY = 75,
+            IsStatic = false,
+            IsCollidable = 1,
+            Tag = "Player",
+            SpritePath = "sprites/RedSquare.png",
+            Script = "scripts/player.lua",
+            SpriteStartX = 0,
+            SpriteStartY = 0,
+            SpriteWidth = 32,
+            SpriteHeight = 32
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>GameObjects: A lua table containing a GameObject for each entry</li>
+</ul>
+<h2 id="gameobject">GameObject</h2>
+<p>Objects in the game</p>
+<pre><code>{
+    PositionX = 75,
+    PositionY = 75,
+    IsStatic = false,
+    IsCollidable = 1,
+    Tag = "Player",
+    SpritePath = "sprites/RedSquare.png",
+    Script = "scripts/player.lua",
+    SpriteStartX = 0,
+    SpriteStartY = 0,
+    SpriteWidth = 32,
+    SpriteHeight = 32
+}
+</code></pre>
+<ul>
+<li>PositionX: The initial X position of this object</li>
+<li>PositionY: The initial Y position of this object</li>
+<li>IsStatic: Does this object move? (currently a placeholder parameter)</li>
+<li>IsCollidable: Does this object collide with others (1 = does collide, 0 = doesn't collide)?</li>
+<li>Tag: A tag that identifies this type of object (string)</li>
+<li>SpritePath: The location of this objects sprite</li>
+<li>Script: The location of this objects script (containing an update function)</li>
+<li>SpriteStartX: What X pixel the sprite starts at in the Sprite image</li>
+<li>SpriteStartY: What Y pixel the sprite starts at in the Sprite image</li>
+<li>SpriteWidth: The width of the sprite in pixels</li>
+<li>SpriteHeight: The height of the sprite in pixels</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">

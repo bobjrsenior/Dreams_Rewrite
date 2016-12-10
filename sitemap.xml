@@ -19,6 +19,14 @@
 
     
     <url>
+     <loc>/configs/</loc>
+     <lastmod>2016-12-10</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
      <loc>/callbacks/</loc>
      <lastmod>2016-12-10</lastmod>
      <changefreq>daily</changefreq>
