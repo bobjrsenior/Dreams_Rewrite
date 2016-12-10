@@ -4,7 +4,7 @@
 
 #### Parameters
 
-* keyCode: A String corresponding to a key
+* [keyCode](keycodes.md): A String corresponding to a key
 
 #### Return Value
 
@@ -20,7 +20,7 @@ Checks to see if the given key is currently pressed
     
 #### Parameters
 
-* keyCode: A String corresponding to a key
+* [keyCode](keycodes.md): A String corresponding to a key
     
 #### Return Value
 

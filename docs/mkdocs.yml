@@ -1,6 +1,9 @@
 site_name: Dreams Of Magnus
+repo_url: https://github.com/bobjrsenior/Dreams_Rewrite
+edit_uri: blob/master/docs/
 
 pages:
 - Home: 'index.md'
 - About: 'about.md'
 - Lua Callbacks: 'callbacks.md'
+- Key Codes: 'keycodes.md'
