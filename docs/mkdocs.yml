@@ -5,5 +5,6 @@ edit_uri: blob/master/docs/
 pages:
 - Home: 'index.md'
 - About: 'about.md'
+- Config Files: 'configs.md'
 - Lua Callbacks: 'callbacks.md'
 - Key Codes: 'keycodes.md'
