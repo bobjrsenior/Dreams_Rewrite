@@ -1,0 +1,6 @@
+site_name: Dreams Of Magnus
+
+pages:
+- Home: 'index.md'
+- About: 'about.md'
+- Lua Callbacks: 'callbacks.md'
