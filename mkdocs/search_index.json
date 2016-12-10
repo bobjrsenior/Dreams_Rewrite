@@ -1,0 +1,339 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to Dreams of Magnus\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.\n\n\n\nTODO\n\n\n\n\nCallbacks\n\n\nKEY Codes\n\n\nOrginization\n\n\nCross/inner page linking\n\n\nisKeyDown/ect->Key codes\n\n\ncollision->compareTag",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome-to-dreams-of-magnus",
+            "text": "For full documentation visit  mkdocs.org .",
+            "title": "Welcome to Dreams of Magnus"
+        },
+        {
+            "location": "/#commands",
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
+            "title": "Commands"
+        },
+        {
+            "location": "/#project-layout",
+            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Project layout"
+        },
+        {
+            "location": "/#todo",
+            "text": "Callbacks  KEY Codes  Orginization  Cross/inner page linking  isKeyDown/ect->Key codes  collision->compareTag",
+            "title": "TODO"
+        },
+        {
+            "location": "/about/",
+            "text": "About",
+            "title": "About"
+        },
+        {
+            "location": "/about/#about",
+            "text": "",
+            "title": "About"
+        },
+        {
+            "location": "/callbacks/",
+            "text": "Lua Callbacks\n\n\nisKeyDown(keyCode)\n\n\nParameters\n\n\n\n\nkeyCode\n: A String corresponding to a key\n\n\n\n\nReturn Value\n\n\n\n\nA boolean value corresponding to whether or not the key is pressed\n\n\n\n\nChecks to see if the given key is currently pressed\n\n\nif isKeyDown(\"KEY_LEFT\") {\n    print(\"Key is down\")\n}\n\n\n\nforceKeyUp(keyCode)\n\n\nParameters\n\n\n\n\nkeyCode\n: A String corresponding to a key\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nMarks a key as not being pressed. This can be used to make sure the key only registers as pressed for one frame.\n\n\nThis will stop working once the key goes into repeat mode.\n\n\nif isKeyDown(\"KEY_LEFT\") {\n    forceKeyDown(\"KEY_LEFT\")\n    print(\"Key is down\")\n}\n\n\n\ngetMousePos()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nA table holding the mouse position with the indices X and Y\n\n\n\n\nRetrieves a table holding the mouse position with the indices X and Y\n\n\nmousePos = getMousePosition()\nprint(\"MouseX: \" .. mousePos[\"X\"])\nprint(\"MouseY: \" .. mousePos[\"Y\"])\n\n\n\nsetMousePos(mousePos)\n\n\nParameters\n\n\n\n\nmousePos: A table holding the mouse position with the indices X and Y\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nChanges the mouse position to the values from the parameter\n\n\nmousePos = {X = 50, Y = 75}\nsetMousePos(mousePos)\n\n\n\ngetTime()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe current time in milliseconds\n\n\n\n\nRetrieves the the current time in milliseconds\n\n\ntime = getTime()\n\n\n\nquitGame()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nCleans up and closes the game process. Game closes after the function which called quitGame returns\n\n\nif isKeyDown(KEYCODE[\"KEY_ESCAPE\"]) then\n    quitGame()\n    return\nend\n\n\n\ngetScreenWidth()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe width of the current window in pixels\n\n\n\n\nRetrieves the width of the game windows in pixels (whole number)\n\n\nscreenWidth = getScreenWidth()\n\n\n\ngetScreenHeight()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe height of the current window in pixels\n\n\n\n\nRetrieves the height of the game windows in pixels (whole number)\n\n\nscreenWidth = getScreenHeight()\n\n\n\ngetDeltaTime()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe amount of time that passed since the last frame (milliseconds/frame)\n\n\n\n\nRetrieves how many milliseconds pass between frames\n\n\nx = 10\ndeltaTime = getDeltaTime()\nx = x + (5 * deltaTime)\n\n\n\nisColliding()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nA table holding an identifier for which objects this ojbect is colliding with. Does not include itself.\n\n\n\n\nRetrieves a list of objects that this object is colliding with. The list does not include this object.\n\n\ncollision = isColliding()\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        if compareTag(value, \"Goal\") == 1 then\n            loadScene(2)\n        end\n    end\nend\n\n\n\ncollisionDirection(objectIdentifier)\n\n\nParameters\n\n\n\n\nobjectIdentifier: An object identifier representing an object to get the direction toward\n\n\n\n\nReturn Value\n\n\n\n\nA table representing the direction to the object passed in with the indices X and Y.\n\n\n\n\nErrors\n\n\n\n\nInvalid object identifier: A table with 0 for both the X and Y direction will be returned\n\n\n\n\nThis function does not check for collision. It just gives the direction.\n\n\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        collisionDir = collisionDirection(value)\n        print(\"collisionXDir: \" .. collisionDir[\"X\"])\n        print(\"collisionYDir: \" .. collisionDir[\"Y\"])\n    end\nend\n\n\n\ncompareTag(objectIdentifier, tag)\n\n\nParameters\n\n\n\n\nobjectIdentifier: An object identifier representing an object to get the direction toward\n\n\ntag: A string representing the tag to compare against\n\n\n\n\nReturn Value\n\n\n\n\n1 if the tags are equal, 0 if they are not\n\n\n\n\nErrors\n\n\n\n\nInvalid object identifier: -1 is returned\n\n\n\n\nThe tag comes from the tag given to each gameobject in the scene's lua config. It compares the objects tag with the one passed in and returns the result.\n\n\ncollision = isColliding()\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        if compareTag(value, \"Goal\") == 1 then\n            loadScene(2)\n        end\n    end\nend\n\n\n\ngetClearColor()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nA table representing the current clear color with the indices R, G, B, A\n\n\n\n\nRetrieves the current window clear color (the color shown in areas where nothing is drawn)\n\n\nclearColor = getClearColor()\nprint(\"ClearR: \" .. clearColor[\"R\"])\nprint(\"ClearG: \" .. clearColor[\"G\"])\nprint(\"ClearB: \" .. clearColor[\"B\"])\nprint(\"ClearA: \" .. clearColor[\"A\"])\n\n\n\nsetClearColor(red, green, blue, alpha)\n\n\nParameters\n\n\n\n\nred: The new red value for the clear color\n\n\ngreen: The new green value for the clear color\n\n\nblue: The new blue value for the clear color\n\n\nalpha: The new alpha value for the clear color\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nChanges the current windows clear color to that passed in (the color shown in areas where nothing is drawn)\n\n\nsetClearColor(127, 127, 127, 255)\n\n\n\ngetPosition()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nA table representing the current position of this object with the indices X and Y\n\n\n\n\nRetrieves the current position of this object\n\n\nposition = getPosition()\nprint(\"PosX: \" .. position[\"X\"])\nprint(\"PosY: \" .. position[\"Y\"])\n\n\n\nsetPosition(newPos)\n\n\nParameters\n\n\n\n\nnewPos: A table representing the new position of this object with the indices X and Y\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nChanges the current position of this object\n\n\nposition = getPosition()\nposition[\"X\"] = position[\"X\"] + 5\nsetPosition(position)\n\n\n\nplaySound(sound)\n\n\nParameters\n\n\n\n\nsound: A string representing the path to the sound file relative to the assets folder\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nWindows only\n\n\nPlays the sound corresponding to the sound passed in.\n\n\nplaySound(\"sfx\\\\spookyBackgoundMusic.wav\")\n\n\n\ntableLength(table)\n\n\nParameters\n\n\n\n\ntable: A lua table\n\n\n\n\nReturn Value\n\n\n\n\nThe number of entries in the lua table\n\n\n\n\nA simple helper function to retrieve the number of entries in a table.\n\n\nposition = getPosition()\nlength = tableLength(position)\nprint(\"There are \" .. length .. \" pairs in the position table\"",
+            "title": "Lua Callbacks"
+        },
+        {
+            "location": "/callbacks/#lua-callbacks",
+            "text": "",
+            "title": "Lua Callbacks"
+        },
+        {
+            "location": "/callbacks/#iskeydownkeycode",
+            "text": "",
+            "title": "isKeyDown(keyCode)"
+        },
+        {
+            "location": "/callbacks/#parameters",
+            "text": "keyCode : A String corresponding to a key",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value",
+            "text": "A boolean value corresponding to whether or not the key is pressed   Checks to see if the given key is currently pressed  if isKeyDown(\"KEY_LEFT\") {\n    print(\"Key is down\")\n}",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#forcekeyupkeycode",
+            "text": "",
+            "title": "forceKeyUp(keyCode)"
+        },
+        {
+            "location": "/callbacks/#parameters_1",
+            "text": "keyCode : A String corresponding to a key",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_1",
+            "text": "N/A   Marks a key as not being pressed. This can be used to make sure the key only registers as pressed for one frame.  This will stop working once the key goes into repeat mode.  if isKeyDown(\"KEY_LEFT\") {\n    forceKeyDown(\"KEY_LEFT\")\n    print(\"Key is down\")\n}",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#getmousepos",
+            "text": "",
+            "title": "getMousePos()"
+        },
+        {
+            "location": "/callbacks/#parameters_2",
+            "text": "N/A",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_2",
+            "text": "A table holding the mouse position with the indices X and Y   Retrieves a table holding the mouse position with the indices X and Y  mousePos = getMousePosition()\nprint(\"MouseX: \" .. mousePos[\"X\"])\nprint(\"MouseY: \" .. mousePos[\"Y\"])",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#setmouseposmousepos",
+            "text": "",
+            "title": "setMousePos(mousePos)"
+        },
+        {
+            "location": "/callbacks/#parameters_3",
+            "text": "mousePos: A table holding the mouse position with the indices X and Y",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_3",
+            "text": "N/A   Changes the mouse position to the values from the parameter  mousePos = {X = 50, Y = 75}\nsetMousePos(mousePos)",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#gettime",
+            "text": "",
+            "title": "getTime()"
+        },
+        {
+            "location": "/callbacks/#parameters_4",
+            "text": "N/A",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_4",
+            "text": "The current time in milliseconds   Retrieves the the current time in milliseconds  time = getTime()",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#quitgame",
+            "text": "",
+            "title": "quitGame()"
+        },
+        {
+            "location": "/callbacks/#parameters_5",
+            "text": "N/A",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_5",
+            "text": "N/A   Cleans up and closes the game process. Game closes after the function which called quitGame returns  if isKeyDown(KEYCODE[\"KEY_ESCAPE\"]) then\n    quitGame()\n    return\nend",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#getscreenwidth",
+            "text": "",
+            "title": "getScreenWidth()"
+        },
+        {
+            "location": "/callbacks/#parameters_6",
+            "text": "N/A",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_6",
+            "text": "The width of the current window in pixels   Retrieves the width of the game windows in pixels (whole number)  screenWidth = getScreenWidth()",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#getscreenheight",
+            "text": "",
+            "title": "getScreenHeight()"
+        },
+        {
+            "location": "/callbacks/#parameters_7",
+            "text": "N/A",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_7",
+            "text": "The height of the current window in pixels   Retrieves the height of the game windows in pixels (whole number)  screenWidth = getScreenHeight()",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#getdeltatime",
+            "text": "",
+            "title": "getDeltaTime()"
+        },
+        {
+            "location": "/callbacks/#parameters_8",
+            "text": "N/A",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_8",
+            "text": "The amount of time that passed since the last frame (milliseconds/frame)   Retrieves how many milliseconds pass between frames  x = 10\ndeltaTime = getDeltaTime()\nx = x + (5 * deltaTime)",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#iscolliding",
+            "text": "",
+            "title": "isColliding()"
+        },
+        {
+            "location": "/callbacks/#parameters_9",
+            "text": "N/A",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_9",
+            "text": "A table holding an identifier for which objects this ojbect is colliding with. Does not include itself.   Retrieves a list of objects that this object is colliding with. The list does not include this object.  collision = isColliding()\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        if compareTag(value, \"Goal\") == 1 then\n            loadScene(2)\n        end\n    end\nend",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#collisiondirectionobjectidentifier",
+            "text": "",
+            "title": "collisionDirection(objectIdentifier)"
+        },
+        {
+            "location": "/callbacks/#parameters_10",
+            "text": "objectIdentifier: An object identifier representing an object to get the direction toward",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_10",
+            "text": "A table representing the direction to the object passed in with the indices X and Y.",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#errors",
+            "text": "Invalid object identifier: A table with 0 for both the X and Y direction will be returned   This function does not check for collision. It just gives the direction.  if tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        collisionDir = collisionDirection(value)\n        print(\"collisionXDir: \" .. collisionDir[\"X\"])\n        print(\"collisionYDir: \" .. collisionDir[\"Y\"])\n    end\nend",
+            "title": "Errors"
+        },
+        {
+            "location": "/callbacks/#comparetagobjectidentifier-tag",
+            "text": "",
+            "title": "compareTag(objectIdentifier, tag)"
+        },
+        {
+            "location": "/callbacks/#parameters_11",
+            "text": "objectIdentifier: An object identifier representing an object to get the direction toward  tag: A string representing the tag to compare against",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_11",
+            "text": "1 if the tags are equal, 0 if they are not",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#errors_1",
+            "text": "Invalid object identifier: -1 is returned   The tag comes from the tag given to each gameobject in the scene's lua config. It compares the objects tag with the one passed in and returns the result.  collision = isColliding()\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        if compareTag(value, \"Goal\") == 1 then\n            loadScene(2)\n        end\n    end\nend",
+            "title": "Errors"
+        },
+        {
+            "location": "/callbacks/#getclearcolor",
+            "text": "",
+            "title": "getClearColor()"
+        },
+        {
+            "location": "/callbacks/#parameters_12",
+            "text": "N/A",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_12",
+            "text": "A table representing the current clear color with the indices R, G, B, A   Retrieves the current window clear color (the color shown in areas where nothing is drawn)  clearColor = getClearColor()\nprint(\"ClearR: \" .. clearColor[\"R\"])\nprint(\"ClearG: \" .. clearColor[\"G\"])\nprint(\"ClearB: \" .. clearColor[\"B\"])\nprint(\"ClearA: \" .. clearColor[\"A\"])",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#setclearcolorred-green-blue-alpha",
+            "text": "",
+            "title": "setClearColor(red, green, blue, alpha)"
+        },
+        {
+            "location": "/callbacks/#parameters_13",
+            "text": "red: The new red value for the clear color  green: The new green value for the clear color  blue: The new blue value for the clear color  alpha: The new alpha value for the clear color",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_13",
+            "text": "N/A   Changes the current windows clear color to that passed in (the color shown in areas where nothing is drawn)  setClearColor(127, 127, 127, 255)",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#getposition",
+            "text": "",
+            "title": "getPosition()"
+        },
+        {
+            "location": "/callbacks/#parameters_14",
+            "text": "N/A",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_14",
+            "text": "A table representing the current position of this object with the indices X and Y   Retrieves the current position of this object  position = getPosition()\nprint(\"PosX: \" .. position[\"X\"])\nprint(\"PosY: \" .. position[\"Y\"])",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#setpositionnewpos",
+            "text": "",
+            "title": "setPosition(newPos)"
+        },
+        {
+            "location": "/callbacks/#parameters_15",
+            "text": "newPos: A table representing the new position of this object with the indices X and Y",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_15",
+            "text": "N/A   Changes the current position of this object  position = getPosition()\nposition[\"X\"] = position[\"X\"] + 5\nsetPosition(position)",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#playsoundsound",
+            "text": "",
+            "title": "playSound(sound)"
+        },
+        {
+            "location": "/callbacks/#parameters_16",
+            "text": "sound: A string representing the path to the sound file relative to the assets folder",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_16",
+            "text": "N/A   Windows only  Plays the sound corresponding to the sound passed in.  playSound(\"sfx\\\\spookyBackgoundMusic.wav\")",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#tablelengthtable",
+            "text": "",
+            "title": "tableLength(table)"
+        },
+        {
+            "location": "/callbacks/#parameters_17",
+            "text": "table: A lua table",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_17",
+            "text": "The number of entries in the lua table   A simple helper function to retrieve the number of entries in a table.  position = getPosition()\nlength = tableLength(position)\nprint(\"There are \" .. length .. \" pairs in the position table\"",
+            "title": "Return Value"
+        },
+        {
+            "location": "/keycodes/",
+            "text": "Key Codes\n\n\nA simple list of all available key codes and their corresponding constant values\n\n\nKEY_LBUTTON = 0x01\nKEY_RBUTTON = 0x02\nKEY_CANCEL = 0x03\nKEY_MBUTTON = 0x04\nKEY_XBUTTON1 = 0x05\nKEY_XBUTTON2 = 0x06\nKEY_BACK = 0x08\nKEY_TAB = 0x09\nKEY_CLEAR = 0x0C\nKEY_RETURN = 0x0D\nKEY_SHIFT = 0x10\nKEY_CONTROL = 0x11\nKEY_MENU = 0x12\nKEY_PAUSE = 0x13\nKEY_CAPITAL = 0x14\nKEY_KANA = 0x15\nKEY_HANGUEL = 0x15\nKEY_HANGUL = 0x15\nKEY_JUNJA = 0x17\nKEY_FINAL = 0x18\nKEY_HANJA = 0x19\nKEY_KANJI = 0x19\nKEY_ESCAPE = 0x1B\nKEY_CONVERT = 0x1C\nKEY_NONCONVERT = 0x1D\nKEY_ACCEPT = 0x1E\nKEY_MODECHANGE = 0x1F\nKEY_SPACE = 0x20\nKEY_PRIOR = 0x21\nKEY_NEXT = 0x22\nKEY_END = 0x23\nKEY_HOME = 0x24\nKEY_LEFT = 0x25\nKEY_UP = 0x26\nKEY_RIGHT = 0x27\nKEY_DOWN = 0x28\nKEY_SELECT = 0x29\nKEY_PRINT = 0x2A\nKEY_EXECUT = 0x2B\nKEY_SNAPSHOT = 0x2C\nKEY_INSERT = 0x2D\nKEY_DELETE = 0x2E\nKEY_HELP = 0x2F\nKEY_KEY_0 = 0x30\nKEY_KEY_1 = 0x31\nKEY_KEY_2 = 0x32\nKEY_KEY_3 = 0x33\nKEY_KEY_4 = 0x34\nKEY_KEY_5 = 0x35\nKEY_KEY_6 = 0x36\nKEY_KEY_7 = 0x37\nKEY_KEY_8 = 0x38\nKEY_KEY_9 = 0x39\nKEY_KEY_A = 0x41\nKEY_KEY_B = 0x42\nKEY_KEY_C = 0x43\nKEY_KEY_D = 0x44\nKEY_KEY_E = 0x45\nKEY_KEY_F = 0x46\nKEY_KEY_G = 0x47\nKEY_KEY_H = 0x48\nKEY_KEY_I = 0x49\nKEY_KEY_J = 0x4A\nKEY_KEY_K = 0x4B\nKEY_KEY_L = 0x4C\nKEY_KEY_M = 0x4D\nKEY_KEY_N = 0x4E\nKEY_KEY_O = 0x4F\nKEY_KEY_P = 0x50\nKEY_KEY_Q = 0x51\nKEY_KEY_R = 0x52\nKEY_KEY_S = 0x53\nKEY_KEY_T = 0x54\nKEY_KEY_U = 0x55\nKEY_KEY_V = 0x56\nKEY_KEY_W = 0x57\nKEY_KEY_X = 0x58\nKEY_KEY_Y = 0x59\nKEY_KEY_Z = 0x5A\nKEY_LWIN = 0x5B\nKEY_RWIN = 0x5C\nKEY_APPS = 0x5D\nKEY_SLEEP = 0x5F\nKEY_NUMPAD0 = 0x60\nKEY_NUMPAD1 = 0x61\nKEY_NUMPAD2 = 0x62\nKEY_NUMPAD3 = 0x63\nKEY_NUMPAD4 = 0x64\nKEY_NUMPAD5 = 0x65\nKEY_NUMPAD6 = 0x66\nKEY_NUMPAD7 = 0x67\nKEY_NUMPAD8 = 0x68\nKEY_NUMPAD9 = 0x69\nKEY_MULTIPLY = 0x6A\nKEY_ADD = 0x6B\nKEY_SEPARATOR = 0x6C\nKEY_SUBTRACT = 0x6D\nKEY_DECIMAL = 0x6E\nKEY_DIVIDE = 0x6F\nKEY_F1 = 0x70\nKEY_F2 = 0x71\nKEY_F3 = 0x72\nKEY_F4 = 0x73\nKEY_F5 = 0x74\nKEY_F6 = 0x75\nKEY_F7 = 0x76\nKEY_F8 = 0x77\nKEY_F9 = 0x78\nKEY_F10 = 0x79\nKEY_F11 = 0x7A\nKEY_F12 = 0x7B\nKEY_F13 = 0x7C\nKEY_F14 = 0x7D\nKEY_F15 = 0x7E\nKEY_F16 = 0x7F\nKEY_F17 = 0x80\nKEY_F18 = 0x81\nKEY_F19 = 0x82\nKEY_F20 = 0x83\nKEY_F21 = 0x84\nKEY_F22 = 0x85\nKEY_F23 = 0x86\nKEY_F24 = 0x87\nKEY_NUMLOCK = 0x90\nKEY_SCROLL = 0x91\nKEY_LSHIFT = 0xA0\nKEY_RSHIFT = 0xA1\nKEY_LCONTROL = 0xA2\nKEY_RCONTROL = 0xA3\nKEY_LMENU = 0xA4\nKEY_RMENU = 0xA5\nKEY_OEM_1 = 0xBA\nKEY_PLUS = 0xBB\nKEY_COMMA = 0xBC\nKEY_MINUS = 0xBD\nKEY_PERIOD = 0xBE\nKEY_OEM_2 = 0xBF\nKEY_OEM_3 = 0xC0\nKEY_OEM_4 = 0xDB\nKEY_OEM_5 = 0xDC\nKEY_OEM_6 = 0xDD\nKEY_OEM_7 = 0xDE\nKEY_OEM_8 = 0xDF\nKEY_OEM_AX = 0xE1\nKEY_OEM_102 = 0xE2\nKEY_ATTN = 0xF6\nKEY_CRSEL = 0xF7\nKEY_EXSEL = 0xF8\nKEY_EREOF = 0xF9\nKEY_PLAY = 0xFA\nKEY_ZOOM = 0xFB\nKEY_PA1 = 0xFD\nKEY_OEM_CLEAR = 0xFE\nKEY_KEY_CODES_COUNT = 0xFF",
+            "title": "Key Codes"
+        },
+        {
+            "location": "/keycodes/#key-codes",
+            "text": "A simple list of all available key codes and their corresponding constant values  KEY_LBUTTON = 0x01\nKEY_RBUTTON = 0x02\nKEY_CANCEL = 0x03\nKEY_MBUTTON = 0x04\nKEY_XBUTTON1 = 0x05\nKEY_XBUTTON2 = 0x06\nKEY_BACK = 0x08\nKEY_TAB = 0x09\nKEY_CLEAR = 0x0C\nKEY_RETURN = 0x0D\nKEY_SHIFT = 0x10\nKEY_CONTROL = 0x11\nKEY_MENU = 0x12\nKEY_PAUSE = 0x13\nKEY_CAPITAL = 0x14\nKEY_KANA = 0x15\nKEY_HANGUEL = 0x15\nKEY_HANGUL = 0x15\nKEY_JUNJA = 0x17\nKEY_FINAL = 0x18\nKEY_HANJA = 0x19\nKEY_KANJI = 0x19\nKEY_ESCAPE = 0x1B\nKEY_CONVERT = 0x1C\nKEY_NONCONVERT = 0x1D\nKEY_ACCEPT = 0x1E\nKEY_MODECHANGE = 0x1F\nKEY_SPACE = 0x20\nKEY_PRIOR = 0x21\nKEY_NEXT = 0x22\nKEY_END = 0x23\nKEY_HOME = 0x24\nKEY_LEFT = 0x25\nKEY_UP = 0x26\nKEY_RIGHT = 0x27\nKEY_DOWN = 0x28\nKEY_SELECT = 0x29\nKEY_PRINT = 0x2A\nKEY_EXECUT = 0x2B\nKEY_SNAPSHOT = 0x2C\nKEY_INSERT = 0x2D\nKEY_DELETE = 0x2E\nKEY_HELP = 0x2F\nKEY_KEY_0 = 0x30\nKEY_KEY_1 = 0x31\nKEY_KEY_2 = 0x32\nKEY_KEY_3 = 0x33\nKEY_KEY_4 = 0x34\nKEY_KEY_5 = 0x35\nKEY_KEY_6 = 0x36\nKEY_KEY_7 = 0x37\nKEY_KEY_8 = 0x38\nKEY_KEY_9 = 0x39\nKEY_KEY_A = 0x41\nKEY_KEY_B = 0x42\nKEY_KEY_C = 0x43\nKEY_KEY_D = 0x44\nKEY_KEY_E = 0x45\nKEY_KEY_F = 0x46\nKEY_KEY_G = 0x47\nKEY_KEY_H = 0x48\nKEY_KEY_I = 0x49\nKEY_KEY_J = 0x4A\nKEY_KEY_K = 0x4B\nKEY_KEY_L = 0x4C\nKEY_KEY_M = 0x4D\nKEY_KEY_N = 0x4E\nKEY_KEY_O = 0x4F\nKEY_KEY_P = 0x50\nKEY_KEY_Q = 0x51\nKEY_KEY_R = 0x52\nKEY_KEY_S = 0x53\nKEY_KEY_T = 0x54\nKEY_KEY_U = 0x55\nKEY_KEY_V = 0x56\nKEY_KEY_W = 0x57\nKEY_KEY_X = 0x58\nKEY_KEY_Y = 0x59\nKEY_KEY_Z = 0x5A\nKEY_LWIN = 0x5B\nKEY_RWIN = 0x5C\nKEY_APPS = 0x5D\nKEY_SLEEP = 0x5F\nKEY_NUMPAD0 = 0x60\nKEY_NUMPAD1 = 0x61\nKEY_NUMPAD2 = 0x62\nKEY_NUMPAD3 = 0x63\nKEY_NUMPAD4 = 0x64\nKEY_NUMPAD5 = 0x65\nKEY_NUMPAD6 = 0x66\nKEY_NUMPAD7 = 0x67\nKEY_NUMPAD8 = 0x68\nKEY_NUMPAD9 = 0x69\nKEY_MULTIPLY = 0x6A\nKEY_ADD = 0x6B\nKEY_SEPARATOR = 0x6C\nKEY_SUBTRACT = 0x6D\nKEY_DECIMAL = 0x6E\nKEY_DIVIDE = 0x6F\nKEY_F1 = 0x70\nKEY_F2 = 0x71\nKEY_F3 = 0x72\nKEY_F4 = 0x73\nKEY_F5 = 0x74\nKEY_F6 = 0x75\nKEY_F7 = 0x76\nKEY_F8 = 0x77\nKEY_F9 = 0x78\nKEY_F10 = 0x79\nKEY_F11 = 0x7A\nKEY_F12 = 0x7B\nKEY_F13 = 0x7C\nKEY_F14 = 0x7D\nKEY_F15 = 0x7E\nKEY_F16 = 0x7F\nKEY_F17 = 0x80\nKEY_F18 = 0x81\nKEY_F19 = 0x82\nKEY_F20 = 0x83\nKEY_F21 = 0x84\nKEY_F22 = 0x85\nKEY_F23 = 0x86\nKEY_F24 = 0x87\nKEY_NUMLOCK = 0x90\nKEY_SCROLL = 0x91\nKEY_LSHIFT = 0xA0\nKEY_RSHIFT = 0xA1\nKEY_LCONTROL = 0xA2\nKEY_RCONTROL = 0xA3\nKEY_LMENU = 0xA4\nKEY_RMENU = 0xA5\nKEY_OEM_1 = 0xBA\nKEY_PLUS = 0xBB\nKEY_COMMA = 0xBC\nKEY_MINUS = 0xBD\nKEY_PERIOD = 0xBE\nKEY_OEM_2 = 0xBF\nKEY_OEM_3 = 0xC0\nKEY_OEM_4 = 0xDB\nKEY_OEM_5 = 0xDC\nKEY_OEM_6 = 0xDD\nKEY_OEM_7 = 0xDE\nKEY_OEM_8 = 0xDF\nKEY_OEM_AX = 0xE1\nKEY_OEM_102 = 0xE2\nKEY_ATTN = 0xF6\nKEY_CRSEL = 0xF7\nKEY_EXSEL = 0xF8\nKEY_EREOF = 0xF9\nKEY_PLAY = 0xFA\nKEY_ZOOM = 0xFB\nKEY_PA1 = 0xFD\nKEY_OEM_CLEAR = 0xFE\nKEY_KEY_CODES_COUNT = 0xFF",
+            "title": "Key Codes"
+        }
+    ]
+}

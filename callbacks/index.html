@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Lua Callbacks - Dreams Of Magnus</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="..">Dreams Of Magnus</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                    <li >
+                        <a href="../about/">About</a>
+                    </li>
+                    <li class="active">
+                        <a href="./">Lua Callbacks</a>
+                    </li>
+                    <li >
+                        <a href="../keycodes/">Key Codes</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../about/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../keycodes/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/bobjrsenior/Dreams_Rewrite">
+                                <i class="fa fa-github"></i>GitHub
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#lua-callbacks">Lua Callbacks</a></li>
+            <li><a href="#iskeydownkeycode">isKeyDown(keyCode)</a></li>
+            <li><a href="#forcekeyupkeycode">forceKeyUp(keyCode)</a></li>
+            <li><a href="#getmousepos">getMousePos()</a></li>
+            <li><a href="#setmouseposmousepos">setMousePos(mousePos)</a></li>
+            <li><a href="#gettime">getTime()</a></li>
+            <li><a href="#quitgame">quitGame()</a></li>
+            <li><a href="#getscreenwidth">getScreenWidth()</a></li>
+            <li><a href="#getscreenheight">getScreenHeight()</a></li>
+            <li><a href="#getdeltatime">getDeltaTime()</a></li>
+            <li><a href="#iscolliding">isColliding()</a></li>
+            <li><a href="#collisiondirectionobjectidentifier">collisionDirection(objectIdentifier)</a></li>
+            <li><a href="#comparetagobjectidentifier-tag">compareTag(objectIdentifier, tag)</a></li>
+            <li><a href="#getclearcolor">getClearColor()</a></li>
+            <li><a href="#setclearcolorred-green-blue-alpha">setClearColor(red, green, blue, alpha)</a></li>
+            <li><a href="#getposition">getPosition()</a></li>
+            <li><a href="#setpositionnewpos">setPosition(newPos)</a></li>
+            <li><a href="#playsoundsound">playSound(sound)</a></li>
+            <li><a href="#tablelengthtable">tableLength(table)</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="lua-callbacks">Lua Callbacks</h1>
+<h2 id="iskeydownkeycode">isKeyDown(keyCode)</h2>
+<h4 id="parameters">Parameters</h4>
+<ul>
+<li><a href="../keycodes/">keyCode</a>: A String corresponding to a key</li>
+</ul>
+<h4 id="return-value">Return Value</h4>
+<ul>
+<li>A boolean value corresponding to whether or not the key is pressed</li>
+</ul>
+<p>Checks to see if the given key is currently pressed</p>
+<pre><code>if isKeyDown("KEY_LEFT") {
+    print("Key is down")
+}
+</code></pre>
+<h2 id="forcekeyupkeycode">forceKeyUp(keyCode)</h2>
+<h4 id="parameters_1">Parameters</h4>
+<ul>
+<li><a href="../keycodes/">keyCode</a>: A String corresponding to a key</li>
+</ul>
+<h4 id="return-value_1">Return Value</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<p>Marks a key as not being pressed. This can be used to make sure the key only registers as pressed for one frame.</p>
+<p>This will stop working once the key goes into repeat mode.</p>
+<pre><code>if isKeyDown("KEY_LEFT") {
+    forceKeyDown("KEY_LEFT")
+    print("Key is down")
+}
+</code></pre>
+<h2 id="getmousepos">getMousePos()</h2>
+<h4 id="parameters_2">Parameters</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<h4 id="return-value_2">Return Value</h4>
+<ul>
+<li>A table holding the mouse position with the indices X and Y</li>
+</ul>
+<p>Retrieves a table holding the mouse position with the indices X and Y</p>
+<pre><code>mousePos = getMousePosition()
+print("MouseX: " .. mousePos["X"])
+print("MouseY: " .. mousePos["Y"])
+</code></pre>
+<h2 id="setmouseposmousepos">setMousePos(mousePos)</h2>
+<h4 id="parameters_3">Parameters</h4>
+<ul>
+<li>mousePos: A table holding the mouse position with the indices X and Y</li>
+</ul>
+<h4 id="return-value_3">Return Value</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<p>Changes the mouse position to the values from the parameter</p>
+<pre><code>mousePos = {X = 50, Y = 75}
+setMousePos(mousePos)
+</code></pre>
+<h2 id="gettime">getTime()</h2>
+<h4 id="parameters_4">Parameters</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<h4 id="return-value_4">Return Value</h4>
+<ul>
+<li>The current time in milliseconds</li>
+</ul>
+<p>Retrieves the the current time in milliseconds</p>
+<pre><code>time = getTime()
+</code></pre>
+<h2 id="quitgame">quitGame()</h2>
+<h4 id="parameters_5">Parameters</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<h4 id="return-value_5">Return Value</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<p>Cleans up and closes the game process. Game closes after the function which called quitGame returns</p>
+<pre><code>if isKeyDown(KEYCODE["KEY_ESCAPE"]) then
+    quitGame()
+    return
+end
+</code></pre>
+<h2 id="getscreenwidth">getScreenWidth()</h2>
+<h4 id="parameters_6">Parameters</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<h4 id="return-value_6">Return Value</h4>
+<ul>
+<li>The width of the current window in pixels</li>
+</ul>
+<p>Retrieves the width of the game windows in pixels (whole number)</p>
+<pre><code>screenWidth = getScreenWidth()
+</code></pre>
+<h2 id="getscreenheight">getScreenHeight()</h2>
+<h4 id="parameters_7">Parameters</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<h4 id="return-value_7">Return Value</h4>
+<ul>
+<li>The height of the current window in pixels</li>
+</ul>
+<p>Retrieves the height of the game windows in pixels (whole number)</p>
+<pre><code>screenWidth = getScreenHeight()
+</code></pre>
+<h2 id="getdeltatime">getDeltaTime()</h2>
+<h4 id="parameters_8">Parameters</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<h4 id="return-value_8">Return Value</h4>
+<ul>
+<li>The amount of time that passed since the last frame (milliseconds/frame)</li>
+</ul>
+<p>Retrieves how many milliseconds pass between frames</p>
+<pre><code>x = 10
+deltaTime = getDeltaTime()
+x = x + (5 * deltaTime)
+</code></pre>
+<h2 id="iscolliding">isColliding()</h2>
+<h4 id="parameters_9">Parameters</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<h4 id="return-value_9">Return Value</h4>
+<ul>
+<li>A table holding an identifier for which objects this ojbect is colliding with. Does not include itself.</li>
+</ul>
+<p>Retrieves a list of objects that this object is colliding with. The list does not include this object.</p>
+<pre><code>collision = isColliding()
+if tableLength(collision) &gt; 0 then
+    for _,value in ipairs(collision) do
+        if compareTag(value, "Goal") == 1 then
+            loadScene(2)
+        end
+    end
+end
+</code></pre>
+<h2 id="collisiondirectionobjectidentifier">collisionDirection(objectIdentifier)</h2>
+<h4 id="parameters_10">Parameters</h4>
+<ul>
+<li>objectIdentifier: An object identifier representing an object to get the direction toward</li>
+</ul>
+<h4 id="return-value_10">Return Value</h4>
+<ul>
+<li>A table representing the direction to the object passed in with the indices X and Y.</li>
+</ul>
+<h4 id="errors">Errors</h4>
+<ul>
+<li>Invalid object identifier: A table with 0 for both the X and Y direction will be returned</li>
+</ul>
+<p>This function does not check for collision. It just gives the direction.</p>
+<pre><code>if tableLength(collision) &gt; 0 then
+    for _,value in ipairs(collision) do
+        collisionDir = collisionDirection(value)
+        print("collisionXDir: " .. collisionDir["X"])
+        print("collisionYDir: " .. collisionDir["Y"])
+    end
+end
+</code></pre>
+<h2 id="comparetagobjectidentifier-tag">compareTag(objectIdentifier, tag)</h2>
+<h4 id="parameters_11">Parameters</h4>
+<ul>
+<li>objectIdentifier: An object identifier representing an object to get the direction toward</li>
+<li>tag: A string representing the tag to compare against</li>
+</ul>
+<h4 id="return-value_11">Return Value</h4>
+<ul>
+<li>1 if the tags are equal, 0 if they are not</li>
+</ul>
+<h4 id="errors_1">Errors</h4>
+<ul>
+<li>Invalid object identifier: -1 is returned</li>
+</ul>
+<p>The tag comes from the tag given to each gameobject in the scene's lua config. It compares the objects tag with the one passed in and returns the result.</p>
+<pre><code>collision = isColliding()
+if tableLength(collision) &gt; 0 then
+    for _,value in ipairs(collision) do
+        if compareTag(value, "Goal") == 1 then
+            loadScene(2)
+        end
+    end
+end
+</code></pre>
+<h2 id="getclearcolor">getClearColor()</h2>
+<h4 id="parameters_12">Parameters</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<h4 id="return-value_12">Return Value</h4>
+<ul>
+<li>A table representing the current clear color with the indices R, G, B, A</li>
+</ul>
+<p>Retrieves the current window clear color (the color shown in areas where nothing is drawn)</p>
+<pre><code>clearColor = getClearColor()
+print("ClearR: " .. clearColor["R"])
+print("ClearG: " .. clearColor["G"])
+print("ClearB: " .. clearColor["B"])
+print("ClearA: " .. clearColor["A"])
+</code></pre>
+<h2 id="setclearcolorred-green-blue-alpha">setClearColor(red, green, blue, alpha)</h2>
+<h4 id="parameters_13">Parameters</h4>
+<ul>
+<li>red: The new red value for the clear color</li>
+<li>green: The new green value for the clear color</li>
+<li>blue: The new blue value for the clear color</li>
+<li>alpha: The new alpha value for the clear color</li>
+</ul>
+<h4 id="return-value_13">Return Value</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<p>Changes the current windows clear color to that passed in (the color shown in areas where nothing is drawn)</p>
+<pre><code>setClearColor(127, 127, 127, 255)
+</code></pre>
+<h2 id="getposition">getPosition()</h2>
+<h4 id="parameters_14">Parameters</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<h4 id="return-value_14">Return Value</h4>
+<ul>
+<li>A table representing the current position of this object with the indices X and Y</li>
+</ul>
+<p>Retrieves the current position of this object</p>
+<pre><code>position = getPosition()
+print("PosX: " .. position["X"])
+print("PosY: " .. position["Y"])
+</code></pre>
+<h2 id="setpositionnewpos">setPosition(newPos)</h2>
+<h4 id="parameters_15">Parameters</h4>
+<ul>
+<li>newPos: A table representing the new position of this object with the indices X and Y</li>
+</ul>
+<h4 id="return-value_15">Return Value</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<p>Changes the current position of this object</p>
+<pre><code>position = getPosition()
+position["X"] = position["X"] + 5
+setPosition(position)
+</code></pre>
+<h2 id="playsoundsound">playSound(sound)</h2>
+<h4 id="parameters_16">Parameters</h4>
+<ul>
+<li>sound: A string representing the path to the sound file relative to the assets folder</li>
+</ul>
+<h4 id="return-value_16">Return Value</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<p>Windows only</p>
+<p>Plays the sound corresponding to the sound passed in.</p>
+<pre><code>playSound("sfx\\spookyBackgoundMusic.wav")
+</code></pre>
+<h2 id="tablelengthtable">tableLength(table)</h2>
+<h4 id="parameters_17">Parameters</h4>
+<ul>
+<li>table: A lua table</li>
+</ul>
+<h4 id="return-value_17">Return Value</h4>
+<ul>
+<li>The number of entries in the lua table</li>
+</ul>
+<p>A simple helper function to retrieve the number of entries in a table.</p>
+<pre><code>position = getPosition()
+length = tableLength(position)
+print("There are " .. length .. " pairs in the position table"
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
