@@ -12,7 +12,7 @@ This is the main config file for the game and is required.
         ScreenWidth = 640,
         ScreenHeight = 480,
         Scenes = {
-            "scenes/scene1.lua",
+            "scenes/scene1.lua"
         },
         AssetFolder = "Assets/"
     }
