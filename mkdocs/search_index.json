@@ -47,7 +47,7 @@
         },
         {
             "location": "/callbacks/",
-            "text": "Lua Callbacks\n\n\nisKeyDown(keyCode)\n\n\nParameters\n\n\n\n\nkeyCode\n: A String corresponding to a key\n\n\n\n\nReturn Value\n\n\n\n\nA boolean value corresponding to whether or not the key is pressed\n\n\n\n\nChecks to see if the given key is currently pressed\n\n\nif isKeyDown(\"KEY_LEFT\") {\n    print(\"Key is down\")\n}\n\n\n\nforceKeyUp(keyCode)\n\n\nParameters\n\n\n\n\nkeyCode\n: A String corresponding to a key\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nMarks a key as not being pressed. This can be used to make sure the key only registers as pressed for one frame.\n\n\nThis will stop working once the key goes into repeat mode.\n\n\nif isKeyDown(\"KEY_LEFT\") {\n    forceKeyDown(\"KEY_LEFT\")\n    print(\"Key is down\")\n}\n\n\n\ngetMousePos()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nA table holding the mouse position with the indices X and Y\n\n\n\n\nRetrieves a table holding the mouse position with the indices X and Y\n\n\nmousePos = getMousePosition()\nprint(\"MouseX: \" .. mousePos[\"X\"])\nprint(\"MouseY: \" .. mousePos[\"Y\"])\n\n\n\nsetMousePos(mousePos)\n\n\nParameters\n\n\n\n\nmousePos: A table holding the mouse position with the indices X and Y\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nChanges the mouse position to the values from the parameter\n\n\nmousePos = {X = 50, Y = 75}\nsetMousePos(mousePos)\n\n\n\ngetTime()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe current time in milliseconds\n\n\n\n\nRetrieves the the current time in milliseconds\n\n\ntime = getTime()\n\n\n\nquitGame()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nCleans up and closes the game process. Game closes after the function which called quitGame returns\n\n\nif isKeyDown(KEYCODE[\"KEY_ESCAPE\"]) then\n    quitGame()\n    return\nend\n\n\n\ngetScreenWidth()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe width of the current window in pixels\n\n\n\n\nRetrieves the width of the game windows in pixels (whole number)\n\n\nscreenWidth = getScreenWidth()\n\n\n\ngetScreenHeight()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe height of the current window in pixels\n\n\n\n\nRetrieves the height of the game windows in pixels (whole number)\n\n\nscreenWidth = getScreenHeight()\n\n\n\ngetDeltaTime()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe amount of time that passed since the last frame (milliseconds/frame)\n\n\n\n\nRetrieves how many milliseconds pass between frames\n\n\nx = 10\ndeltaTime = getDeltaTime()\nx = x + (5 * deltaTime)\n\n\n\nisColliding()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nA table holding an identifier for which objects this ojbect is colliding with. Does not include itself.\n\n\n\n\nRetrieves a list of objects that this object is colliding with. The list does not include this object.\n\n\ncollision = isColliding()\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        if compareTag(value, \"Goal\") == 1 then\n            loadScene(2)\n        end\n    end\nend\n\n\n\ncollisionDirection(objectIdentifier)\n\n\nParameters\n\n\n\n\nobjectIdentifier: An object identifier representing an object to get the direction toward\n\n\n\n\nReturn Value\n\n\n\n\nA table representing the direction to the object passed in with the indices X and Y.\n\n\n\n\nErrors\n\n\n\n\nInvalid object identifier: A table with 0 for both the X and Y direction will be returned\n\n\n\n\nThis function does not check for collision. It just gives the direction.\n\n\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        collisionDir = collisionDirection(value)\n        print(\"collisionXDir: \" .. collisionDir[\"X\"])\n        print(\"collisionYDir: \" .. collisionDir[\"Y\"])\n    end\nend\n\n\n\ncompareTag(objectIdentifier, tag)\n\n\nParameters\n\n\n\n\nobjectIdentifier: An object identifier representing an object to get the direction toward\n\n\ntag: A string representing the tag to compare against\n\n\n\n\nReturn Value\n\n\n\n\n1 if the tags are equal, 0 if they are not\n\n\n\n\nErrors\n\n\n\n\nInvalid object identifier: -1 is returned\n\n\n\n\nThe tag comes from the tag given to each gameobject in the scene's lua config. It compares the objects tag with the one passed in and returns the result.\n\n\ncollision = isColliding()\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        if compareTag(value, \"Goal\") == 1 then\n            loadScene(2)\n        end\n    end\nend\n\n\n\ngetClearColor()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nA table representing the current clear color with the indices R, G, B, A\n\n\n\n\nRetrieves the current window clear color (the color shown in areas where nothing is drawn)\n\n\nclearColor = getClearColor()\nprint(\"ClearR: \" .. clearColor[\"R\"])\nprint(\"ClearG: \" .. clearColor[\"G\"])\nprint(\"ClearB: \" .. clearColor[\"B\"])\nprint(\"ClearA: \" .. clearColor[\"A\"])\n\n\n\nsetClearColor(red, green, blue, alpha)\n\n\nParameters\n\n\n\n\nred: The new red value for the clear color\n\n\ngreen: The new green value for the clear color\n\n\nblue: The new blue value for the clear color\n\n\nalpha: The new alpha value for the clear color\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nChanges the current windows clear color to that passed in (the color shown in areas where nothing is drawn)\n\n\nsetClearColor(127, 127, 127, 255)\n\n\n\ngetPosition()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nA table representing the current position of this object with the indices X and Y\n\n\n\n\nRetrieves the current position of this object\n\n\nposition = getPosition()\nprint(\"PosX: \" .. position[\"X\"])\nprint(\"PosY: \" .. position[\"Y\"])\n\n\n\nsetPosition(newPos)\n\n\nParameters\n\n\n\n\nnewPos: A table representing the new position of this object with the indices X and Y\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nChanges the current position of this object\n\n\nposition = getPosition()\nposition[\"X\"] = position[\"X\"] + 5\nsetPosition(position)\n\n\n\nplaySound(sound)\n\n\nParameters\n\n\n\n\nsound: A string representing the path to the sound file relative to the assets folder\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nWindows only\n\n\nPlays the sound corresponding to the sound passed in.\n\n\nplaySound(\"sfx\\\\spookyBackgoundMusic.wav\")\n\n\n\ntableLength(table)\n\n\nParameters\n\n\n\n\ntable: A lua table\n\n\n\n\nReturn Value\n\n\n\n\nThe number of entries in the lua table\n\n\n\n\nA simple helper function to retrieve the number of entries in a table.\n\n\nposition = getPosition()\nlength = tableLength(position)\nprint(\"There are \" .. length .. \" pairs in the position table\"",
+            "text": "Lua Callbacks\n\n\nloadScene(sceneIndex)\n\n\nParameters\n\n\n\n\nsceneIndex: The index of the scene to load\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nErrors\n\n\n\n\nIf an invalid scene index is passed, nothing will be loaded or deloaded\n\n\n\n\nDeloads the current scene and loads the scene specified\n\n\nif isKeyDown(KEYCODE[\"KEY_RETURN\"]) then\n    loadScene(1)\n    return\nend\n\n\n\ngetSceneIndex()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe current scene's index\n\n\n\n\nRetreives the index of the current scene\n\n\nif isKeyDown(KEYCODE[\"KEY_RETURN\"]) then\n    loadScene(getSceneIndex() + 1)\n    return\nend\n\n\n\nisKeyDown(keyCode)\n\n\nParameters\n\n\n\n\nkeyCode\n: A String corresponding to a key\n\n\n\n\nReturn Value\n\n\n\n\nA boolean value corresponding to whether or not the key is pressed\n\n\n\n\nChecks to see if the given key is currently pressed\n\n\nif isKeyDown(\"KEY_LEFT\") {\n    print(\"Key is down\")\n}\n\n\n\nforceKeyUp(keyCode)\n\n\nParameters\n\n\n\n\nkeyCode\n: A String corresponding to a key\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nMarks a key as not being pressed. This can be used to make sure the key only registers as pressed for one frame.\n\n\nThis will stop working once the key goes into repeat mode.\n\n\nif isKeyDown(\"KEY_LEFT\") {\n    forceKeyDown(\"KEY_LEFT\")\n    print(\"Key is down\")\n}\n\n\n\ngetMousePos()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nA table holding the mouse position with the indices X and Y\n\n\n\n\nRetrieves a table holding the mouse position with the indices X and Y\n\n\nmousePos = getMousePosition()\nprint(\"MouseX: \" .. mousePos[\"X\"])\nprint(\"MouseY: \" .. mousePos[\"Y\"])\n\n\n\nsetMousePos(mousePos)\n\n\nParameters\n\n\n\n\nmousePos: A table holding the mouse position with the indices X and Y\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nChanges the mouse position to the values from the parameter\n\n\nmousePos = {X = 50, Y = 75}\nsetMousePos(mousePos)\n\n\n\ngetTime()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe current time in milliseconds\n\n\n\n\nRetrieves the the current time in milliseconds\n\n\ntime = getTime()\n\n\n\nquitGame()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nCleans up and closes the game process. Game closes after the function which called quitGame returns\n\n\nif isKeyDown(KEYCODE[\"KEY_ESCAPE\"]) then\n    quitGame()\n    return\nend\n\n\n\ngetScreenWidth()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe width of the current window in pixels\n\n\n\n\nRetrieves the width of the game windows in pixels (whole number)\n\n\nscreenWidth = getScreenWidth()\n\n\n\ngetScreenHeight()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe height of the current window in pixels\n\n\n\n\nRetrieves the height of the game windows in pixels (whole number)\n\n\nscreenWidth = getScreenHeight()\n\n\n\ngetDeltaTime()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nThe amount of time that passed since the last frame (milliseconds/frame)\n\n\n\n\nRetrieves how many milliseconds pass between frames\n\n\nx = 10\ndeltaTime = getDeltaTime()\nx = x + (5 * deltaTime)\n\n\n\nisColliding()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nA table holding an identifier for which objects this ojbect is colliding with. Does not include itself.\n\n\n\n\nRetrieves a list of objects that this object is colliding with. The list does not include this object.\n\n\ncollision = isColliding()\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        if compareTag(value, \"Goal\") == 1 then\n            loadScene(2)\n        end\n    end\nend\n\n\n\ncollisionDirection(objectIdentifier)\n\n\nParameters\n\n\n\n\nobjectIdentifier: An object identifier representing an object to get the direction toward\n\n\n\n\nReturn Value\n\n\n\n\nA table representing the direction to the object passed in with the indices X and Y.\n\n\n\n\nErrors\n\n\n\n\nInvalid object identifier: A table with 0 for both the X and Y direction will be returned\n\n\n\n\nThis function does not check for collision. It just gives the direction.\n\n\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        collisionDir = collisionDirection(value)\n        print(\"collisionXDir: \" .. collisionDir[\"X\"])\n        print(\"collisionYDir: \" .. collisionDir[\"Y\"])\n    end\nend\n\n\n\ncompareTag(objectIdentifier, tag)\n\n\nParameters\n\n\n\n\nobjectIdentifier: An object identifier representing an object to get the direction toward\n\n\ntag: A string representing the tag to compare against\n\n\n\n\nReturn Value\n\n\n\n\n1 if the tags are equal, 0 if they are not\n\n\n\n\nErrors\n\n\n\n\nInvalid object identifier: -1 is returned\n\n\n\n\nThe tag comes from the tag given to each gameobject in the scene's lua config. It compares the objects tag with the one passed in and returns the result.\n\n\ncollision = isColliding()\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        if compareTag(value, \"Goal\") == 1 then\n            loadScene(2)\n        end\n    end\nend\n\n\n\ngetClearColor()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nA table representing the current clear color with the indices R, G, B, A\n\n\n\n\nRetrieves the current window clear color (the color shown in areas where nothing is drawn)\n\n\nclearColor = getClearColor()\nprint(\"ClearR: \" .. clearColor[\"R\"])\nprint(\"ClearG: \" .. clearColor[\"G\"])\nprint(\"ClearB: \" .. clearColor[\"B\"])\nprint(\"ClearA: \" .. clearColor[\"A\"])\n\n\n\nsetClearColor(red, green, blue, alpha)\n\n\nParameters\n\n\n\n\nred: The new red value for the clear color\n\n\ngreen: The new green value for the clear color\n\n\nblue: The new blue value for the clear color\n\n\nalpha: The new alpha value for the clear color\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nChanges the current windows clear color to that passed in (the color shown in areas where nothing is drawn)\n\n\nsetClearColor(127, 127, 127, 255)\n\n\n\ngetPosition()\n\n\nParameters\n\n\n\n\nN/A\n\n\n\n\nReturn Value\n\n\n\n\nA table representing the current position of this object with the indices X and Y\n\n\n\n\nRetrieves the current position of this object\n\n\nposition = getPosition()\nprint(\"PosX: \" .. position[\"X\"])\nprint(\"PosY: \" .. position[\"Y\"])\n\n\n\nsetPosition(newPos)\n\n\nParameters\n\n\n\n\nnewPos: A table representing the new position of this object with the indices X and Y\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nChanges the current position of this object\n\n\nposition = getPosition()\nposition[\"X\"] = position[\"X\"] + 5\nsetPosition(position)\n\n\n\nplaySound(sound)\n\n\nParameters\n\n\n\n\nsound: A string representing the path to the sound file relative to the assets folder\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nWindows only\n\n\nPlays the sound corresponding to the sound passed in.\n\n\nplaySound(\"sfx\\\\spookyBackgoundMusic.wav\")\n\n\n\nplaySoundLoop(sound)\n\n\nParameters\n\n\n\n\nsound: A string representing the path to the sound file relative to the assets folder\n\n\n\n\nReturn Value\n\n\n\n\nN/A\n\n\n\n\nWindows only\n\n\nPlays the sound corresponding to the sound passed in. The sound will continue to loop.\n\n\nplaySoundLoop(\"sfx\\\\spookyBackgoundMusic.wav\")\n\n\n\ntableLength(table)\n\n\nParameters\n\n\n\n\ntable: A lua table\n\n\n\n\nReturn Value\n\n\n\n\nThe number of entries in the lua table\n\n\n\n\nA simple helper function to retrieve the number of entries in a table.\n\n\nposition = getPosition()\nlength = tableLength(position)\nprint(\"There are \" .. length .. \" pairs in the position table\"",
             "title": "Lua Callbacks"
         },
         {
@@ -56,17 +56,52 @@
             "title": "Lua Callbacks"
         },
         {
+            "location": "/callbacks/#loadscenesceneindex",
+            "text": "",
+            "title": "loadScene(sceneIndex)"
+        },
+        {
+            "location": "/callbacks/#parameters",
+            "text": "sceneIndex: The index of the scene to load",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value",
+            "text": "N/A",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#errors",
+            "text": "If an invalid scene index is passed, nothing will be loaded or deloaded   Deloads the current scene and loads the scene specified  if isKeyDown(KEYCODE[\"KEY_RETURN\"]) then\n    loadScene(1)\n    return\nend",
+            "title": "Errors"
+        },
+        {
+            "location": "/callbacks/#getsceneindex",
+            "text": "",
+            "title": "getSceneIndex()"
+        },
+        {
+            "location": "/callbacks/#parameters_1",
+            "text": "N/A",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_1",
+            "text": "The current scene's index   Retreives the index of the current scene  if isKeyDown(KEYCODE[\"KEY_RETURN\"]) then\n    loadScene(getSceneIndex() + 1)\n    return\nend",
+            "title": "Return Value"
+        },
+        {
             "location": "/callbacks/#iskeydownkeycode",
             "text": "",
             "title": "isKeyDown(keyCode)"
         },
         {
-            "location": "/callbacks/#parameters",
+            "location": "/callbacks/#parameters_2",
             "text": "keyCode : A String corresponding to a key",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value",
+            "location": "/callbacks/#return-value_2",
             "text": "A boolean value corresponding to whether or not the key is pressed   Checks to see if the given key is currently pressed  if isKeyDown(\"KEY_LEFT\") {\n    print(\"Key is down\")\n}",
             "title": "Return Value"
         },
@@ -76,12 +111,12 @@
             "title": "forceKeyUp(keyCode)"
         },
         {
-            "location": "/callbacks/#parameters_1",
+            "location": "/callbacks/#parameters_3",
             "text": "keyCode : A String corresponding to a key",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_1",
+            "location": "/callbacks/#return-value_3",
             "text": "N/A   Marks a key as not being pressed. This can be used to make sure the key only registers as pressed for one frame.  This will stop working once the key goes into repeat mode.  if isKeyDown(\"KEY_LEFT\") {\n    forceKeyDown(\"KEY_LEFT\")\n    print(\"Key is down\")\n}",
             "title": "Return Value"
         },
@@ -91,12 +126,12 @@
             "title": "getMousePos()"
         },
         {
-            "location": "/callbacks/#parameters_2",
+            "location": "/callbacks/#parameters_4",
             "text": "N/A",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_2",
+            "location": "/callbacks/#return-value_4",
             "text": "A table holding the mouse position with the indices X and Y   Retrieves a table holding the mouse position with the indices X and Y  mousePos = getMousePosition()\nprint(\"MouseX: \" .. mousePos[\"X\"])\nprint(\"MouseY: \" .. mousePos[\"Y\"])",
             "title": "Return Value"
         },
@@ -106,12 +141,12 @@
             "title": "setMousePos(mousePos)"
         },
         {
-            "location": "/callbacks/#parameters_3",
+            "location": "/callbacks/#parameters_5",
             "text": "mousePos: A table holding the mouse position with the indices X and Y",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_3",
+            "location": "/callbacks/#return-value_5",
             "text": "N/A   Changes the mouse position to the values from the parameter  mousePos = {X = 50, Y = 75}\nsetMousePos(mousePos)",
             "title": "Return Value"
         },
@@ -121,12 +156,12 @@
             "title": "getTime()"
         },
         {
-            "location": "/callbacks/#parameters_4",
+            "location": "/callbacks/#parameters_6",
             "text": "N/A",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_4",
+            "location": "/callbacks/#return-value_6",
             "text": "The current time in milliseconds   Retrieves the the current time in milliseconds  time = getTime()",
             "title": "Return Value"
         },
@@ -136,12 +171,12 @@
             "title": "quitGame()"
         },
         {
-            "location": "/callbacks/#parameters_5",
+            "location": "/callbacks/#parameters_7",
             "text": "N/A",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_5",
+            "location": "/callbacks/#return-value_7",
             "text": "N/A   Cleans up and closes the game process. Game closes after the function which called quitGame returns  if isKeyDown(KEYCODE[\"KEY_ESCAPE\"]) then\n    quitGame()\n    return\nend",
             "title": "Return Value"
         },
@@ -151,12 +186,12 @@
             "title": "getScreenWidth()"
         },
         {
-            "location": "/callbacks/#parameters_6",
+            "location": "/callbacks/#parameters_8",
             "text": "N/A",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_6",
+            "location": "/callbacks/#return-value_8",
             "text": "The width of the current window in pixels   Retrieves the width of the game windows in pixels (whole number)  screenWidth = getScreenWidth()",
             "title": "Return Value"
         },
@@ -166,12 +201,12 @@
             "title": "getScreenHeight()"
         },
         {
-            "location": "/callbacks/#parameters_7",
+            "location": "/callbacks/#parameters_9",
             "text": "N/A",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_7",
+            "location": "/callbacks/#return-value_9",
             "text": "The height of the current window in pixels   Retrieves the height of the game windows in pixels (whole number)  screenWidth = getScreenHeight()",
             "title": "Return Value"
         },
@@ -181,12 +216,12 @@
             "title": "getDeltaTime()"
         },
         {
-            "location": "/callbacks/#parameters_8",
+            "location": "/callbacks/#parameters_10",
             "text": "N/A",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_8",
+            "location": "/callbacks/#return-value_10",
             "text": "The amount of time that passed since the last frame (milliseconds/frame)   Retrieves how many milliseconds pass between frames  x = 10\ndeltaTime = getDeltaTime()\nx = x + (5 * deltaTime)",
             "title": "Return Value"
         },
@@ -196,12 +231,12 @@
             "title": "isColliding()"
         },
         {
-            "location": "/callbacks/#parameters_9",
+            "location": "/callbacks/#parameters_11",
             "text": "N/A",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_9",
+            "location": "/callbacks/#return-value_11",
             "text": "A table holding an identifier for which objects this ojbect is colliding with. Does not include itself.   Retrieves a list of objects that this object is colliding with. The list does not include this object.  collision = isColliding()\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        if compareTag(value, \"Goal\") == 1 then\n            loadScene(2)\n        end\n    end\nend",
             "title": "Return Value"
         },
@@ -211,17 +246,17 @@
             "title": "collisionDirection(objectIdentifier)"
         },
         {
-            "location": "/callbacks/#parameters_10",
+            "location": "/callbacks/#parameters_12",
             "text": "objectIdentifier: An object identifier representing an object to get the direction toward",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_10",
+            "location": "/callbacks/#return-value_12",
             "text": "A table representing the direction to the object passed in with the indices X and Y.",
             "title": "Return Value"
         },
         {
-            "location": "/callbacks/#errors",
+            "location": "/callbacks/#errors_1",
             "text": "Invalid object identifier: A table with 0 for both the X and Y direction will be returned   This function does not check for collision. It just gives the direction.  if tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        collisionDir = collisionDirection(value)\n        print(\"collisionXDir: \" .. collisionDir[\"X\"])\n        print(\"collisionYDir: \" .. collisionDir[\"Y\"])\n    end\nend",
             "title": "Errors"
         },
@@ -231,17 +266,17 @@
             "title": "compareTag(objectIdentifier, tag)"
         },
         {
-            "location": "/callbacks/#parameters_11",
+            "location": "/callbacks/#parameters_13",
             "text": "objectIdentifier: An object identifier representing an object to get the direction toward  tag: A string representing the tag to compare against",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_11",
+            "location": "/callbacks/#return-value_13",
             "text": "1 if the tags are equal, 0 if they are not",
             "title": "Return Value"
         },
         {
-            "location": "/callbacks/#errors_1",
+            "location": "/callbacks/#errors_2",
             "text": "Invalid object identifier: -1 is returned   The tag comes from the tag given to each gameobject in the scene's lua config. It compares the objects tag with the one passed in and returns the result.  collision = isColliding()\nif tableLength(collision) > 0 then\n    for _,value in ipairs(collision) do\n        if compareTag(value, \"Goal\") == 1 then\n            loadScene(2)\n        end\n    end\nend",
             "title": "Errors"
         },
@@ -251,12 +286,12 @@
             "title": "getClearColor()"
         },
         {
-            "location": "/callbacks/#parameters_12",
+            "location": "/callbacks/#parameters_14",
             "text": "N/A",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_12",
+            "location": "/callbacks/#return-value_14",
             "text": "A table representing the current clear color with the indices R, G, B, A   Retrieves the current window clear color (the color shown in areas where nothing is drawn)  clearColor = getClearColor()\nprint(\"ClearR: \" .. clearColor[\"R\"])\nprint(\"ClearG: \" .. clearColor[\"G\"])\nprint(\"ClearB: \" .. clearColor[\"B\"])\nprint(\"ClearA: \" .. clearColor[\"A\"])",
             "title": "Return Value"
         },
@@ -266,12 +301,12 @@
             "title": "setClearColor(red, green, blue, alpha)"
         },
         {
-            "location": "/callbacks/#parameters_13",
+            "location": "/callbacks/#parameters_15",
             "text": "red: The new red value for the clear color  green: The new green value for the clear color  blue: The new blue value for the clear color  alpha: The new alpha value for the clear color",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_13",
+            "location": "/callbacks/#return-value_15",
             "text": "N/A   Changes the current windows clear color to that passed in (the color shown in areas where nothing is drawn)  setClearColor(127, 127, 127, 255)",
             "title": "Return Value"
         },
@@ -281,12 +316,12 @@
             "title": "getPosition()"
         },
         {
-            "location": "/callbacks/#parameters_14",
+            "location": "/callbacks/#parameters_16",
             "text": "N/A",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_14",
+            "location": "/callbacks/#return-value_16",
             "text": "A table representing the current position of this object with the indices X and Y   Retrieves the current position of this object  position = getPosition()\nprint(\"PosX: \" .. position[\"X\"])\nprint(\"PosY: \" .. position[\"Y\"])",
             "title": "Return Value"
         },
@@ -296,12 +331,12 @@
             "title": "setPosition(newPos)"
         },
         {
-            "location": "/callbacks/#parameters_15",
+            "location": "/callbacks/#parameters_17",
             "text": "newPos: A table representing the new position of this object with the indices X and Y",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_15",
+            "location": "/callbacks/#return-value_17",
             "text": "N/A   Changes the current position of this object  position = getPosition()\nposition[\"X\"] = position[\"X\"] + 5\nsetPosition(position)",
             "title": "Return Value"
         },
@@ -311,13 +346,28 @@
             "title": "playSound(sound)"
         },
         {
-            "location": "/callbacks/#parameters_16",
+            "location": "/callbacks/#parameters_18",
             "text": "sound: A string representing the path to the sound file relative to the assets folder",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_16",
+            "location": "/callbacks/#return-value_18",
             "text": "N/A   Windows only  Plays the sound corresponding to the sound passed in.  playSound(\"sfx\\\\spookyBackgoundMusic.wav\")",
+            "title": "Return Value"
+        },
+        {
+            "location": "/callbacks/#playsoundloopsound",
+            "text": "",
+            "title": "playSoundLoop(sound)"
+        },
+        {
+            "location": "/callbacks/#parameters_19",
+            "text": "sound: A string representing the path to the sound file relative to the assets folder",
+            "title": "Parameters"
+        },
+        {
+            "location": "/callbacks/#return-value_19",
+            "text": "N/A   Windows only  Plays the sound corresponding to the sound passed in. The sound will continue to loop.  playSoundLoop(\"sfx\\\\spookyBackgoundMusic.wav\")",
             "title": "Return Value"
         },
         {
@@ -326,12 +376,12 @@
             "title": "tableLength(table)"
         },
         {
-            "location": "/callbacks/#parameters_17",
+            "location": "/callbacks/#parameters_20",
             "text": "table: A lua table",
             "title": "Parameters"
         },
         {
-            "location": "/callbacks/#return-value_17",
+            "location": "/callbacks/#return-value_20",
             "text": "The number of entries in the lua table   A simple helper function to retrieve the number of entries in a table.  position = getPosition()\nlength = tableLength(position)\nprint(\"There are \" .. length .. \" pairs in the position table\"",
             "title": "Return Value"
         },

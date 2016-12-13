@@ -92,6 +92,8 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#lua-callbacks">Lua Callbacks</a></li>
+            <li><a href="#loadscenesceneindex">loadScene(sceneIndex)</a></li>
+            <li><a href="#getsceneindex">getSceneIndex()</a></li>
             <li><a href="#iskeydownkeycode">isKeyDown(keyCode)</a></li>
             <li><a href="#forcekeyupkeycode">forceKeyUp(keyCode)</a></li>
             <li><a href="#getmousepos">getMousePos()</a></li>
@@ -109,18 +111,53 @@
             <li><a href="#getposition">getPosition()</a></li>
             <li><a href="#setpositionnewpos">setPosition(newPos)</a></li>
             <li><a href="#playsoundsound">playSound(sound)</a></li>
+            <li><a href="#playsoundloopsound">playSoundLoop(sound)</a></li>
             <li><a href="#tablelengthtable">tableLength(table)</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="lua-callbacks">Lua Callbacks</h1>
-<h2 id="iskeydownkeycode">isKeyDown(keyCode)</h2>
+<h2 id="loadscenesceneindex">loadScene(sceneIndex)</h2>
 <h4 id="parameters">Parameters</h4>
+<ul>
+<li>sceneIndex: The index of the scene to load</li>
+</ul>
+<h4 id="return-value">Return Value</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<h4 id="errors">Errors</h4>
+<ul>
+<li>If an invalid scene index is passed, nothing will be loaded or deloaded</li>
+</ul>
+<p>Deloads the current scene and loads the scene specified</p>
+<pre><code>if isKeyDown(KEYCODE["KEY_RETURN"]) then
+    loadScene(1)
+    return
+end
+</code></pre>
+<h2 id="getsceneindex">getSceneIndex()</h2>
+<h4 id="parameters_1">Parameters</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<h4 id="return-value_1">Return Value</h4>
+<ul>
+<li>The current scene's index</li>
+</ul>
+<p>Retreives the index of the current scene</p>
+<pre><code>if isKeyDown(KEYCODE["KEY_RETURN"]) then
+    loadScene(getSceneIndex() + 1)
+    return
+end
+</code></pre>
+<h2 id="iskeydownkeycode">isKeyDown(keyCode)</h2>
+<h4 id="parameters_2">Parameters</h4>
 <ul>
 <li><a href="../keycodes/">keyCode</a>: A String corresponding to a key</li>
 </ul>
-<h4 id="return-value">Return Value</h4>
+<h4 id="return-value_2">Return Value</h4>
 <ul>
 <li>A boolean value corresponding to whether or not the key is pressed</li>
 </ul>
@@ -130,11 +167,11 @@
 }
 </code></pre>
 <h2 id="forcekeyupkeycode">forceKeyUp(keyCode)</h2>
-<h4 id="parameters_1">Parameters</h4>
+<h4 id="parameters_3">Parameters</h4>
 <ul>
 <li><a href="../keycodes/">keyCode</a>: A String corresponding to a key</li>
 </ul>
-<h4 id="return-value_1">Return Value</h4>
+<h4 id="return-value_3">Return Value</h4>
 <ul>
 <li>N/A</li>
 </ul>
@@ -146,11 +183,11 @@
 }
 </code></pre>
 <h2 id="getmousepos">getMousePos()</h2>
-<h4 id="parameters_2">Parameters</h4>
+<h4 id="parameters_4">Parameters</h4>
 <ul>
 <li>N/A</li>
 </ul>
-<h4 id="return-value_2">Return Value</h4>
+<h4 id="return-value_4">Return Value</h4>
 <ul>
 <li>A table holding the mouse position with the indices X and Y</li>
 </ul>
@@ -160,11 +197,11 @@ print("MouseX: " .. mousePos["X"])
 print("MouseY: " .. mousePos["Y"])
 </code></pre>
 <h2 id="setmouseposmousepos">setMousePos(mousePos)</h2>
-<h4 id="parameters_3">Parameters</h4>
+<h4 id="parameters_5">Parameters</h4>
 <ul>
 <li>mousePos: A table holding the mouse position with the indices X and Y</li>
 </ul>
-<h4 id="return-value_3">Return Value</h4>
+<h4 id="return-value_5">Return Value</h4>
 <ul>
 <li>N/A</li>
 </ul>
@@ -173,11 +210,11 @@ print("MouseY: " .. mousePos["Y"])
 setMousePos(mousePos)
 </code></pre>
 <h2 id="gettime">getTime()</h2>
-<h4 id="parameters_4">Parameters</h4>
+<h4 id="parameters_6">Parameters</h4>
 <ul>
 <li>N/A</li>
 </ul>
-<h4 id="return-value_4">Return Value</h4>
+<h4 id="return-value_6">Return Value</h4>
 <ul>
 <li>The current time in milliseconds</li>
 </ul>
@@ -185,11 +222,11 @@ setMousePos(mousePos)
 <pre><code>time = getTime()
 </code></pre>
 <h2 id="quitgame">quitGame()</h2>
-<h4 id="parameters_5">Parameters</h4>
+<h4 id="parameters_7">Parameters</h4>
 <ul>
 <li>N/A</li>
 </ul>
-<h4 id="return-value_5">Return Value</h4>
+<h4 id="return-value_7">Return Value</h4>
 <ul>
 <li>N/A</li>
 </ul>
@@ -200,11 +237,11 @@ setMousePos(mousePos)
 end
 </code></pre>
 <h2 id="getscreenwidth">getScreenWidth()</h2>
-<h4 id="parameters_6">Parameters</h4>
+<h4 id="parameters_8">Parameters</h4>
 <ul>
 <li>N/A</li>
 </ul>
-<h4 id="return-value_6">Return Value</h4>
+<h4 id="return-value_8">Return Value</h4>
 <ul>
 <li>The width of the current window in pixels</li>
 </ul>
@@ -212,11 +249,11 @@ end
 <pre><code>screenWidth = getScreenWidth()
 </code></pre>
 <h2 id="getscreenheight">getScreenHeight()</h2>
-<h4 id="parameters_7">Parameters</h4>
+<h4 id="parameters_9">Parameters</h4>
 <ul>
 <li>N/A</li>
 </ul>
-<h4 id="return-value_7">Return Value</h4>
+<h4 id="return-value_9">Return Value</h4>
 <ul>
 <li>The height of the current window in pixels</li>
 </ul>
@@ -224,11 +261,11 @@ end
 <pre><code>screenWidth = getScreenHeight()
 </code></pre>
 <h2 id="getdeltatime">getDeltaTime()</h2>
-<h4 id="parameters_8">Parameters</h4>
+<h4 id="parameters_10">Parameters</h4>
 <ul>
 <li>N/A</li>
 </ul>
-<h4 id="return-value_8">Return Value</h4>
+<h4 id="return-value_10">Return Value</h4>
 <ul>
 <li>The amount of time that passed since the last frame (milliseconds/frame)</li>
 </ul>
@@ -238,11 +275,11 @@ deltaTime = getDeltaTime()
 x = x + (5 * deltaTime)
 </code></pre>
 <h2 id="iscolliding">isColliding()</h2>
-<h4 id="parameters_9">Parameters</h4>
+<h4 id="parameters_11">Parameters</h4>
 <ul>
 <li>N/A</li>
 </ul>
-<h4 id="return-value_9">Return Value</h4>
+<h4 id="return-value_11">Return Value</h4>
 <ul>
 <li>A table holding an identifier for which objects this ojbect is colliding with. Does not include itself.</li>
 </ul>
@@ -257,15 +294,15 @@ if tableLength(collision) &gt; 0 then
 end
 </code></pre>
 <h2 id="collisiondirectionobjectidentifier">collisionDirection(objectIdentifier)</h2>
-<h4 id="parameters_10">Parameters</h4>
+<h4 id="parameters_12">Parameters</h4>
 <ul>
 <li>objectIdentifier: An object identifier representing an object to get the direction toward</li>
 </ul>
-<h4 id="return-value_10">Return Value</h4>
+<h4 id="return-value_12">Return Value</h4>
 <ul>
 <li>A table representing the direction to the object passed in with the indices X and Y.</li>
 </ul>
-<h4 id="errors">Errors</h4>
+<h4 id="errors_1">Errors</h4>
 <ul>
 <li>Invalid object identifier: A table with 0 for both the X and Y direction will be returned</li>
 </ul>
@@ -279,16 +316,16 @@ end
 end
 </code></pre>
 <h2 id="comparetagobjectidentifier-tag">compareTag(objectIdentifier, tag)</h2>
-<h4 id="parameters_11">Parameters</h4>
+<h4 id="parameters_13">Parameters</h4>
 <ul>
 <li>objectIdentifier: An object identifier representing an object to get the direction toward</li>
 <li>tag: A string representing the tag to compare against</li>
 </ul>
-<h4 id="return-value_11">Return Value</h4>
+<h4 id="return-value_13">Return Value</h4>
 <ul>
 <li>1 if the tags are equal, 0 if they are not</li>
 </ul>
-<h4 id="errors_1">Errors</h4>
+<h4 id="errors_2">Errors</h4>
 <ul>
 <li>Invalid object identifier: -1 is returned</li>
 </ul>
@@ -303,11 +340,11 @@ if tableLength(collision) &gt; 0 then
 end
 </code></pre>
 <h2 id="getclearcolor">getClearColor()</h2>
-<h4 id="parameters_12">Parameters</h4>
+<h4 id="parameters_14">Parameters</h4>
 <ul>
 <li>N/A</li>
 </ul>
-<h4 id="return-value_12">Return Value</h4>
+<h4 id="return-value_14">Return Value</h4>
 <ul>
 <li>A table representing the current clear color with the indices R, G, B, A</li>
 </ul>
@@ -319,14 +356,14 @@ print("ClearB: " .. clearColor["B"])
 print("ClearA: " .. clearColor["A"])
 </code></pre>
 <h2 id="setclearcolorred-green-blue-alpha">setClearColor(red, green, blue, alpha)</h2>
-<h4 id="parameters_13">Parameters</h4>
+<h4 id="parameters_15">Parameters</h4>
 <ul>
 <li>red: The new red value for the clear color</li>
 <li>green: The new green value for the clear color</li>
 <li>blue: The new blue value for the clear color</li>
 <li>alpha: The new alpha value for the clear color</li>
 </ul>
-<h4 id="return-value_13">Return Value</h4>
+<h4 id="return-value_15">Return Value</h4>
 <ul>
 <li>N/A</li>
 </ul>
@@ -334,11 +371,11 @@ print("ClearA: " .. clearColor["A"])
 <pre><code>setClearColor(127, 127, 127, 255)
 </code></pre>
 <h2 id="getposition">getPosition()</h2>
-<h4 id="parameters_14">Parameters</h4>
+<h4 id="parameters_16">Parameters</h4>
 <ul>
 <li>N/A</li>
 </ul>
-<h4 id="return-value_14">Return Value</h4>
+<h4 id="return-value_16">Return Value</h4>
 <ul>
 <li>A table representing the current position of this object with the indices X and Y</li>
 </ul>
@@ -348,11 +385,11 @@ print("PosX: " .. position["X"])
 print("PosY: " .. position["Y"])
 </code></pre>
 <h2 id="setpositionnewpos">setPosition(newPos)</h2>
-<h4 id="parameters_15">Parameters</h4>
+<h4 id="parameters_17">Parameters</h4>
 <ul>
 <li>newPos: A table representing the new position of this object with the indices X and Y</li>
 </ul>
-<h4 id="return-value_15">Return Value</h4>
+<h4 id="return-value_17">Return Value</h4>
 <ul>
 <li>N/A</li>
 </ul>
@@ -362,11 +399,11 @@ position["X"] = position["X"] + 5
 setPosition(position)
 </code></pre>
 <h2 id="playsoundsound">playSound(sound)</h2>
-<h4 id="parameters_16">Parameters</h4>
+<h4 id="parameters_18">Parameters</h4>
 <ul>
 <li>sound: A string representing the path to the sound file relative to the assets folder</li>
 </ul>
-<h4 id="return-value_16">Return Value</h4>
+<h4 id="return-value_18">Return Value</h4>
 <ul>
 <li>N/A</li>
 </ul>
@@ -374,12 +411,25 @@ setPosition(position)
 <p>Plays the sound corresponding to the sound passed in.</p>
 <pre><code>playSound("sfx\\spookyBackgoundMusic.wav")
 </code></pre>
+<h2 id="playsoundloopsound">playSoundLoop(sound)</h2>
+<h4 id="parameters_19">Parameters</h4>
+<ul>
+<li>sound: A string representing the path to the sound file relative to the assets folder</li>
+</ul>
+<h4 id="return-value_19">Return Value</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<p>Windows only</p>
+<p>Plays the sound corresponding to the sound passed in. The sound will continue to loop.</p>
+<pre><code>playSoundLoop("sfx\\spookyBackgoundMusic.wav")
+</code></pre>
 <h2 id="tablelengthtable">tableLength(table)</h2>
-<h4 id="parameters_17">Parameters</h4>
+<h4 id="parameters_20">Parameters</h4>
 <ul>
 <li>table: A lua table</li>
 </ul>
-<h4 id="return-value_17">Return Value</h4>
+<h4 id="return-value_20">Return Value</h4>
 <ul>
 <li>The number of entries in the lua table</li>
 </ul>
