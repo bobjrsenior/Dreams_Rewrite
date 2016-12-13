@@ -1,5 +1,44 @@
 # Lua Callbacks
 
+## loadScene(sceneIndex)
+
+#### Parameters
+
+* sceneIndex: The index of the scene to load
+
+#### Return Value
+
+* N/A
+
+#### Errors
+
+* If an invalid scene index is passed, nothing will be loaded or deloaded
+
+
+Deloads the current scene and loads the scene specified
+
+    if isKeyDown(KEYCODE["KEY_RETURN"]) then
+        loadScene(1)
+        return
+    end
+
+## getSceneIndex()
+
+#### Parameters
+
+* N/A
+
+#### Return Value
+
+* The current scene's index
+
+Retreives the index of the current scene
+
+    if isKeyDown(KEYCODE["KEY_RETURN"]) then
+        loadScene(getSceneIndex() + 1)
+        return
+    end
+
 ## isKeyDown(keyCode)
 
 #### Parameters
@@ -296,6 +335,22 @@ Windows only
 Plays the sound corresponding to the sound passed in.
 
     playSound("sfx\\spookyBackgoundMusic.wav")
+    
+## playSoundLoop(sound)
+
+#### Parameters
+
+* sound: A string representing the path to the sound file relative to the assets folder
+
+#### Return Value
+
+* N/A
+
+Windows only
+
+Plays the sound corresponding to the sound passed in. The sound will continue to loop.
+
+    playSoundLoop("sfx\\spookyBackgoundMusic.wav")
     
 ## tableLength(table)
 

@@ -14,6 +14,9 @@ function update()
     yLock = 0
 
     position = getPosition()
+    
+    position["X"] = position["X"] - playerDelta["X"]
+    
     deltaTime = getDeltaTime()
     collision = isColliding()
     if tableLength(collision) > 0 then
@@ -65,10 +68,12 @@ function update()
         position["X"] = position["X"] - (1.5 * xRatio)
     end
     
+    --[[
     if yLock ~= -1 and canJump2 == 1  and (isKeyDown(KEYCODE["KEY_UP"]) or isKeyDown(KEYCODE["KEY_KEY_W"])) then
         velocity2["Y"] = velocity2["Y"] - 5
         canJump2 = 0
     end
+    --]]
     
     if yLock ~= 1 then
         velocity2["Y"] = velocity2["Y"] + (0.01 * deltaTime)

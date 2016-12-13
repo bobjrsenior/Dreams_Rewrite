@@ -39,7 +39,7 @@ inline float getMillisPerFrame() {
 
 inline void loadSceneIndex(int index) {
 	if (index >= 0 && index < config.scenes.size()) {
-		loadScene(&config.scenes[index]);
+		loadScene(&config.scenes[index], index);
 	}
 }
 
@@ -158,6 +158,16 @@ inline void playSound(std::string soundFile) {
 #endif
 }
 
+inline void playSoundLoop(std::string soundFile) {
+#ifdef _WIN32
+	PlaySoundA((config.assetsFolder + soundFile).c_str(), NULL, SND_ASYNC | SND_FILENAME | SND_LOOP);
+#endif
+}
+
+inline int getSceneIndex() {
+	return activeSceneIndex;
+}
+
 inline void drawGameObject(video::IVideoDriver* driver, GameObject *obj) {
 	irr::core::vector2df objPosition = obj->getPosition();
 	irr::core::rect<irr::s32> imagePosition = obj->getImagePosition();
@@ -204,6 +214,10 @@ void bindLuaCallbacks() {
 	lua.set_function("setPosition", &setLuaPosition);
 
 	lua.set_function("playSound", &playSound);
+
+	lua.set_function("playSoundLoop", &playSoundLoop);
+
+	lua.set_function("getSceneIndex", &getSceneIndex);
 
 	lua.script_file("keycodeLuaTable.lua");
 
@@ -298,7 +312,7 @@ int main()
 	lua["loadScene"] = &loadSceneIndex;
 	Scene firstScene = config.scenes[0];
 
-	loadScene(&firstScene);
+	loadScene(&firstScene, 0);
 
 	//driver->makeColorKeyTexture(images, core::position2d<s32>(0, 0));
 	gui::IGUIFont* defaultFont = device->getGUIEnvironment()->getBuiltInFont();

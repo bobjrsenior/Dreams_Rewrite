@@ -192,9 +192,11 @@ private:
 
 extern Scene *activeScene;
 
+extern int activeSceneIndex;
+
 void deloadScene(Scene* scene);
 
-void loadScene(Scene* scene);
+void loadScene(Scene* scene, int sceneIndex);
 
 
 #endif // !SCENE_START

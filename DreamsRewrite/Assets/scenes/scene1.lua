@@ -15,12 +15,26 @@ Scene = {
 
         },
         {
-            PositionX = 225,
-            PositionY = 300,
+            PositionX = 420,
+            PositionY = 480-64,
             IsStatic = false,
             IsCollidable = 1,
-            Tag = "Bunny",
-            SpritePath = "sprites/GreenStar.png",
+            Tag = "Enemy",
+            SpritePath = "sprites/Enemy.png",
+            Script = "scripts/enemyMovement.lua",
+            SpriteStartX = 0,
+            SpriteStartY = 0,
+            SpriteWidth = 32,
+            SpriteHeight = 32
+
+        },
+        {
+            PositionX = 360,
+            PositionY = 480-64,
+            IsStatic = false,
+            IsCollidable = 1,
+            Tag = "Goal",
+            SpritePath = "sprites/Goal.png",
             Script = "scripts/ground.lua",
             SpriteStartX = 0,
             SpriteStartY = 0,

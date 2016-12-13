@@ -5,6 +5,7 @@ Config = {
     ScreenHeight = 480,
     Scenes = {
         "scenes/scene1.lua",
+        "scenes/scene2.lua"
     },
     AssetFolder = "Assets/"
 }
