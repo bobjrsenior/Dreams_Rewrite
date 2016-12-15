@@ -112,6 +112,13 @@
             <li><a href="#setpositionnewpos">setPosition(newPos)</a></li>
             <li><a href="#playsoundsound">playSound(sound)</a></li>
             <li><a href="#playsoundloopsound">playSoundLoop(sound)</a></li>
+            <li><a href="#adduitexttext-xpos-ypos">addUIText(text, xPos, yPos)</a></li>
+            <li><a href="#modifyuitextidentifier-newtext">modifyUIText(identifier, newText)</a></li>
+            <li><a href="#errors_3">Errors</a></li>
+            <li><a href="#addglobalnumberkey-number">addGlobalNumber(key, number)</a></li>
+            <li><a href="#modifyglobalnumberkey-number">modifyGlobalNumber(key, number)</a></li>
+            <li><a href="#getglobalnumberkey">getGlobalNumber(key)</a></li>
+            <li><a href="#errors_4">Errors</a></li>
             <li><a href="#tablelengthtable">tableLength(table)</a></li>
     </ul>
 </div></div>
@@ -424,12 +431,97 @@ setPosition(position)
 <p>Plays the sound corresponding to the sound passed in. The sound will continue to loop.</p>
 <pre><code>playSoundLoop("sfx\\spookyBackgoundMusic.wav")
 </code></pre>
-<h2 id="tablelengthtable">tableLength(table)</h2>
+<h2 id="adduitexttext-xpos-ypos">addUIText(text, xPos, yPos)</h2>
 <h4 id="parameters_20">Parameters</h4>
+<ul>
+<li>text: The text to draw on screen</li>
+<li>xPos: The X position to specifying where to start drawing the text</li>
+<li>yPos: The Y position to specifying where to start drawing the text</li>
+</ul>
+<h4 id="return-value_20">Return Value</h4>
+<ul>
+<li>An UIText identifier (int)</li>
+</ul>
+<p>Displays the designated text on screen at the given position and returns an identifier for the text.</p>
+<pre><code>if livesInit == 0 then
+    livesInit = 1
+    livesUIIndex = addUIText("Lives: " .. lives, 10, 0)
+end
+</code></pre>
+<h2 id="modifyuitextidentifier-newtext">modifyUIText(identifier, newText)</h2>
+<h4 id="parameters_21">Parameters</h4>
+<ul>
+<li>identifier: The identifier corresponding to a UI Text</li>
+<li>newText: The text the UI Text should now display</li>
+</ul>
+<h4 id="return-value_21">Return Value</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<h2 id="errors_3">Errors</h2>
+<ul>
+<li>When an invalid identifier is passed, nothing happens</li>
+</ul>
+<p>Changes the specified UI Text to the new text passed in.</p>
+<pre><code>modifyUIText(livesUIIndex, "Lives: " .. lives)
+</code></pre>
+<h2 id="addglobalnumberkey-number">addGlobalNumber(key, number)</h2>
+<h4 id="parameters_22">Parameters</h4>
+<ul>
+<li>key: A string key to identify the global number</li>
+<li>number: A float value to store</li>
+</ul>
+<h4 id="return-value_22">Return Value</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<p>Adds a global number to be used throughout the game. Works like a map with a string key and float value.</p>
+<pre><code>lives = getGlobalNumber("Lives")
+if lives ~= lives then
+    addGlobalNumber("Lives", 3)
+end
+</code></pre>
+<h2 id="modifyglobalnumberkey-number">modifyGlobalNumber(key, number)</h2>
+<h4 id="parameters_23">Parameters</h4>
+<ul>
+<li>key: A string key to identify the global number</li>
+<li>number: A float value to store</li>
+</ul>
+<h4 id="return-value_23">Return Value</h4>
+<ul>
+<li>N/A</li>
+</ul>
+<p>Adds a global number to be used throughout the game. Works like a map with a string key and float value. Currently does the same thing as addGlobalNumber.</p>
+<pre><code>if compareTag(value, "Enemy") == 1 then
+    lives = getGlobalNumber("Lives") - 1
+    modifyGlobalNumber("Lives", lives)
+end
+</code></pre>
+<h2 id="getglobalnumberkey">getGlobalNumber(key)</h2>
+<h4 id="parameters_24">Parameters</h4>
+<ul>
+<li>key: string key corresponding to the global number to retrieve</li>
+</ul>
+<h4 id="return-value_24">Return Value</h4>
+<ul>
+<li>The global number</li>
+</ul>
+<h2 id="errors_4">Errors</h2>
+<ul>
+<li>When an invalid key is passed, the c++ NAN is returned</li>
+</ul>
+<p>Retrieves the value of a global number. A check for NAN can be done by comparing the number to itself (NAN is always false when compared to a number).</p>
+<pre><code>lives = getGlobalNumber("Lives")
+if lives ~= lives then
+    addGlobalNumber("Lives", 3)
+end
+</code></pre>
+<h2 id="tablelengthtable">tableLength(table)</h2>
+<h4 id="parameters_25">Parameters</h4>
 <ul>
 <li>table: A lua table</li>
 </ul>
-<h4 id="return-value_20">Return Value</h4>
+<h4 id="return-value_25">Return Value</h4>
 <ul>
 <li>The number of entries in the lua table</li>
 </ul>
