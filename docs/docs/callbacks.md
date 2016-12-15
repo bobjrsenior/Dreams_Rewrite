@@ -352,6 +352,101 @@ Plays the sound corresponding to the sound passed in. The sound will continue to
 
     playSoundLoop("sfx\\spookyBackgoundMusic.wav")
     
+## addUIText(text, xPos, yPos)
+
+#### Parameters
+
+* text: The text to draw on screen
+* xPos: The X position to specifying where to start drawing the text
+* yPos: The Y position to specifying where to start drawing the text
+
+#### Return Value
+
+* An UIText identifier (int)
+
+Displays the designated text on screen at the given position and returns an identifier for the text.
+    
+    if livesInit == 0 then
+        livesInit = 1
+        livesUIIndex = addUIText("Lives: " .. lives, 10, 0)
+    end
+    
+## modifyUIText(identifier, newText)
+
+#### Parameters
+
+* identifier: The identifier corresponding to a UI Text
+* newText: The text the UI Text should now display
+
+#### Return Value
+
+* N/A
+
+## Errors
+
+* When an invalid identifier is passed, nothing happens
+
+Changes the specified UI Text to the new text passed in.
+
+    modifyUIText(livesUIIndex, "Lives: " .. lives)
+    
+## addGlobalNumber(key, number)
+
+#### Parameters
+
+* key: A string key to identify the global number
+* number: A float value to store
+
+#### Return Value
+
+* N/A
+
+Adds a global number to be used throughout the game. Works like a map with a string key and float value.
+
+    lives = getGlobalNumber("Lives")
+    if lives ~= lives then
+        addGlobalNumber("Lives", 3)
+    end
+    
+## modifyGlobalNumber(key, number)
+
+#### Parameters
+
+* key: A string key to identify the global number
+* number: A float value to store
+
+#### Return Value
+
+* N/A
+
+Adds a global number to be used throughout the game. Works like a map with a string key and float value. Currently does the same thing as addGlobalNumber.
+
+    if compareTag(value, "Enemy") == 1 then
+        lives = getGlobalNumber("Lives") - 1
+        modifyGlobalNumber("Lives", lives)
+    end
+    
+## getGlobalNumber(key)
+
+#### Parameters
+
+* key: string key corresponding to the global number to retrieve
+
+#### Return Value
+
+* The global number
+
+## Errors
+
+* When an invalid key is passed, the c++ NAN is returned
+
+Retrieves the value of a global number. A check for NAN can be done by comparing the number to itself (NAN is always false when compared to a number).
+
+    lives = getGlobalNumber("Lives")
+    if lives ~= lives then
+        addGlobalNumber("Lives", 3)
+    end
+    
 ## tableLength(table)
 
 #### Parameters

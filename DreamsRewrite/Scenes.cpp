@@ -6,6 +6,7 @@ int activeSceneIndex = -1;
 
 void deloadScene(Scene* scene) {
 	scene->deloadGameObjects();
+	scene->deloadUITextItems();
 }
 
 void loadScene(Scene* scene, int sceneIndex) {

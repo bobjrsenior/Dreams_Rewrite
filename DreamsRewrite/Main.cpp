@@ -6,8 +6,10 @@
 #include <irrlicht.h>
 #include "EventReciever.h"
 #include <vector>
+#include <map>
 #include <iostream>
 #include "Config.h"
+#include "UIText.h"
 
 using namespace irr;
 
@@ -24,6 +26,8 @@ u32 curTime;
 u32 frameRate;
 f32 millisecondsPerFrame;
 bool continueGame = true;
+std::vector<UIText> uiTextItems;
+std::map<std::string, float> globalNumbers;
 
 inline void quitGame() {
 	continueGame = false;
@@ -102,6 +106,22 @@ inline int getScreenHeight() {
 	return config.screenHeight;
 }
 
+inline int addUIText(std::string text, int xPos, int yPos) {
+	std::wstring uiTextTest;
+	uiTextTest.assign(text.begin(), text.end());
+	core::rect<s32> position(xPos, yPos, xPos + 70, yPos + 40);
+
+	UIText newText(uiTextTest, position);
+	return activeScene->addUITextItem(newText);
+}
+
+inline void modifyUIText(int index, std::string newText) {
+	std::wstring uiTextTest;
+	uiTextTest.assign(newText.begin(), newText.end());
+
+	activeScene->modifyUITextItem(index, uiTextTest);
+}
+
 inline int compareTag(int objectIndex, std::string tag) {
 	if (curObjectIndex != -1 && objectIndex < activeScene->getNumGameObjects()) {
 		if (tag == activeScene->getGameObject(objectIndex).getTag()) {
@@ -168,6 +188,26 @@ inline int getSceneIndex() {
 	return activeSceneIndex;
 }
 
+inline void addGlobalNumber(std::string key, float number) {
+	globalNumbers[key] = number;
+}
+
+inline float getGlobalNumber(std::string key) {
+	std::map<std::string, float>::iterator it;
+	it = globalNumbers.find(key);
+	if (it != globalNumbers.end()) {
+		return it->second;
+	}
+	else {
+		return NAN;
+	}
+
+}
+
+inline void modifyGlobalNumber(std::string key, float newNumber) {
+	globalNumbers[key] = newNumber;
+}
+
 inline void drawGameObject(video::IVideoDriver* driver, GameObject *obj) {
 	irr::core::vector2df objPosition = obj->getPosition();
 	irr::core::rect<irr::s32> imagePosition = obj->getImagePosition();
@@ -218,6 +258,16 @@ void bindLuaCallbacks() {
 	lua.set_function("playSoundLoop", &playSoundLoop);
 
 	lua.set_function("getSceneIndex", &getSceneIndex);
+
+	lua.set_function("addUIText", &addUIText);
+
+	lua.set_function("modifyUIText", &modifyUIText);
+
+	lua.set_function("addGlobalNumber", &addGlobalNumber);
+
+	lua.set_function("getGlobalNumber", &getGlobalNumber);
+
+	lua.set_function("modifyGlobalNumber", &modifyGlobalNumber);
 
 	lua.script_file("keycodeLuaTable.lua");
 
@@ -317,6 +367,11 @@ int main()
 	//driver->makeColorKeyTexture(images, core::position2d<s32>(0, 0));
 	gui::IGUIFont* defaultFont = device->getGUIEnvironment()->getBuiltInFont();
 
+	// Game Font
+	gui::IGUIEnvironment * irrGUI = device->getGUIEnvironment();
+	gui::IGUIFont* mainFont = irrGUI->getFont("myfont.xml");
+	irrGUI->getSkin()->setFont(mainFont);
+
 	//driver->getMaterial2D().TextureLayer[0].BilinearFilter = true;
 	//driver->getMaterial2D().AntiAliasing = video::EAAM_FULL_BASIC;
 	
@@ -355,7 +410,8 @@ int main()
 				// Draw the object
 				drawGameObject(driver, &obj);
 			}
-
+	
+			/*
 			// draw some text
 			if (defaultFont) {
 				float curFrameRate = 0;
@@ -363,15 +419,22 @@ int main()
 					curFrameRate = 1000.0f / (curTime - prevTime);
 				}				
 				std::wstring framerateStr = std::to_wstring(curFrameRate);
-				defaultFont->draw(framerateStr.c_str(),
-					core::rect<s32>(130, 10, 300, 50),
-					video::SColor(255, 0, 255, 255));
+				mainFont->draw(framerateStr.c_str(),
+					core::rect<s32>(600, 10, 300, 50),
+					video::SColor(255, 255, 255, 255));
+			}
+			*/
+
+			if (mainFont) {
+				// Draw all UI text items
+				curScene->drawAllUITextItems(mainFont);
 			}
 
 			// Makes a colorful box around the mouse
 			core::position2d<s32> m = device->getCursorControl()->getPosition();
 			driver->draw2DRectangle(video::SColor(100, (curTime % 255), (2 * curTime) % 255, (int) ((1.5f * curTime)) % 255),
 				core::rect<s32>(m.X - 20, m.Y - 20, m.X + 20, m.Y + 20));
+
 
 			// Finish the scene
 			driver->endScene();

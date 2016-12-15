@@ -9,6 +9,7 @@
 #include "GameObject.h"
 #include "IrrItems.h"
 #include <iostream>
+#include "UIText.h"
 
 void luaErrorHandler(std::string message);
 
@@ -20,6 +21,7 @@ private:
 	std::string path;
 	std::string identifier;
 	std::vector<GameObject> gameobjects;
+	std::vector<UIText> uiTextItems;
 	
 
 
@@ -28,6 +30,7 @@ public:
 
 	~Scene() {
 		deloadGameObjects();
+		deloadUITextItems();
 	}
 
 	inline GameObject getGameObject(int index) {
@@ -43,6 +46,28 @@ public:
 		}
 	}
 
+	inline std::vector<UIText> getUITextItems() {
+		return uiTextItems;
+	}
+
+	inline int addUITextItem(UIText item) {
+		uiTextItems.push_back(item);
+		return uiTextItems.size() - 1;
+	}
+
+	inline void modifyUITextItem(int index, std::wstring newText) {
+		if (index >= 0 && index < uiTextItems.size()) {
+			uiTextItems[index].setText(newText);
+		}
+	}
+
+	inline void drawAllUITextItems(irr::gui::IGUIFont* font) {
+		// Draw all UI text items
+		for (int i = 0; i < uiTextItems.size(); ++i) {
+			uiTextItems[i].drawText(font);
+		}
+	}
+
 	inline int getNumGameObjects() {
 		return (int) gameobjects.size();
 	}
@@ -55,6 +80,12 @@ public:
 	void deloadGameObjects() {
 		while (gameobjects.size()) {
 			gameobjects.pop_back();
+		}
+	}
+
+	void deloadUITextItems() {
+		while (uiTextItems.size()) {
+			uiTextItems.pop_back();
 		}
 	}
 

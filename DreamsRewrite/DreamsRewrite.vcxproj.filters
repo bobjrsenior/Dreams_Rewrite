@@ -56,5 +56,24 @@
     <ClInclude Include="IrrItems.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UIText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\..\..\..\Downloads\irrlicht-1.7.1-TheVeryAdvancedIrrFontTool+SOURCE\TheVeryAdvancedIrrFontTool\myfont.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\Downloads\irrlicht-1.7.1-TheVeryAdvancedIrrFontTool+SOURCE\TheVeryAdvancedIrrFontTool\myfont0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Downloads\irrlicht-1.7.1-TheVeryAdvancedIrrFontTool+SOURCE\TheVeryAdvancedIrrFontTool\myfont1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="..\..\..\..\..\Downloads\irrlicht-1.7.1-TheVeryAdvancedIrrFontTool+SOURCE\TheVeryAdvancedIrrFontTool\myfont2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

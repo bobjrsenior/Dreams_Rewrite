@@ -3,6 +3,7 @@ playerPosition = {X = 0, Y = 0}
 playerDelta = {X = 0, Y = 0}
 playerInit = 0
 canJump = 1
+playerFPSText = -1
 
 function update()
     if isKeyDown(KEYCODE["KEY_ESCAPE"]) then
@@ -43,9 +44,18 @@ function update()
     if tableLength(collision) > 0 then
         for _,value in ipairs(collision) do
             if compareTag(value, "Goal") == 1 then
+                playerDelta = {X = 0, Y = 0}
                 loadScene(getSceneIndex() + 1)
             elseif compareTag(value, "Enemy") == 1 then
-                loadScene(getSceneIndex())
+                playerDelta = {X = 0, Y = 0}
+                lives = getGlobalNumber("Lives") - 1
+                modifyGlobalNumber("Lives", lives)
+                sceneIndex = getSceneIndex()
+                if lives == 0 then 
+                    quitGame()
+                else
+                    loadScene(sceneIndex)
+                end
             else
                 collisionDir = collisionDirection(value)
                 if math.abs(collisionDir["X"]) > math.abs(collisionDir["Y"]) then

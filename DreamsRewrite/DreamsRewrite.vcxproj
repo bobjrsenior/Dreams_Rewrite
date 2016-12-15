@@ -169,6 +169,15 @@
     <ClInclude Include="LuaState.h" />
     <ClInclude Include="Scenes.h" />
     <ClInclude Include="sol.hpp" />
+    <ClInclude Include="UIText.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\..\..\..\Downloads\irrlicht-1.7.1-TheVeryAdvancedIrrFontTool+SOURCE\TheVeryAdvancedIrrFontTool\myfont.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\Downloads\irrlicht-1.7.1-TheVeryAdvancedIrrFontTool+SOURCE\TheVeryAdvancedIrrFontTool\myfont0.png" />
+    <Image Include="..\..\..\..\..\Downloads\irrlicht-1.7.1-TheVeryAdvancedIrrFontTool+SOURCE\TheVeryAdvancedIrrFontTool\myfont1.png" />
+    <Image Include="..\..\..\..\..\Downloads\irrlicht-1.7.1-TheVeryAdvancedIrrFontTool+SOURCE\TheVeryAdvancedIrrFontTool\myfont2.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -83,6 +83,20 @@ Scene = {
             SpriteWidth = 32,
             SpriteHeight = 32
 
+        },
+        {
+            PositionX = 420,
+            PositionY = -500,
+            IsStatic = false,
+            IsCollidable = 1,
+            Tag = "livesUI",
+            SpritePath = "sprites/Enemy.png",
+            Script = "scripts/lives.lua",
+            SpriteStartX = 0,
+            SpriteStartY = 0,
+            SpriteWidth = 32,
+            SpriteHeight = 32
+
         }
     }
 }
